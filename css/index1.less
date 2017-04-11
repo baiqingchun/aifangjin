@@ -1,0 +1,111 @@
+@r: 40rem;
+body {
+    overflow: auto;
+}
+//公共
+.margin-right {
+    margin-right: 30/@r;
+}
+.margin-bottom {
+    margin-bottom: 30/@r;
+}
+.logo {}
+//头部
+header {
+    height: 100/@r;
+    width: 100%;
+    background: blue;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+//主体部分
+.main {
+    margin-top: 100/@r;
+    .banner {
+        height: 400/@r;
+        background: #555555;
+    }
+    .products {
+        padding: 30/@r;
+        display: -webkit-flex;
+        height: 500/@r;
+        .products-section {
+            flex: 1;
+            background: pink;
+            display: -webkit-flex;
+            flex-direction: column;
+            .products-category {
+                flex: 1;
+                background: palegreen;
+            }
+        }
+    }
+    .application {
+        height: 100/@r;
+        border-radius: 10/@r;
+        border: 1px solid #7D797D;
+        margin: 0 30/@r;
+        text-align: center;
+        line-height: 100/@r;
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #555555;
+            font-size: 38/@r;
+        }
+    }
+}
+//脚部
+footer {
+    height: 300/@r;
+    .about {
+        height: 50/@r;
+        text-align: center;
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            font-size: 30/@r;
+            line-height: 50/@r;
+            color: #7D797D;
+        }
+    }
+    .info {
+        text-align: center;
+        font-size: 30/@r;
+        height: 100/@r;
+        line-height: 100/@r;
+        span {
+            font-size: 30/@r;
+        }
+    }
+    .versions {
+        text-align: center;
+        height: 100/@r;
+        line-height: 100/@r;
+        font-size: 50/@r;
+        a {
+            color: #7D797D;
+            margin: 0 20/@r;
+            font-size: 30/@r;
+        }
+        span {
+            font-size: 30/@r;
+            position: relative;
+            padding-left: 75/@r;
+            height: 60/@r;
+            line-height: 60/@r;
+            i {
+                position: absolute;
+                top: -10/@r;
+                left: 0;
+                width: 65/@r;
+                height: 60/@r;
+                background: url("../img/1.jpg");
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	</head>
+	<body>
+		<header id="header">注册</header>
+		<div class="login-form">
+			<form>
+				<ul>
+					<li>
+						<input type="tel" name="tel" id="tel" value="" placeholder="手机号"/>
+						<p></p>
+					</li>
+					<li class="checkBox">
+						<input type="text" name="checkCode" id="checkCode" value="" placeholder="校验码"/><img src="img/3.jpg" id="checkImg"/>
+						<p class=""></p>
+					</li>
+					<li class="checkBox">
+						<input type="text" name="captcha" id="captcha" value="" placeholder="验证码"/><input type="button" name="" id="getCaptcha" value="获取验证码" />
+						<p class=""></p>
+					</li>
+					<li>
+						<input type="password" name="password" id="password" value="" placeholder="密码"/>
+						<p class=""></p>
+					</li>
+					<li>
+						<input type="button" id="register" value="立即注册" />
+					</li>
+					<li class="service">
+						<input type="checkbox" id="check" />
+						<span>我已阅读并同意<strong>《爱房金服务协议》</strong></span>
+					</li>
+				</ul>
+				<div class="login-btn">
+					<a href="#">已注册</a>
+					<a href="#">立即登录</a>
+					
+				</div>
+			</form>
+		</div>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>

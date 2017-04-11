@@ -1,0 +1,56 @@
+@r: 40rem;
+//头部
+#header{
+    height: 100/@r;
+    font-size: 14/@r;
+    line-height: 100/@r;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+}
+//底部
+#footer {
+//  position: fixed;
+//  bottom: 0;
+//  left: 0;
+    background-color: #fff;
+    font-size: 16/@r;
+    .about {
+        width: 200/@r;
+        padding: 20/@r;
+        margin: 0 auto;
+        text-align: center;
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #7d797d;
+        }
+    }
+    .company {
+        padding: 0 35/@r 40/@r;
+        span:nth-of-type(1) {
+            margin-right: 35/@r;
+        }
+    }
+    .versions {
+        text-align: center;
+        position: relative;
+        a{
+            color: #050505;
+            padding: 10/@r;
+        }
+        .tel {
+
+            padding-right: 13/@r;
+        }
+        .mac {
+            padding-left: 13/@r;
+        }
+        .logo{
+           display: inline-block;
+        }
+    }
+}

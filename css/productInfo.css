@@ -1,0 +1,70 @@
+.content {
+  background: #7D797D;
+  margin-bottom: 2.5rem;
+}
+.content .con_list {
+  background: #fff;
+}
+.content .con_list li {
+  border-bottom: 1px solid #7D797D;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+}
+.content .con_list li img {
+  padding: 1rem;
+}
+.content .con_list li span {
+  display: inline-block;
+  height: 3.875rem;
+  line-height: 3.875rem;
+}
+.content .con_list li:nth-of-type(2n+1) {
+  border-right: 1px solid #7D797D;
+}
+.content .con_list li:last-child {
+  border-right: none;
+  border-bottom: none;
+}
+.content .requirements {
+  background: #fff;
+  margin-top: 0.5rem;
+}
+.content .requirements .requirements_header {
+  height: 3rem;
+  border-bottom: 1px solid #7D797D;
+  line-height: 3rem;
+  padding: 0 0.75rem;
+}
+.content .requirements .requirements_header span {
+  font-size: 0.5rem;
+  float: left;
+}
+.content .requirements .requirements_header a {
+  float: right;
+  font-size: 2.5rem;
+  color: #222222;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.25rem;
+}
+.content .requirements ul {
+  padding: 0 0.5rem;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background: orange;
+  width: 100%;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+.footer a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
