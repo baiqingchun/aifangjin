@@ -1,0 +1,49 @@
+@r:50rem;
+//main
+.main{
+  //slider
+  .slider{
+    width:100%;
+    height:350/@r;
+    background: #333;
+  }
+  //贷款种类
+  .loan_category{
+    display: -webkit-flex;
+    height:400/@r;
+    margin: 30/@r 30/@r;
+    .loan_category_l{
+      flex:1;
+      background: pink;
+      display: -webkit-flex;
+      flex-direction: column;
+      .credit_loan{
+        flex:1;
+        background: green;
+      }
+      .consume_loan{
+        flex:1;
+        background: blue;
+      }
+    }
+    .loan_category_r{
+      flex:1;
+      background: orange;
+    }
+  }
+  //申请通道
+  .application_channel{
+    margin:0 20/@r;
+    border:1px solid #cccccc;
+    border-radius: 10/@r;
+    height:80/@r;
+    line-height:80/@r;
+    text-align: center;
+    a{
+      display: block;
+      width:100%;
+      height:100%;
+      color: #333333;
+    }
+  }
+}
