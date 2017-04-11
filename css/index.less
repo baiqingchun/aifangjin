@@ -1,106 +1,39 @@
-@r: 40rem;
-
-//头部
-#header {
-    height: 100/@r;
-    font-size: 14/@r;
-    line-height: 100/@r;
-    width: 100%;
-    position: relative;
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    .login {
-        position: absolute;
-        right: 20/@r;
-        top: 0;
-        color: #101010;
+@r:50rem;
+//main
+.main{
+  //slider
+  .slider{
+    width:100%;
+    height:350/@r;
+    background: #333;
+  }
+  //贷款种类
+  .loan_category{
+    display: -webkit-flex;
+    height:400/@r;
+    margin: 30/@r 30/@r;
+    .loan_category_l{
+      flex:1;
+      background: pink;
+      display: -webkit-flex;
+      flex-direction: column;
+      .credit_loan{
+        flex:1;
+        background: green;
+      }
+      .consume_loan{
+        flex:1;
+        background: blue;
+      }
     }
-    .logo{
-        margin: 0 auto;
-        
+    .loan_category_r{
+      flex:1;
+      background: orange;
     }
-}
-.logo {
-    position: relative;
-    width: 150/@r;
-    i {
-        position: absolute;
-        left: 0;
-        top: 30/@r;
-        width: 28/@r;
-        height: 26/@r;
-        background-image: url("../img/1.jpg");
-        background-size: 28/@r 26/@r;
-    }
-    span {
-        display: block;
-        margin-left: 40/@r;
-    }
-
-}
-
-//轮播图
-#slider {
-    width: 100%;
-    height: 280/@r;
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}
-//主要内容
-#main {
-    .content {
-        margin: 15/@r 15/@r 15/@r 20/@r;
-        height: 205/@r;
-        display: flex;
-        .cont_l {
-            //float: left;
-            height: 204/@r;
-            flex-grow: 1;
-            padding-right: 13/@r;
-            .credit {
-                width: 100%;
-                height: 90/@r;
-                background: #f0b794;
-            }
-            .consume {
-                width: 100%;
-                height: 100/@r;
-                margin-top: 16/@r;
-                background: #f0b794;
-            }
-        }
-        .cont_r {
-            //float: right;
-            width: 160/@r;
-            height: 204/@r;
-            background: #f0b794;
-            flex-grow: 1;
-
-        }
-    }
-    .Channel {
-        margin-top: 14/@r;
-        height: 55/@r;
-        box-sizing: border-box;
-        border: 1px solid #bbb;
-        text-align: center;
-        line-height: 55/@r;
-        font-size: 12/@r;
-        border-radius: 10/@r;
-        margin: 0 20/@r;
-        a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            color: #333333;
-        }
-    }
-}
-//横线分割
-.line {
-    margin-top: 20/@r;
-    height: 30/@r;
-    background-color: #f7f5f7;
+  }
+  //申请通道
+  .application_channel{
+    margin:0 10/@r;
+    border:1px solid #333333;
+  }
 }

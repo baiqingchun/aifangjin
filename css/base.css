@@ -24,6 +24,7 @@ h1 {
 }
 a {
     text-decoration: none;
+	color: #ccc;
 }
 ul {
     margin: 0;

@@ -1,56 +1,37 @@
-@r: 40rem;
-//头部
-#header{
-    height: 100/@r;
-    font-size: 14/@r;
-    line-height: 100/@r;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
-    background: #fff;
+@r:50rem;
+//public
+.mr30{
+  margin-right: 30/@r;
 }
-//底部
-#footer {
-//  position: fixed;
-//  bottom: 0;
-//  left: 0;
-    background-color: #fff;
-    font-size: 16/@r;
-    .about {
-        width: 200/@r;
-        padding: 20/@r;
-        margin: 0 auto;
-        text-align: center;
-        a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            color: #7d797d;
-        }
+.mb30{
+  margin-bottom:30/@r;
+}
+//header
+.public_header{
+  width:100%;
+  height:100/@r;
+  background: #eeeeee;
+  position: relative;
+  line-height:100/@r;
+  .logo{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    padding-left: 65/@r;
+    i{
+      position: absolute;
+      top:15/@r;
+      left:0;
+      background: url("../img/1.jpg") no-repeat;
+      width:60/@r;
+      height:60/@r;
     }
-    .company {
-        padding: 0 35/@r 40/@r;
-        span:nth-of-type(1) {
-            margin-right: 35/@r;
-        }
-    }
-    .versions {
-        text-align: center;
-        position: relative;
-        a{
-            color: #050505;
-            padding: 10/@r;
-        }
-        .tel {
-
-            padding-right: 13/@r;
-        }
-        .mac {
-            padding-left: 13/@r;
-        }
-        .logo{
-           display: inline-block;
-        }
-    }
+  }
+  #login{
+    position: absolute;
+    right:10/@r;
+    top:0/@r;
+    padding: 0 20/@r;
+  }
 }
