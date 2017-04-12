@@ -22,8 +22,8 @@
 
 .slick-dots li {
     /*background: url(../../img/circle.png);*/
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background-color: #dfdfdf;
 }
