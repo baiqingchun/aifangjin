@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>产品列表</title>
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet/less" type="text/css" href="css/public.less">
+    <link rel="stylesheet/less" type="text/css" href="css/productList.less">
+    <script src="js/less.js"></script>
+</head>
+<body>
+    <header class="public_header">
+        <a href="javascript:;" id="return"></a>
+        <span class="productHeader">信用贷产品</span>
+    </header>
+    <div class="search_num">为您搜索贷款<span>20</span>个</div>
+    <ul class="product_list">
+        <li>
+            <a href="#">
+                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_info">
+                    <p class="product_bank"><span>浦发银行</span>万用金</p>
+                    <p class="product_loan">
+                        <i class="product_loan_term">1天放款</i>
+                        <span class="product_rate">
+                            <strong>5.5%</strong>/年
+                        </span>
+                    </p>
+                    <p class="product_mortgage_situation">
+                        <span class="product_mortgage">无抵押</span>
+                        <span class="loan_amount">可贷<b>30-3000</b>万</span>
+                    </p>
+                </div>
+            </a>
+
+        </li>
+    </ul>
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#return').on('click',function(){
+//                alert(1)
+                $(this).css('background-image','img/productList/click.png');
+            })
+        })
+    </script>
+</body>
+</html>
