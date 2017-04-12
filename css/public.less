@@ -1,14 +1,5 @@
 @r:50rem;
-//public
-.mr30{
-  margin-right: 30/@r;
-}
-.mb30{
-  margin-bottom:30/@r;
-}
-.pb30{
-  padding-bottom: 30/@r;
-}
+
 //header
 .public_header{
   width:100%;
@@ -41,43 +32,58 @@
 }
 //footer
 .public_footer{
-  position: absolute;
-  left:0;
-  bottom:0;
-  height: 250/@r;
+  position: relative;
+  height: 146/@r;
   width:100%;
   text-align: center;
-  padding: 0 30/@r;
   background: #fff;
-  margin-top: 30/@r;
-  .about{
-    a{
-      display: block;
-      padding:20/@r;
+  font-size: 22/@r;
+  .public_footer_wrapper{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    -webkit-transform: translate(-50%,-50%);
+    width:100%;
+    //关于我们
+    .about{
+        color: #999;
+        margin-bottom: 12/@r;
     }
-  }
+    .footer_info{
+      margin-bottom: 12/@r;
+      color: #999;
+        .footer_info_company{
+          margin-right: 64/@r;
+        }
+    }
+    .footer_versions{
+      font-size:22/@r;
+      height:30/@r;
+      line-height:30/@r;
+      .footer_tel{
+        display: inline-block;
+        font-size: 20/@r;
+        line-height: 30/@r;
+        color: #555;
+        padding-right: 15/@r ;
+      }
+      .footer_mac{
+        display: inline-block;
+        font-size: 20/@r;
+        color: #555;
+        padding-left: 15/@r;
+        line-height: 30/@r;
 
-  .footer_versions{
-    font-size:20/@r;
-    height:70/@r;
-    line-height:70/@r;
-    .footer_tel{
-      padding-right: 20/@r ;
-    }
-    .footer_mac{
-      padding-left: 20/@r;
-    }
-    .footer_logo{
-      margin-left: 10/@r;
-      position: relative;
-      padding-left: 65/@r;
-      i{
-        position: absolute;
-        left:0;
-        top:-10/@r;
-        background: url("../img/1.jpg") no-repeat;
-        width:50/@r;
-        height:50/@r;
+      }
+      .footer_logo{
+        display: inline-block;
+        margin-left: 60/@r;
+        width: 104/@r;
+        height:30/@r;
+        text-indent: -2000/@r;
+        background: url("../img/footer_logo.png") no-repeat;
+        background-size: 104/@r 30/@r;
+
       }
     }
   }

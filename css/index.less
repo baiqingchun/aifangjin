@@ -1,70 +1,69 @@
 @r:50rem;
-body{
-  background: #eeeeee;
-}
+
 //main
-.main{
+.main {
   background: #fff;
+  margin-bottom: 15/@r;
   //slider
-  .slider{
-    width:100%;
-    height:420/@r;
+  .slider {
+    width: 100%;
+    height: 420/@r;
     background: #333;
   }
   //贷款种类
-  .loan_category{
+  .loan_category {
     display: -webkit-flex;
-    height:476/@r;
+    height: 476/@r;
+    background: #fff;
     //贷款种类公共样式
-    .loan_info{
+    .loan_info {
       display: block;
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
       text-align: center;
       position: relative;
-      .loan_info_wrapper{
+      .loan_info_wrapper {
         position: absolute;
-        top:50%;
+        top: 50%;
         left: 50%;
-        -webkit-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%, -50%);
         width: 100%;
-        i,strong,span{
+        i, strong, span {
           display: block;
         }
-        i{
-          width:100%;
+        i {
+          width: 100%;
         }
-        strong{
+        strong {
           font-size: 30/@r;
           color: #444;
         }
-        span{
+        span {
           font-size: 24/@r;
           color: #999;
         }
       }
 
-
     }
     //贷款左边部分
-    .loan_category_l{
+    .loan_category_l {
       //贷款左边公共部分
-      .loan_info{
-        .loan_info_wrapper{
+      .loan_info {
+        .loan_info_wrapper {
           //图标
-          i{
-            height:70/@r;
+          i {
+            height: 70/@r;
             margin-bottom: 24/@r;
           }
-          strong{
+          strong {
             margin-bottom: 20/@r;
           }
         }
       }
       //经营贷款
-      .credit_loan{
-        width:375/@r;
-        height:238/@r;
+      .credit_loan {
+        width: 375/@r;
+        height: 238/@r;
         border-right: 1px solid #eaeaea;
         border-bottom: 1px solid #eaeaea;
         .loan_info {
@@ -77,10 +76,10 @@ body{
         }
       }
       //消费贷款
-      .consume_loan{
+      .consume_loan {
         border: 1px solid #eaeaea;
         border-bottom: 1px solid #eaeaea;
-        height:238/@r;
+        height: 238/@r;
         .loan_info {
           .loan_info_wrapper {
             i {
@@ -93,25 +92,58 @@ body{
       }
     }
     //贷款右边部分
-    .loan_category_r{
-      flex:1;
+    .loan_category_r {
+      flex: 1;
       border-bottom: 1px solid #eaeaea;
+      height: 100%;
+      .management_loan {
+        height: 100%;
+        width: 100%;
+        .loan_info {
+          .loan_info_wrapper {
+
+            i {
+              width: 100%;
+              height: 124/@r;
+              background: url("../img/loan3.png") no-repeat center center;
+              background-size: 110/@r 124/@r;
+              margin-bottom: 30/@r;
+            }
+            strong {
+              margin-bottom: 20/@r;
+            }
+          }
+        }
+      }
     }
 
   }
   //申请通道
-  .application_channel{
-    border:1px solid #cccccc;
-    border-radius: 10/@r;
-    height:80/@r;
-    line-height:80/@r;
-    text-align: center;
-    margin:0 20/@r;
-    a{
-      display: block;
-      width:100%;
-      height:100%;
-      color: #333333;
+  .application_channel {
+    width: 100%;
+    height: 150/@r;
+    position: relative;
+    a {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -345/@r;
+      margin-top: -45/@r;
+      width: 690/@r;
+      height: 90/@r;
+      line-height: 90/@r;
+      background: #ea592e;
+      text-align: center;
+      font-size: 32/@r;
+      color: #fff;
+      border-radius: 44/@r;
     }
+  }
+  &::after {
+    content: '';
+    display: block;
+    height: 15/@r;
+    width: 100%;
+    background: #f6f6f6;
   }
 }
