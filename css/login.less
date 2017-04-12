@@ -1,0 +1,62 @@
+@r: 40rem;
+//注册列表
+body{
+    background-color: #ccc;
+}
+.login-form{
+    padding: 30/@r 50/@r;
+    input{
+        height: 80/@r;
+        line-height: 80/@r;
+        border: 1px solid #888888;
+        border-radius: 20/@r;
+        padding-left: 10/@r;
+        width: 100%;
+        background: #fff;
+    }
+   
+    .checkBox{
+        position: relative;
+        #checkCode{
+            width: 580/@r;
+        }
+        #checkImg{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200/@r;
+            height: 100/@r;
+        }
+        #captcha{
+            width: 550/@r;
+        }
+        #getCaptcha{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 250/@r;
+        }
+    }
+    div{
+        text-align: center;
+    }
+    p{
+        height: 50/@r;
+    }
+    #check{
+        width: 50/@r;
+        height: 50/@r;
+        border-radius: 0;
+        vertical-align: top;
+        .checked{
+            width: 50/@r;
+            height: 50/@r;
+            background: url(../img/check.jpg) no-repeat;
+       }
+    }
+   
+    .service{
+        text-align: center;
+        margin-top: 10/@r;
+    }
+}

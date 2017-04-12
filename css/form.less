@@ -1,0 +1,116 @@
+@import "public";
+@import "weui.css";
+
+@title: 120/@r;
+@input-height: 150/@r;
+@input-font: 32/@r;
+@pa-lr: 50/@r;
+.m_form {
+
+  header {
+    text-align: center;
+    font-size: 32/@r;
+    color: black;
+    text-align: center;
+    height: @title;
+    line-height: @title;
+  }
+  form {
+    padding: 0 @pa-lr;
+  }
+  .button{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid;
+   outline: none;
+
+  }
+  .btn_default {
+    color: black;
+    background-color: white;
+  }
+  .btn_default:not(.weui-btn_disabled):visited {
+    color: #000000;
+  }
+  .btn_default:not(.weui-btn_disabled):active {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #DEDEDE;
+  }
+  .form_group {
+    margin-bottom: 20/@r;
+    input[type="text"], input[type="password"] {
+      height: @input-height;
+      line-height: @input-height;
+      border: 1px solid #888888;
+      border-radius: 20/@r;
+      padding-left: 10/@r;
+      width: 100%;
+      background: #fff;
+      &.check_code {
+        width: 600/@r;
+      }
+      &.captcha {
+        width: 600/@r;
+      }
+
+    }
+    .get_code {
+      width: 400/@r;
+      height: @input-height;
+      line-height: @input-height;
+      font-size: @input-font;
+      float: right;
+      background-color: white;
+    }
+    .submit {
+      height: @input-height;
+      line-height: @input-height;
+      font-size: @input-font;
+      width: 100%;
+    }
+    p {
+      text-align: center;
+      strong {
+        color: red;
+      }
+    }
+    label.error{
+      color: red;
+    }
+  }
+  footer {
+    padding: 0 @pa-lr;
+    p {
+      height: 100/@r;
+      line-height: 100/@r;
+      text-align: center;
+
+      span {
+        width: 300/@r;
+        height: 100/@r/2;
+        border-bottom: 1px solid;
+        display: inline-block;
+        float: left;
+
+      }
+      strong {
+        float: left;
+        font-size: 200/@r;
+        color: rgb(163, 163, 163);
+      }
+    }
+    .to_next {
+      text-align: center;
+    }
+
+  }
+
+}
