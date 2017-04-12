@@ -6,6 +6,9 @@
 .mb30{
   margin-bottom:30/@r;
 }
+.pb30{
+  padding-bottom: 30/@r;
+}
 //header
 .public_header{
   width:100%;
@@ -28,10 +31,54 @@
       height:60/@r;
     }
   }
+  //点击之后的颜色＃ea592e
   #login{
     position: absolute;
     right:10/@r;
     top:0/@r;
     padding: 0 20/@r;
+  }
+}
+//footer
+.public_footer{
+  position: absolute;
+  left:0;
+  bottom:0;
+  height: 250/@r;
+  width:100%;
+  text-align: center;
+  padding: 0 30/@r;
+  background: #fff;
+  margin-top: 30/@r;
+  .about{
+    a{
+      display: block;
+      padding:20/@r;
+    }
+  }
+
+  .footer_versions{
+    font-size:20/@r;
+    height:70/@r;
+    line-height:70/@r;
+    .footer_tel{
+      padding-right: 20/@r ;
+    }
+    .footer_mac{
+      padding-left: 20/@r;
+    }
+    .footer_logo{
+      margin-left: 10/@r;
+      position: relative;
+      padding-left: 65/@r;
+      i{
+        position: absolute;
+        left:0;
+        top:-10/@r;
+        background: url("../img/1.jpg") no-repeat;
+        width:50/@r;
+        height:50/@r;
+      }
+    }
   }
 }
