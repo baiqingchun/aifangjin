@@ -8,32 +8,93 @@ body{
   //slider
   .slider{
     width:100%;
-    height:350/@r;
+    height:420/@r;
     background: #333;
   }
   //贷款种类
   .loan_category{
     display: -webkit-flex;
-    height:400/@r;
-    margin: 30/@r 30/@r;
-    .loan_category_l{
-      flex:1;
-      background: pink;
-      display: -webkit-flex;
-      flex-direction: column;
-      .credit_loan{
-        flex:1;
-        background: green;
+    height:476/@r;
+    //贷款种类公共样式
+    .loan_info{
+      display: block;
+      width:100%;
+      height:100%;
+      text-align: center;
+      position: relative;
+      .loan_info_wrapper{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        width: 100%;
+        i,strong,span{
+          display: block;
+        }
+        strong{
+          font-size: 30/@r;
+          color: #444;
+        }
+        span{
+          font-size: 24/@r;
+          color: #999;
+        }
       }
+
+
+    }
+    //贷款左边部分
+    .loan_category_l{
+      //贷款左边公共部分
+      .loan_info{
+        .loan_info_wrapper{
+          //图标
+          i{
+            width:100%;
+            height:70/@r;
+            margin-bottom: 24/@r;
+          }
+          strong{
+            margin-bottom: 20/@r;
+          }
+        }
+      }
+      //经营贷款
+      .credit_loan{
+        width:375/@r;
+        height:238/@r;
+        border-right: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+        .loan_info {
+          .loan_info_wrapper {
+            i {
+              background: url("../img/loan1.png") no-repeat center center;
+              background-size: 88/@r 70/@r;
+            }
+          }
+        }
+      }
+      //消费贷款
       .consume_loan{
-        flex:1;
-        background: blue;
+        border: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+        height:238/@r;
+        .loan_info {
+          .loan_info_wrapper {
+            i {
+              background: url("../img/loan2.png") no-repeat center center;
+              background-size: 88/@r 70/@r;
+            }
+          }
+        }
+
       }
     }
+    //贷款右边部分
     .loan_category_r{
       flex:1;
-      background: orange;
     }
+
   }
   //申请通道
   .application_channel{

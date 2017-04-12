@@ -36,6 +36,12 @@ img {
 strong{
 	font-weight: normal;
 }
+i{
+	font-style: normal;
+}
+strong{
+	font-weight: normal;
+}
 /* 通用样式 */
 *,
 ::before,
