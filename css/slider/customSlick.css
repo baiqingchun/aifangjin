@@ -1,21 +1,37 @@
 @import "slick.css";
 @import "slick-theme.css";
 
-.slider img{
+.slider img {
 
     width: 100%;
     height: 8.4rem;
 }
-.slick-dots li button:before{
+
+.slick-dots li button:before {
     content: '.';
 
 }
-.slick-dotted.slick-slider{
+
+.slick-dotted.slick-slider {
     margin-bottom: 0px;
 }
-.slick-dots{
-    bottom:18px;
+
+.slick-dots {
+    bottom: 0.3rem
 }
-.slick-dots li{background:url(../../img/circle.png);width:10px;height:10px;}
-.slick-dots li.slick-active{background:url(../../img/circle_ac.png);}
-.slick-dots li button{display:none}
+
+.slick-dots li {
+    /*background: url(../../img/circle.png);*/
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #dfdfdf;
+}
+
+.slick-dots li.slick-active {
+    background-color: white;
+}
+
+.slick-dots li button {
+    display: none
+}
