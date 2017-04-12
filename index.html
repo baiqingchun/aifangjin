@@ -13,6 +13,30 @@
     <link rel="stylesheet/less" type="text/css" href="css/public.less">
     <link rel="stylesheet/less" type="text/css" href="css/index.less">
     <script src="js/less.js"></script>
+    <link rel="stylesheet" href="css/slider/slick-theme.css">
+    <link rel="stylesheet" href="css/slider/slick.css">
+    <style>
+
+
+        .slider img{
+
+            width: 100%;
+            height: 8.4rem;
+        }
+        .slick-dots li button:before{
+            content: '.';
+
+        }
+        .slick-dotted.slick-slider{
+            margin-bottom: 0px;
+        }
+        .slick-dots{
+            bottom:18px;
+        }
+        .slick-dots li{background:url(img/circle.png);width:10px;height:10px;}
+        .slick-dots li.slick-active{background:url(img/circle_ac.png);}
+        .slick-dots li button{display:none}
+    </style>
 </head>
 <body>
     <header class="public_header">
@@ -21,7 +45,21 @@
     </header>
     <div class="main pb30">
         <div class="slider">
-
+            <div class="img">
+                <a href="javascript:;" target="_blank">
+                    <img src="img/title.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a  href="javascript:;" target="_blank">
+                    <img src="http://slidesjs.com/img/example-slide-350-3.jpg"/>
+                </a>
+            </div>
+            <div class="img">
+                <a  href="javascript:;" target="_blank">
+                    <img src="http://slidesjs.com/img/example-slide-350-1.jpg"/>
+                </a>
+            </div>
         </div>
         <div class="loan_category">
             <div class="loan_category_l mr30">
@@ -51,5 +89,16 @@
             </span>
         </div>
     </footer>
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/slider/slick.js"></script>
+    <script>
+        $('.slider').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            autoplay: false,
+            arrows:false,
+        });
+    </script>
 </body>
 </html>
