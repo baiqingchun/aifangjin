@@ -99,7 +99,9 @@ ol,ul{
 	visibility: hidden;
 	clear: both;
 }
-
+.clear{
+	clear:both;
+}
 /* 边框的 通用样式 */
 .b_l{
 	border-left: 1px solid #eee;

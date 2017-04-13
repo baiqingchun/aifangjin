@@ -2,25 +2,29 @@
 @import "public";
 
 @title: 120/@r;
-@input-height: 90/@r;
+@in_height: 89/@r;
+@in_width_lar:600/@r;
+@in_width_mid:400/@r;
+@in_width_sma:638/@r;
 @input-font: 32/@r;
 @pa-lr: 50/@r;
+@group_height:90/@r;
 body{
   background-color: #fafafa;
 }
 .m_form {
-  ::-webkit-input-placeholder { /* WebKit browsers */
+/*  ::-webkit-input-placeholder { !* WebKit browsers *!
     font-size:26/@r;
   }
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  :-moz-placeholder { !* Mozilla Firefox 4 to 18 *!
     font-size:26/@r;
   }
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+  ::-moz-placeholder { !* Mozilla Firefox 19+ *!
     font-size:26/@r;
   }
-  :-ms-input-placeholder { /* Internet Explorer 10+ */
+  :-ms-input-placeholder { !* Internet Explorer 10+ *!
     font-size:26/@r;
-  }
+  }*/
   margin-top: 30/@r;
   header {
     text-align: center;
@@ -33,6 +37,7 @@ body{
   .input_container{
     padding: 0 30/@r;
     background-color: white;
+
   }
   .button{
     position: relative;
@@ -62,43 +67,67 @@ body{
   }
   .form_group {
 
+    &:last-child{
+      border: none;
+    }
+    width: 100%;
     border-bottom: 1px solid #dddddd;
-    .icon_phone{
-      background: url(../img/form/phone.png) no-repeat;
-      background-size: 22/@r 30/@r;
+    height: @group_height;
+    padding: 28/@r 0;
+    .icon_com{
+      background-size: contain;
+      background-repeat: no-repeat;
       width: 22/@r;
       height: 30/@r;
+      line-height: 30/@r;
       display: inline-block;
+      vertical-align: middle;
     }
-    input[type="text"], input[type="password"] {
+    .icon_phone{
+      background-image: url(../img/form/phone.png);
+      //height: 35/@r;
+      //margin-right: 30/@r;
+    }
+    .icon_code{
+      background-image: url(../img/form/code.png);
+      //margin-right: 30/@r;
+    }
+    .m_input{
       font-size: 26/@r;
-      height: @input-height;
-      line-height: @input-height;
-      padding-left: 10/@r;
-      width: 100%;
+/*      height: @in_height;
+      line-height: @in_height;*/
+      padding-left: 20/@r;
+  /*    border: 1px solid;*/
+/*      padding-top:10/@r ;
+      padding-bottom:10/@r ;*/
       background: #fff;
-      &.check_code {
-        width: 600/@r;
-      }
-      &.captcha {
-        width: 600/@r;
-      }
-
+      display: inline-block;
+      font-weight: 100;
+      padding-top: 2/@r;
+      //border: 1px solid;
+    }
+    .m_input_large{
+      width: @in_width_lar;
+    }
+    .m_input_mid{
+      width: @in_width_mid;
+      //border-right: 1px solid;
+    }
+    .get_code_c{
+      height: @in_height;
+      float: right;
+      line-height: @in_height;
     }
     .get_code {
-      width: 400/@r;
-      height: @input-height;
-      line-height: @input-height;
-      font-size: @input-font;
-      float: right;
+      font-size: 26/@r;
+      color: #ea592e;
       background-color: white;
+      padding-left: 30/@r;
+      border-left: 1px #dddddd solid;
+      display: inline-block;
+      float: right;
     }
-    .submit {
-      height: @input-height;
-      line-height: @input-height;
-      font-size: @input-font;
-      width: 100%;
-    }
+
     p {
       text-align: center;
       strong {
@@ -109,14 +138,64 @@ body{
       color: red;
     }
   }
+  .pass_login {
+    display: table;
+    width: 100%;
+    a{
+      color: #ea592e;
+      float: right;
+      margin:30/@r 30/@r 0 0;
+      line-height: 1;
+      font-size: 24/@r;
+      i{
+        background: url("../img/form/arrow.png") no-repeat 0 0;
+        width: 18/@r;
+        height: 15/@r;
+        background-size: contain;
+        display: inline-block;
+        margin-right: 7/@r;
+      }
+    }
+  }
+  .submit_c{
+    margin-top: 80/@r;
+
+    padding: 0 30/@r;
+    .submit {
+      &:active{
+        background-color: #d84a1f;
+      }
+      &:visited{
+        background-color: #d84a1f;
+      }
+      height: @in_height;
+      line-height: @in_height;
+      font-size: @input-font;
+      width: 100%;
+      background-color: #ea592e;
+      border: none;
+      border-radius: 45/@r;
+      color: #FFFFFF;
+      outline: none;
+
+    }
+  }
+
   footer {
     padding: 0 @pa-lr;
+    margin-top: 40/@r;
     p {
-      height: 100/@r;
-      line-height: 100/@r;
       text-align: center;
-
-      span {
+      font-size: 24/@r;
+      span{
+        color: #aaaaaa;
+        font-size: 24/@r;
+      }
+      a{
+        color: #ea592e;
+        font-size: 24/@r;
+      }
+/*      span {
         width: 300/@r;
         height: 100/@r/2;
         border-bottom: 1px solid;
@@ -128,7 +207,7 @@ body{
         float: left;
         font-size: 200/@r;
         color: rgb(163, 163, 163);
-      }
+      }*/
     }
     .to_next {
       text-align: center;
