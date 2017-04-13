@@ -51,6 +51,20 @@
         .product_bank{
           font-size: 30/@r;
           color: #444;
+          font-family: '微软雅黑', sans-serif;
+          position: relative;
+          span{
+            font-size: 30/@r;
+            &::after{
+              content: '';
+              position: absolute;
+              top:50%;
+              left: 50%;
+              width:65/@r;
+              height: 0;
+              border: 2/@r solid #444;
+            }
+          }
         }
       }
     }
