@@ -39,14 +39,12 @@ strong{
 i{
 	font-style: normal;
 }
-strong{
-	font-weight: normal;
-}
+
 /* 通用样式 */
 *,
 ::before,
 ::after{
-	font-size: 12px;
+	/*font-size: 12px;*/
 
 	/*  */
 	margin: 0;
