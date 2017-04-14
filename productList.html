@@ -38,10 +38,10 @@
         <span class="productHeader">信用贷产品</span>
     </header>
     <div class="search_num">为您搜索贷款<span>20</span>个</div>
-    <ul class="product_list">
+    <ul class="product_list" id="product-list">
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -60,7 +60,7 @@
         </li>
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -79,7 +79,7 @@
         </li>
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -98,7 +98,7 @@
         </li>
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -117,7 +117,7 @@
         </li>
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -136,7 +136,7 @@
         </li>
         <li>
             <a href="#">
-                <div class="product_img"><img src="" alt=""></div>
+                <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
                     <p class="product_loan clearfix">
@@ -157,12 +157,54 @@
     <div class="product_tip">没有更多了</div>
     <div class="product_footer"></div>
     <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="data.js"></script>
     <script>
         $(function(){
             $('#return').on('click',function(){
 //                alert(1);
                 $(this).css('background-image','img/productList/click.png');
-            })
+            });
+            $(window).scroll(function () {
+
+                //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
+                var scrollTop = $(this).scrollTop();
+                //整个文档的高度 603
+                var scrollHeight = $(document).height();
+                //可见区域的大小  480
+                var windowHeight = $(this).height();
+                //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                if (scrollTop + windowHeight == scrollHeight) {
+                    var timer = null;
+                    timer = setTimeout(function(){
+                        var html = '';
+                        for(var i=0;i<aData.details.length;i++){
+                            if(aData.details[i].mortgageSituation == true){
+                                $('#mortgageSituation').addClass('')
+                            }
+                            html += '<li>\
+                                <a href="#">\
+                                    <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
+                                    <div class="product_info">\
+                                        <p class="product_bank"><span>'+aData.details[i].bank+'</span><i>万用金</i></p>\
+                                        <p class="product_loan clearfix">\
+                                            <i class="product_loan_term">1天放款</i>\
+                                            <span class="product_rate">\
+                                                <strong>'+aData.details[i].rate+'%</strong>/年\
+                                            </span>\
+                                        </p>\
+                                        <p class="product_mortgage_situation clearfix">\
+                                            <span class="product_mortgage_without" id="mortgageSituation">无抵押</span>\
+                                            <span class="product_loan_amount">可贷<i>'+aData.details[i].loan+'</i>万</span>\
+                                        </p>\
+                                   </div>\
+                                </a>\
+                            </li>';
+
+                        }
+                        $('#product-list').append(html);
+                    },1000)
+                }
+            });
         })
     </script>
 </body>
