@@ -38,12 +38,13 @@
 <div class="m_form">
 
     <div class="form_container">
+        <div class="error_tip"><span>注：</span><span class="info">密码错误</span></div>
         <form class="form">
             <div class="input_container">
                 <div class="form_group">
                     <div class="icon_phone icon_com"><i class=""></i></div>
                     <input type="text" name="tel" id="tel" class="tel m_input m_input_large" value=""
-                           placeholder="手机号"/>
+                           placeholder="手机号"  />
                 </div>
                 <div class="form_group">
                     <div class="icon_code icon_com"></div>
@@ -75,12 +76,20 @@
 
     </footer>
 </div>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/form.js"></script>
 <script>
-    var a = document.getElementsByTagName('button');
-    for(var i = 0; i < a.length; i++)
-    {
-        a[i].addEventListener('touchstart',function(){},false);
-    }
+    $(document).ready(function () {
+        /*Safari浏览器加上点击的二态效果*/
+        var a = document.getElementsByTagName('button');
+        for(var i = 0; i < a.length; i++)
+        {
+            a[i].addEventListener('touchstart',function(){},false);
+        }
+        Form.init()
+
+    })
+
 </script>
 </body>
 </html>
