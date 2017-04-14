@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -26,89 +26,75 @@
     <!--页面描述-->
     <meta content="" name="爱房金，贷款">
     <title>注册</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <script src="js/rem.js"></script>
     <link rel="stylesheet/less" type="text/css" href="css/form.less"/>
     <script src="js/less.js"></script>
 </head>
 <body>
+<header class="public_header com_header">
+    注册
+</header>
 <div class="m_form">
-    <header class="title">注册</header>
+
     <div class="form_container">
         <form class="form">
-            <div class="form_group">
-                <input type="text" name="tel" id="tel" value="" placeholder="手机号"/>
+            <div class="input_container">
+                <div class="form_group">
+                    <div class="icon_phone icon_com"><i class=""></i>
+                    </div>
+                    <input type="text" name="tel" id="tel" class="tel m_input m_input_large" value=""
+                           placeholder="手机号"/>
+                </div>
+                <div class="form_group">
+                    <div class="icon_code icon_com"></div>
+                    <input type="text" class="captcha m_input m_input_mid" name="captcha" id="captcha" value=""
+                           placeholder="验证码"/>
+                    <a class="get_code">获取验证码</a>
+                    <!--<div class="get_code_c"></div>-->
+                    <p class=""></p>
+                </div>
+                <div class="form_group">
+                    <div class="icon_pass icon_com"><i class=""></i></div>
+                    <input type="text" name="password" id="password" class="password m_input m_input_large" value=""
+                           placeholder="密码"/>
+                </div>
             </div>
-            <div class="form_group">
-                <input type="text" class="check_code" name="check_code" id="check_code" value="" placeholder="校验码"/>
-                <img src="img/3.jpg" id="checkImg"/>
-                <p class=""></p>
-            </div>
-            <div class="form_group">
-                <input type="text" class="captcha" name="captcha" id="captcha" value="" placeholder="验证码"/>
-                <button class="get_code  button btn_default">获取验证码</button>
-                <p class=""></p>
-            </div>
-            <div class="form_group">
-                <input type="password" name="password" id="password" value="" placeholder="密码"/>
-                <p class=""></p>
-            </div>
-            <div class="form_group">
-                <button class="submit button btn_default">立即注册</button>
-            </div>
-            <div class="form_group">
-                <p>我已阅读并同意<strong>《爱房金服务协议》</strong></p>
-            </div>
+            <div class="agree_agreement">
 
 
+                <p>我已阅读并同意<span>《爱房金服务协议》</span></p>
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="submit_c">
+                <button class="submit">立即登录</button>
+            </div>
         </form>
     </div>
     <footer class="">
+        <p>
+            <span>没有账号?</span>
+            <a href="#">立即注册</a>
+        </p>
         <!--<p><span></span><strong >●</strong><span></span></p>-->
-        <div class="to_next">
-            <a href="#">已注册</a>
-            <a href="#">立即登录</a>
-        </div>
+        <!--   <div class="to_next">
+               <a href="#">没有账号</a>
+               <a href="#">立即登录</a>
+           </div>-->
 
 
     </footer>
 </div>
-
-<script src="js/jquery-3.2.0.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/form.js"></script>
 <script>
-    Form.init($('.form'),
-        {
-            tel: {
-                required: true,
-                phoneCheck: true
-            },
-            check_code: {
-                required: true
-            },
-            captcha: {
-                required: true
-            },
-            password: {
-                required: true
-            }
-        },
-        {
-            tel: {
-                required: "请输入手机号",
-                phoneCheck:"手机号格式不正确"
-            },
-            check_code: {
-                required: "请输入验证码"
-            },
-            captcha: {
-                required: "请输入校验码",
-
-            },
-            password: {
-                required: "请输入密码"
-            }
-        })
+    var a = document.getElementsByTagName('button');
+    for(var i = 0; i < a.length; i++)
+    {
+        a[i].addEventListener('touchstart',function(){},false);
+    }
 </script>
 </body>
 </html>
