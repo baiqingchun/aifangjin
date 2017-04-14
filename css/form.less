@@ -92,6 +92,10 @@ body{
       background-image: url(../img/form/code.png);
       //margin-right: 30/@r;
     }
+    .icon_pass{
+      background-image: url(../img/form/pass.png);
+      //margin-right: 30/@r;
+    }
     .m_input{
       font-size: 26/@r;
       /*      height: @in_height;
@@ -154,6 +158,51 @@ body{
         background-size: contain;
         display: inline-block;
         margin-right: 7/@r;
+      }
+    }
+  }
+  .agree_agreement{
+    margin-top: 30/@r;
+    position: relative;
+    padding-right: 15/@r;
+    //display: table;
+    width: 100%;
+    //padding: 0 30/@r;
+    .input_check{
+      float: right;
+      position: relative;
+      margin-right: 10/@r;
+      margin-top: 2/@r;
+    }
+    .chose{
+      background: url("../img/form/chose.png") no-repeat 0 0;
+      width: 22/@r;
+      height: 22/@r;
+      background-size: contain;
+
+    }
+    input{
+       position: absolute;
+      width: 22/@r;
+      height: 22/@r;
+ /*     border: 1px solid;
+      width: 50px;
+      height: 50px;*/
+      &:checked + .chose{
+        background-image: url("../img/form/chose_ac.png");
+        width: 22/@r;
+        height: 22/@r;
+        background-size: contain;
+      }
+    }
+
+    p{
+      color: #999999;
+      font-size: 24/@r;
+      float: right;
+      line-height: 1;
+      span{
+        color: #ea592e;
       }
     }
   }
