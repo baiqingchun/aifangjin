@@ -162,7 +162,32 @@
             $('#return').on('click',function(){
 //                alert(1);
                 $(this).css('background-image','img/productList/click.png');
-            })
+            });
+            $(window).scroll(function () {
+                //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
+                var scrollTop = $(this).scrollTop();
+                //整个文档的高度 603
+                var scrollHeight = $(document).height();
+                //可见区域的大小  480
+                var windowHeight = $(this).height();
+                //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                if (scrollTop + windowHeight == scrollHeight) {
+                    console.log('滚动到底部了');
+
+
+
+//var page = Number($("#redgiftNextPage").attr('currentpage')) + 1;
+//redgiftList(page);
+//$("#redgiftNextPage").attr('currentpage', page + 1);
+                    var timer = null;
+                    timer = setTimeout(function(){
+                        var html = '';
+                        for(var i=0;i<;i++){
+
+                        }
+                    },1000)
+                }
+            });
         })
     </script>
 </body>
