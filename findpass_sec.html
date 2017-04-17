@@ -88,7 +88,10 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            $('alter').show();
+            window.location.href='./index.html'
+        })
 
     })
 

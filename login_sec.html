@@ -55,7 +55,7 @@
                     <p class=""></p>
                 </div>
             </div>
-            <div class="pass_login"> <a class="ways"><i></i>密码登录</a></div>
+            <div class="pass_login"> <a class="ways" href="./login_fir.html"><i></i>密码登录</a></div>
 
             <div class="submit_c">
                 <button class="submit">立即登录</button>
@@ -86,7 +86,9 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            window.location.href = './index.html'
+        })
 
     })
 

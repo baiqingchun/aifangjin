@@ -86,7 +86,9 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            window.location.href = './findpass_sec.html'
+        })
 
     })
 

@@ -65,7 +65,7 @@
 
                 <p>我已阅读并同意 <span>《爱房金服务协议》</span></p>
                 <div class="input_check">
-                    <input type="checkbox" >
+                    <input type="checkbox" checked>
                     <div class="chose"></div>
                 </div>
                 <div class="clear"></div>
@@ -78,8 +78,8 @@
     </div>
     <footer class="">
         <p>
-            <span>没有账号?</span>
-            <a href="#">立即注册</a>
+            <span>已注册?</span>
+            <a href="./login_fir.html">立即登录</a>
         </p>
         <!--<p><span></span><strong >●</strong><span></span></p>-->
         <!--   <div class="to_next">
@@ -90,6 +90,7 @@
 
     </footer>
 </div>
+<div class="cover"></div>
 <div class="alert">
     <div class="correct"><img src="img/form/correct.png" alt=""></div>
     <h1>恭喜您注册成功</h1>
@@ -105,7 +106,10 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            $('.alert').show();
+            window.location.href = './index.html'
+        })
 
     })
 

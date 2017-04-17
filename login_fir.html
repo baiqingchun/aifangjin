@@ -53,8 +53,8 @@
                 </div>
             </div>
             <div class="pass_login">
-                <a href="" class="forget">忘记密码</a>
-                <a class="ways"><i></i>手机验证码登录</a>
+                <a href="./findpass_fir.html" class="forget">忘记密码</a>
+                <a class="ways" href="./login_sec.html"><i></i>手机验证码登录</a>
             </div>
 
             <div class="submit_c">
@@ -65,7 +65,7 @@
     <footer class="">
         <p>
             <span>没有账号?</span>
-            <a href="#">立即注册</a>
+            <a href="./register.html">立即注册</a>
         </p>
         <!--<p><span></span><strong >●</strong><span></span></p>-->
         <!--   <div class="to_next">
@@ -86,7 +86,9 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            window.location.href = './index.html'
+        })
 
     })
 

@@ -44,12 +44,12 @@ var Form = function () {
     }
     var errorTip = function () {
        /* var rule = {tel:{required:true,phone:true},captcha:{required:true}}*/
-
+        var flag = true;
         $('input').each(function (k,v) {
             var val = $.trim($(v).val());
             var name = $(v).attr('name');
             if(!verify(name,val)){
-
+                flag = false;
                 return false;
             }
             /*if(name='tel'){
@@ -63,7 +63,8 @@ var Form = function () {
             }*/
 
         })
-        return true;
+
+        return flag;
     };
     var timecount = function (second,callback) {
         var node = $('.get_code');
@@ -92,7 +93,7 @@ var Form = function () {
     /**
      * 表单验证初始化
      */
-    var formValidate = function () {
+    var formValidate = function (fun) {
         //表单输入的时候验证
         $('input').each(function (k,v) {
             var _this = this;
@@ -108,9 +109,14 @@ var Form = function () {
         //给提交按钮添加事件
         $('.submit').click(function (e) {
             e.preventDefault();
-            errorTip();
+            var flag = false;
+            flag= errorTip();
             SubmitFlag = true;
-            if(VerifyFlag){
+            if(flag){
+                if(fun){
+                    fun();
+                }
+
             }
         });
 
@@ -135,8 +141,8 @@ var Form = function () {
 
 
     return{
-           init:function () {
-               formValidate();
+           init:function (fun) {
+               formValidate(fun);
 
            },
            validate:function (node,ruleo,messageo) {

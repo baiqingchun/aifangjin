@@ -286,13 +286,16 @@ body{
   }
 
 }
+
 .alert{
   width:500/@r;
   height: 300/@r;
   position: absolute;
+  display: none;
   top:50%;
   left: 50%;
-  margin-top: -150/@r;
+  z-index: 100;
+  margin-top: -195/@r;
   margin-left: -250/@r;
   border-radius: 10px;
   background-color: #ffffff;
@@ -326,4 +329,13 @@ body{
     }
   }
 
+}
+.cover{
+position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: transparent;
 }
