@@ -1,0 +1,160 @@
+@r:50rem;
+.productDetails_main{
+  .productDetails_info{
+    .productDetails_info_list{
+        margin: 0 30/@r;
+        li{
+          float: left;
+          width:50%;
+          height:132/@r;
+          display: -webkit-flex;
+          align-items: center;
+          border-bottom: 1px solid #eaeaea;
+          border-right: 1px solid #eaeaea;
+          &:nth-of-type(2n){
+            border-right: none;
+          }
+          &:nth-last-of-type(1),&:nth-last-of-type(2){
+            border-bottom: none;
+
+          }
+          .productDetails_icon{
+              float: left;
+              width:72/@r;
+              height:60/@r;
+              //background: url("../img/productDetails/1.png") no-repeat;
+              //background-size: 72/@r 60/@r;
+              margin: 0 30/@r 0 20/@r;
+          }
+          .productDetails_rate_wrapper{
+              float: right;
+              font-size: 28/@r;
+              color: #444;
+              .productDetails_rate{
+                color: #ea592e;
+                margin: 0 2/@r;
+                font-size: 28/@r;
+              }
+
+
+
+          }
+      }
+      //还款方式
+      .productDetails_repayment{
+        .productDetails_average_capital_plus_interest,.productDetails_average_capital{
+          display: block;
+          font-size: 28/@r;
+        }
+      }
+    }
+    &::before{
+      content: '';
+      display: block;
+      height:30/@r;
+      width:100%;
+      background: #f6f6f6;
+    }
+  }
+  //申请条件
+  .productDetails_applicationRequirement{
+    &::before{
+      content: '';
+      display: block;
+      background: #f6f6f6;
+      height:20/@r;
+    }
+    .productDetails_applicationRequirement_header{
+      height:80/@r;
+      line-height: 80/@r;
+      padding-left: 30/@r;
+      font-size: 28/@r;
+      color: #444;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .productDetails_applicationRequirement_wapper{
+      padding: 30/@r 30/@r 0;
+      .productDetails_applicationRequirement_list{
+        li{
+          color: #888;
+          font-size: 26/@r;
+          position: relative;
+          width:100%;
+          padding-left: 18/@r;
+          padding-bottom: 26/@r;
+          .applicationRequirement_icon{
+            position: absolute;
+            left: 0;
+            top:12/@r;
+            width:12/@r;
+            height:12/@r;
+            background: #e9e9e9;
+            border-radius: 50%;
+            //margin-right: 10/@r;
+          }
+        }
+      }
+      .productDetails_applicationRequirement_more{
+          height: 54/@r;
+          line-height: 54/@r;
+          .productDetails_applicationRequirement_more_btn{
+            display: block;
+            width:100%;
+            height:100%;
+            color: #ee8269;
+            font-size: 22/@r;
+            text-align: center;
+          }
+      }
+    }
+  }
+}
+//底部
+.productDetails_footer{
+  margin: 53/@r 132/@r 130/@r 130/@r;
+  .productDetails_footer_icon{
+    width: 100%;
+    height: 32/@r;
+    position: relative;
+    i{
+      position: absolute;
+      height: 0;
+      border: 1px solid #f6f6f6;
+      -webkit-transform: scaleY(0.5);
+      top: 50%;
+      left: 0;
+      width: 100%;
+    }
+    span{
+      position: absolute;
+      width: 124/@r;
+      height: 32/@r;
+      top: 50%;
+      left: 50%;
+      margin-left: -52/@r;
+      margin-top: -16/@r;
+      background: #fff url("../img/productDetails/footerlogo.png") no-repeat center center;
+      background-size: 104/@r 32/@r;
+      z-index: 10;
+    }
+  }
+}
+//立即申请
+.productDetails_apply{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90/@r;
+  text-align: center;
+  line-height: 90/@r;
+  background: #ea592e;
+  font-size: 30/@r;
+  z-index: 100;
+  a{
+    display: block;
+    width:100%;
+    height:100%;
+    color: #fff;
+  }
+}
