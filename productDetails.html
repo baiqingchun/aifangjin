@@ -95,7 +95,7 @@
                     </li>
                 </ul>
                 <div class="productDetails_requirement_more">
-                    <a href="javascript:;" class="productDetails_requirement_more_btn show_more">查看更多</a>
+                    <a href="javascript:;" class="productDetails_show_more">查看更多</a>
                 </div>
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
@@ -126,7 +126,7 @@
                     </li>
                 </ul>
                 <div class="productDetails_requirement_more">
-                    <a href="javascript:;" class="productDetails_requirement_more_btn show_more">查看更多</a>
+                    <a href="javascript:;" class="productDetails_show_more">查看更多</a>
                 </div>
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
@@ -140,7 +140,7 @@
     <script>
         $(function(){
             //显示更多
-            $('.show_more').on('click',function () {
+            $('.productDetails_show_more').on('touchstart',function () {
                 if($(this).length > 0){
                     $(this).css('display','none')
                         .parent('.productDetails_requirement_more').css('height',0)
@@ -149,11 +149,11 @@
                 }
             });
             //立即申请
-            $('.productDetails_apply > a').on('click',function(){
+            $('.productDetails_apply > a').on('touchstart',function(){
                 $(this).css('background','#de4c21');
             });
             //回退功能
-            $('#return').on('click',function(){
+            $('#return').on('touchstart',function(){
                 history.back(-1);
             })
         })
