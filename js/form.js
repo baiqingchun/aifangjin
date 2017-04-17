@@ -6,10 +6,14 @@
  */
 
 var Form = function () {
-    var inst = null;
-    var lastPage_record=null;
-    var modal = null;
-    var placeholder = "1. 线路计划：  \n2. 装备物资：  \n3. 应急预案：  \n4. 其他事项：";
+   var VerifyFlag = false;
+   var SubmitFlag = false;
+    var Message = {
+        tel:{required:'手机号为空',phone:'请输入正确的手机号'},
+        captcha:{required:'验证码不能为空',remote:'请输入正确的短信验证码',have:'您已注册过，请重新登录'},
+        password:{required:'密码不能为空'}
+    };
+    var ErrorNode = $('.error_tip .info');
     /**
      * 手机号验证
      * */
@@ -18,103 +22,81 @@ var Form = function () {
         if (pattern.test(string)) {
             return true;
         }
-        console.log('check mobile phone ' + string + ' failed.');
+        // console.log('check mobile phone ' + string + ' failed.');
         return false;
     };
-    /**
-     * 报名表的表单验证
-     *
-     */
-    /*{
-     name:{required:true},
-     age:{
-     required: true,
-     number:true
-     },
-     idcardno:{
-     required: true,
-     identityCheck:true
-     },
-     phone:{
-     phoneCheck: true,
-     required: true
-     },
-     mycity:"required",
-     startcity:"required",
-     endcity:"required",
-     starttime:"required",
-     endtime:"required",
-     daynumber:{
-     required: true,
-     number:true
-     },
-     match           :"required",
-     content:"required"
-     }*/
-    /*{
-     name:{
-     required:"请输入姓名"
-     },
-     age:{
-     required: "请输入年龄",
-     number:'请输入数字'
-     },
-     idcardno:{
-     required: '请输入身份证号',
-     identityCheck:'输入有误，请重新输入'
-     },
-     phone:{
-     phoneCheck: '输入有误，请重新输入',
-     required: '请输入手机号'
-     },
-     mycity:"请输入所在地",
-     startcity:"请输入出发地",
-     endcity:"请输入目的地",
-     starttime:"请输入起始时间",
-     endtime:"请输入结束时间",
-     daynumber:{
-     required: '请输入行程天数',
-     number:'请输入数字'
-     },
-     match           :"&nbsp;",
-     content:"&nbsp;"
-     }*/
-    function applicationForm(node,ruleo,messageo) {
+    var verify = function (name,val) {
+        var node =  ErrorNode.closest('.error_tip')
+        if(val){
+            if(name=='tel'&&!telRuleCheck(val)){
+                ErrorNode.text(Message[name].phone);
+                node.show();
+                return false;
+            }
+        }else{
+            ErrorNode.text( Message[name].required) ;
+            node.show();
+            return false;
+        }
+        node.hide();
+        return true;
+    }
+    var errorTip = function () {
+       /* var rule = {tel:{required:true,phone:true},captcha:{required:true}}*/
 
-        $.validator.addMethod("phoneCheck",function(value,element){
-            return telRuleCheck(value)
-        },"<font color='#E47068'>手机号有误</font>");
-        node.validate({
-            rules :ruleo,
+        $('input').each(function (k,v) {
+            var val = $.trim($(v).val());
+            var name = $(v).attr('name');
+            if(!verify(name,val)){
 
-            messages : messageo,
-            errorPlacement : function(error, element) {
-                /*   if(element.attr("name")=="jcaptcha"){
-                 error.appendTo(element.parent().next().next());
-                 }else{
-                 error.appendTo(element.parent().next());
-                 }
-                 error.addClass("ico_error");*/
-                element.parent().append(error)
-            },
-            unhighlight: function (element) { // revert the change done by hightlight
+                return false;
+            }
+            /*if(name='tel'){
+                if(!val){
+                    errorNode.text(message[name].required);
+                }else if(!telRuleCheck(val)){
+                    errorNode.text(message[name].phone);
+                }
+            }else if(name='captcha'){
+                errorNode.text(message[name].required);
+            }*/
 
-                $(element).removeClass('error')
-                // set error class to the control group
-            },
-            submitHandler: function() {
-
+        })
+        return true;
+    }
+    var formValidate = function () {
+        $('input').each(function (k,v) {
+            var _this = this;
+           $(this).on('input propertychange',function () {
+               var val = $(_this).val();
+               var name = $(_this).attr('name');
+               var flag = false;
+                if(SubmitFlag){
+                    errorTip();
+                }
+           })
+        })
+        $('.submit').click(function (e) {
+            e.preventDefault();
+            errorTip();
+            SubmitFlag = true;
+            if(VerifyFlag){
 
             }
-        });
+
+        })
     }
 
 
 
 
+
     return{
-           init:function (node,ruleo,messageo) {
-               applicationForm(node,ruleo,messageo)
+           init:function () {
+               formValidate();
+           },
+           validate:function (node,ruleo,messageo) {
+
            }
     }
 }();

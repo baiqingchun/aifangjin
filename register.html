@@ -37,6 +37,7 @@
 <div class="m_form">
 
     <div class="form_container">
+        <div class="error_tip"><span>注：</span><span class="info">密码错误</span></div>
         <form class="form">
             <div class="input_container">
                 <div class="form_group">
@@ -62,7 +63,7 @@
             <div class="agree_agreement">
 
 
-                <p>我已阅读并同意<span>《爱房金服务协议》</span></p>
+                <p>我已阅读并同意 <span>《爱房金服务协议》</span></p>
                 <div class="input_check">
                     <input type="checkbox" >
                     <div class="chose"></div>
@@ -71,7 +72,7 @@
             </div>
 
             <div class="submit_c">
-                <button class="submit">立即登录</button>
+                <button class="submit">立即注册</button>
             </div>
         </form>
     </div>
@@ -89,12 +90,20 @@
 
     </footer>
 </div>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/form.js"></script>
 <script>
-    var a = document.getElementsByTagName('button');
-    for(var i = 0; i < a.length; i++)
-    {
-        a[i].addEventListener('touchstart',function(){},false);
-    }
+    $(document).ready(function () {
+        /*Safari浏览器加上点击的二态效果*/
+        var a = document.getElementsByTagName('button');
+        for(var i = 0; i < a.length; i++)
+        {
+            a[i].addEventListener('touchstart',function(){},false);
+        }
+        Form.init()
+
+    })
+
 </script>
 </body>
 </html>
