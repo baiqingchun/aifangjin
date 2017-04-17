@@ -47,16 +47,18 @@
                            placeholder="手机号"  />
                 </div>
                 <div class="form_group">
-                    <div class="icon_code icon_com"></div>
-                    <input type="text" class="captcha m_input m_input_mid" name="captcha" id="captcha" value=""
-                           placeholder="验证码"/>
-                    <a class="get_code">获取验证码</a>
-                    <!--<div class="get_code_c"></div>-->
-                    <p class=""></p>
+                    <div class="icon_pass icon_com"><i class=""></i></div>
+                    <input type="text" name="password" id="password" class="icon_repass m_input m_input_large" value=""
+                           placeholder="密码"/>
                 </div>
             </div>
-            <div class="pass_login"> <a class=""><i></i>密码登录</a></div>
-
+            <div class="pass_login">
+                <a href="./findpass_fir.html" class="forget">忘记密码</a>
+                <a class="ways" href="./login_sec.html"><i></i>手机验证码登录</a>
+            </div>
+            <div class="error_bottom">
+                <i></i><span>手机号错误</span>
+            </div>
             <div class="submit_c">
                 <button class="submit">立即登录</button>
             </div>
@@ -65,7 +67,7 @@
     <footer class="">
         <p>
             <span>没有账号?</span>
-            <a href="#">立即注册</a>
+            <a href="./register.html">立即注册</a>
         </p>
         <!--<p><span></span><strong >●</strong><span></span></p>-->
         <!--   <div class="to_next">
@@ -86,7 +88,9 @@
         {
             a[i].addEventListener('touchstart',function(){},false);
         }
-        Form.init()
+        Form.init(function () {
+            window.location.href = './index.html'
+        })
 
     })
 

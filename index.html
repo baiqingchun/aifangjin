@@ -92,7 +92,7 @@
 
         </div>
         <div class="application_channel">
-            <a href="javascript:;">快速申请通道</a>
+            <a href="./apply_fir.html">快速申请通道</a>
         </div>
     </div>
     <footer class="public_footer">
@@ -109,24 +109,16 @@
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/slider/slick.js"></script>
     <script>
-       $(function(){
-           //轮播图
-           $('.slider').slick({
-               dots: true,
-               infinite: false,
-               speed: 300,
-               autoplay: true,
-               arrows:false
-           });
-           //注册
-           $('#login').on('click',function(){
-               $(this).css('color','#ea592e');
-           })
-           //快速申请通道 #de4c21
-           $('.application_channel > a').on('click',function(){
-               $(this).css('background','#de4c21');
-           })
-       })
+        $('.slider').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            autoplay: true,
+            arrows:false
+        });
+        $('#login').on('click',function(){
+            $(this).css('color','#ea592e');
+        })
     </script>
 </body>
 </html>
