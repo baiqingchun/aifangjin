@@ -9,6 +9,7 @@
 @input-font: 32/@r;
 @pa-lr: 50/@r;
 @group_height:90/@r;
+@error_color:#ea592e;
 body{
   background-color: #fafafa;
 }
@@ -74,6 +75,27 @@ body{
     text-align: center;
     display: none;
   }
+  .error_bottom{
+    display: none;
+    padding: 0 30/@r;
+    margin-top: 42/@r;
+    i{
+       background: url("../img/form/error.png") no-repeat 0 0;
+       width: 26/@r;
+      height: 26/@r;
+      background-size: contain;
+      display: inline-block;
+      position: relative;
+      top: 2/@r;
+      margin-right: 10/@r;
+    }
+    span{
+      line-height: 1;
+      color: @error_color;
+      display: inline-block;
+
+    }
+  }
   .form_group {
 
     &:last-child{
@@ -107,6 +129,9 @@ body{
     }
     .icon_repass{
       background-image: url(../img/form/repass.png);
+    }
+    .icon_person{
+      background-image: url(../img/form/person.png);
     }
     .m_input{
       font-size: 26/@r;
@@ -183,11 +208,12 @@ body{
     }
   }
   .agree_agreement{
-    margin-top: 30/@r;
+    margin: 0 auto;
+    margin-top: 40/@r;
     position: relative;
-    padding-right: 30/@r;
-    //display: table;
-    width: 100%;
+    //padding-right: 30/@r;
+    display: table;
+    //width: 100%;
     //padding: 0 30/@r;
     .input_check{
       float: right;
