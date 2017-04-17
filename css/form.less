@@ -96,15 +96,20 @@ body{
 
     }
   }
+  .border_none{
+    border: none !important;
+  }
   .form_group {
 
     &:last-child{
       border: none;
     }
+
     width: 100%;
     border-bottom: 1px solid #dddddd;
     height: @group_height;
     padding: 28/@r 0;
+    position: relative;
     .icon_com{
       background-size: contain;
       background-repeat: no-repeat;
@@ -132,6 +137,63 @@ body{
     }
     .icon_person{
       background-image: url(../img/form/person.png);
+    }
+    .icon_down{
+      background-image: url(../img/form/down.png);
+
+    }
+    &.active{
+      .select{
+        border-bottom: none;
+        .icon_down{
+          background-image: url(../img/form/up.png);
+        }
+      }
+      .select_ul{
+        display: block;
+      }
+    }
+    .select_con{
+      padding: 0 30/@r;
+    }
+    .select{
+
+     padding: 28/@r 0;
+      border-bottom:solid 1px #dddddd ;
+      font-size: 26/@r;
+      color: #aaaaaa;
+      span{
+        margin-left: 20/@r;
+      }
+      .down_con{
+        height: 90/@r;
+        float: right;
+        position: relative;
+        left: 30/@r;
+        top:-30/@r;
+        //background-color: red;
+        padding: 39/@r 30/@r 0 30/@r;
+      }
+    }
+    .select_ul{
+      display: none;
+      position: absolute;
+      padding-top:20/@r;
+      padding-bottom: 43/@r;
+      border-top:1/@r solid #aaaaaa ;
+      width: 100%;
+      /*top:109/@r;*/
+      background-color: white;
+      z-index: 1;
+      .active{
+        background-color:#fff2ee ;
+      }
+      li{
+        width: 100%;
+        padding: 0 80/@r;
+        height: 70/@r;
+        line-height: 70/@r;
+      }
     }
     .m_input{
       font-size: 26/@r;
@@ -206,6 +268,11 @@ body{
         }
       }
     }
+  }
+  .agree_r{
+    float: right;
+    width: 100%;
+    padding-right: 15/@r;
   }
   .agree_agreement{
     margin: 0 auto;

@@ -153,8 +153,25 @@ var Form = function () {
 
         })*/
     }
+    /*
+    * 自定义select
+    * */
+    var selectCostum = function () {
+        $('.select').click(function () {
+            var _this = this;
+           var ulNode = $(_this).closest('.form_group')
+           if(ulNode.hasClass('active')){
+               ulNode.removeClass('active');
+           }else{
+               ulNode.addClass('active');
+           }
 
-
+        })
+        $('.select_ul li').click(function () {
+            $('.select_ul li').removeClass('active');
+            $(this).addClass('active')
+        })
+    }
 
 
 
@@ -165,6 +182,9 @@ var Form = function () {
            },
            validate:function (node,ruleo,messageo) {
 
-           }
+           },
+        select:function () {
+            selectCostum();
+        }
     }
 }();
