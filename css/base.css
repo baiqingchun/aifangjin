@@ -115,3 +115,6 @@ ol,ul{
 .b_b{
 	border-bottom: 1px solid #eee;
 }
+.padding0{
+	padding: 0 !important;
+}
