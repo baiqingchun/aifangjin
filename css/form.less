@@ -13,6 +13,15 @@
 body{
   background-color: #fafafa;
 }
+.border_none{
+  border: none !important;
+}
+.margin0{
+  margin: 0 !important;
+}
+.padding30{
+  padding:0 30/@r !important;
+}
 .m_form {
   /*  ::-webkit-input-placeholder { !* WebKit browsers *!
       font-size:26/@r;
@@ -34,6 +43,16 @@ body{
     text-align: center;
     height: @title;
     line-height: @title;
+  }
+  .form_border{
+    padding: 28/@r 0;
+    border-bottom:solid 1px #dddddd ;
+    font-size: 26/@r;
+    color: #aaaaaa;
+    strong{
+      margin-left: 20/@r;
+      color: #ea592e;
+    }
   }
   .input_container{
     padding: 0 30/@r;
@@ -96,9 +115,8 @@ body{
 
     }
   }
-  .border_none{
-    border: none !important;
-  }
+
+
   .form_group {
 
     &:last-child{
@@ -138,9 +156,49 @@ body{
     .icon_person{
       background-image: url(../img/form/person.png);
     }
+    .icon_person{
+      background-image: url(../img/form/person.png);
+    }
+    .icon_apply_com{
+      width: 30/@r;
+      height: 30/@r;
+      line-height: 30/@r;
+      display: inline-block;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-image: url("../img/form/applay.png") ;
+      background-size: 30/@r 240/@r;
+    }
     .icon_down{
       background-image: url(../img/form/down.png);
-
+      position: relative;
+      top: 15/@r;
+    }
+    .icon_money{
+      background-position: 0 0;
+    }
+    .icon_time{
+      background-position: 0 -30/@r;
+    }
+    .icon_credit{
+      background-position: 0 -60/@r;
+    }
+    .icon_age{
+      background-position: 0 -89/@r;
+    }
+    .icon_status{
+      background-position: 0 -119/@r;
+      height: 25/@r;
+    }
+    .icon_status{
+      background-position: 0 -144/@r;
+      height: 31/@r;
+    }
+    .icon_house{
+      background-position: 0 -175/@r;
+    }
+    .icon_car{
+      background-position: 0 -205/@r;
     }
     &.active{
       .select{
@@ -153,17 +211,16 @@ body{
         display: block;
       }
     }
-    .select_con{
-      padding: 0 30/@r;
-    }
+
     .select{
 
      padding: 28/@r 0;
       border-bottom:solid 1px #dddddd ;
       font-size: 26/@r;
       color: #aaaaaa;
-      span{
+      strong{
         margin-left: 20/@r;
+        color: #ea592e;
       }
       .down_con{
         height: 90/@r;
@@ -184,7 +241,7 @@ body{
       width: 100%;
       /*top:109/@r;*/
       background-color: white;
-      z-index: 1;
+      z-index: 100;
       .active{
         background-color:#fff2ee ;
       }

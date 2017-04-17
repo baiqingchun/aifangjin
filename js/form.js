@@ -157,19 +157,34 @@ var Form = function () {
     * 自定义select
     * */
     var selectCostum = function () {
+        var hideUl=function () {
+            $('.form_group').removeClass('active');
+            $('.cover').hide();
+        }
         $('.select').click(function () {
             var _this = this;
            var ulNode = $(_this).closest('.form_group')
+
            if(ulNode.hasClass('active')){
                ulNode.removeClass('active');
            }else{
+               $('.form_group').removeClass('active')
                ulNode.addClass('active');
+               $('.cover').show();
            }
 
+        });
+        $('.cover').on('touchstart',function () {
+            hideUl();
         })
         $('.select_ul li').click(function () {
-            $('.select_ul li').removeClass('active');
-            $(this).addClass('active')
+            var val = $(this).text();
+            console.log(val)
+            $(this).closest('.select_ul').find('li').removeClass('active');
+            $(this).addClass('active');
+            $(this).closest('.form_group').find('.select').find('strong').css('visibility','hidden')
+            $(this).closest('.form_group').find('.select').find('span').html(val);
+            hideUl();
         })
     }
 

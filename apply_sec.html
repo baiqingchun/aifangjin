@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <!--全屏模式，隐藏地址栏-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!--定制iphone中safari顶端的状态条样式-->
@@ -40,30 +41,86 @@
         <div class="error_tip"><span>注：</span><span class="info">密码错误</span></div>
         <form class="form">
             <div class="input_container padding0">
-                <div class="form_group  border_none padding0">
-                    <div class="select_con">
-                        <div class="select">
-                            <i class="icon_com icon_person "></i>
-                            <span>贷款金额</span>
-                            <div class="down_con"><i class="icon_com icon_down f_r"></i></div>
-                        </div>
-                    </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select">
+                        <i class="icon_money icon_apply_com"></i
+                        ><strong>*</strong><span>贷款金额</span>
+                        <i class="icon_com icon_down f_r"></i>
 
+                    </div>
                     <ul class="select_ul">
                         <li class="active">6万</li>
                         <li>10万</li>
                         <li>20万</li>
                     </ul>
                 </div>
-                <div class="form_group  border_none padding0">
-                    <div class="select_con">
-                        <div class="select">
-                            <i class="icon_com icon_person "></i>
-                            <span>贷款金额</span>
-                            <div class="down_con"><i class="icon_com icon_down f_r"></i></div>
-                        </div>
-                    </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select">
+                        <i class="icon_apply_com icon_time"></i
+                        ><strong>*</strong><span>贷款期限</span>
+                        <i class="icon_com icon_down f_r"></i>
 
+                    </div>
+                    <ul class="select_ul">
+                        <li class="active">6万</li>
+                        <li>10万</li>
+                        <li>20万</li>
+                    </ul>
+                </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select">
+                        <i class="icon_apply_com icon_credit"></i
+                        ><strong>*</strong><span>您的信用情况</span>
+                        <i class="icon_com icon_down f_r"></i>
+
+                    </div>
+                    <ul class="select_ul">
+                        <li class="active">6万</li>
+                        <li>10万</li>
+                        <li>20万</li>
+                    </ul>
+                </div>
+                <div class="form_group border_none padding30">
+                    <div class="form_border">
+                        <i class="icon_apply_com icon_age"></i
+                        ><strong>*</strong
+                    ><input type="text" name="tel" id="tel" class="padding0 m_input m_input_large" value=""
+                            placeholder="年龄">
+                    </div>
+                </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select">
+                        <i class="icon_apply_com icon_status"></i
+                        ><strong>*</strong><span>是否有本地公积金</span>
+                        <i class="icon_com icon_down f_r"></i>
+
+                    </div>
+                    <ul class="select_ul">
+                        <li class="active">6万</li>
+                        <li>10万</li>
+                        <li>20万</li>
+                    </ul>
+                </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select">
+                        <i class="icon_apply_com icon_house"></i
+                        ><strong>*</strong><span>名下房产类型</span>
+                        <i class="icon_com icon_down f_r"></i>
+
+                    </div>
+                    <ul class="select_ul">
+                        <li class="active">6万</li>
+                        <li>10万</li>
+                        <li>20万</li>
+                    </ul>
+                </div>
+                <div class="form_group  border_none padding30">
+                    <div class="select border_none">
+                        <i class="icon_apply_com icon_car"></i
+                        ><strong>*</strong><span>名下是否有车</span>
+                        <i class="icon_com icon_down f_r"></i>
+
+                    </div>
                     <ul class="select_ul">
                         <li class="active">6万</li>
                         <li>10万</li>
@@ -114,11 +171,11 @@
     $(document).ready(function () {
         /*Safari浏览器加上点击的二态效果*/
         var a = document.getElementsByTagName('button');
-        for(var i = 0; i < a.length; i++)
-        {
-            a[i].addEventListener('touchstart',function(){},false);
+        for (var i = 0; i < a.length; i++) {
+            a[i].addEventListener('touchstart', function () {
+            }, false);
         }
-       Form.select();
+        Form.select();
 
     })
 
