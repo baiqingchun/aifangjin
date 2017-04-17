@@ -14,6 +14,7 @@ var Form = function () {
         password:{required:'密码不能为空'}
     };
     var ErrorNode = $('.error_tip .info');
+    var TimeFlag = true;
     /**
      * 手机号验证
      * */
@@ -63,8 +64,36 @@ var Form = function () {
 
         })
         return true;
+    };
+    var timecount = function (second,callback) {
+        var node = $('.get_code');
+
+
+            setTimeout(function () {
+                second--;
+                if(second>0){
+                    timecount(second,callback);
+                    node.css('color','#666666');
+                    node.text(second+'S');
+                    node.attr('disabled','true');
+                }else{
+                    node.css('color','#ea592e');
+                    node.text('获取验证码');
+                    if(callback){
+                        console.log(12312)
+                        callback();
+                    }
+                }
+
+            },1000)
+
+
     }
+    /**
+     * 表单验证初始化
+     */
     var formValidate = function () {
+        //表单输入的时候验证
         $('input').each(function (k,v) {
             var _this = this;
            $(this).on('input propertychange',function () {
@@ -75,13 +104,27 @@ var Form = function () {
                     errorTip();
                 }
            })
-        })
+        });
+        //给提交按钮添加事件
         $('.submit').click(function (e) {
             e.preventDefault();
             errorTip();
             SubmitFlag = true;
             if(VerifyFlag){
+            }
+        });
 
+        //给验证码添加事件
+        $('.get_code').click(function () {
+            console.log(TimeFlag)
+            var time = 60;
+            if(TimeFlag){
+
+                timecount(time, function () {
+                    TimeFlag=true;
+                    console.log(234)
+                });
+                TimeFlag = false;
             }
 
         })
@@ -94,6 +137,7 @@ var Form = function () {
     return{
            init:function () {
                formValidate();
+
            },
            validate:function (node,ruleo,messageo) {
 
