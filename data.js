@@ -21,5 +21,18 @@ var aData = {
             mortgageSituation:false,
             loan:90
         }
+    ],
+    information:[
+        {
+            rate:5.5,
+            day:1
+
+        },
+        {
+
+        },
+        {
+
+        }
     ]
 }
