@@ -79,7 +79,7 @@ var Form = function () {
                     node.attr('disabled','true');
                 }else{
                     node.css('color','#ea592e');
-                    node.text('获取验证码');
+                    node.text('重新获取');
                     if(callback){
                         console.log(12312)
                         callback();
