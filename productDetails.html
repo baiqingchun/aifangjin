@@ -71,59 +71,92 @@
                 </li>
             </ul>
         </div>
-        <div class="productDetails_applicationRequirement">
-            <div class="productDetails_applicationRequirement_header">申请条件</div>
-            <div class="productDetails_applicationRequirement_wapper">
-                <ul class="productDetails_applicationRequirement_list">
+        <div class="productDetails_requirement">
+            <div class="productDetails_requirement_header">申请条件</div>
+            <div class="productDetails_requirement_wapper">
+                <ul class="productDetails_requirement_list" id="productDetail-requirement-list">
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                 </ul>
-                <div class="productDetails_applicationRequirement_more">
-                    <a href="#" class="productDetails_applicationRequirement_more_btn">查看更多</a>
+                <div class="productDetails_requirement_more">
+                    <a href="javascript:;" class="productDetails_requirement_more_btn show_more">查看更多</a>
+                </div>
+                <div class="productDetails_footer_icon">
+                    <i></i><span></span>
                 </div>
             </div>
         </div>
-        <div class="productDetails_applicationRequirement">
-            <div class="productDetails_applicationRequirement_header">所需材料</div>
-            <div class="productDetails_applicationRequirement_wapper">
-                <ul class="productDetails_applicationRequirement_list">
+        <div class="productDetails_requirement mb">
+            <div class="productDetails_requirement_header">所需材料</div>
+            <div class="productDetails_requirement_wapper">
+                <ul class="productDetails_requirement_list">
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                     <li>
-                        <i class="applicationRequirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
                     </li>
                 </ul>
-                <!--<div class="productDetails_applicationRequirement_more">
-                    <a href="#" class="productDetails_applicationRequirement_more_btn">查看更多</a>
-                </div>-->
+                <div class="productDetails_requirement_more">
+                    <a href="javascript:;" class="productDetails_requirement_more_btn show_more">查看更多</a>
+                </div>
+                <div class="productDetails_footer_icon">
+                    <i></i><span></span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="productDetails_footer">
-        <div class="productDetails_footer_icon">
-            <i></i><span></span>
-        </div>
-    </div>
-    <div class="productDetails_apply"><a href="#">立即申请</a></div>
+
+    <div class="productDetails_apply"><a href="javascript:;">立即申请</a></div>
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script>
+        $(function(){
+            //显示更多
+            $('.show_more').on('click',function () {
+                if($(this).length > 0){
+                    $(this).css('display','none')
+                        .parent('.productDetails_requirement_more').css('height',0)
+                        .prev().css('height','auto').siblings('.productDetails_footer_icon').css('display','block');
+//
+                }
+            });
+            //立即申请
+            $('.productDetails_apply > a').on('click',function(){
+                $(this).css('background','#de4c21');
+            });
+            //回退功能
+            $('#return').on('click',function(){
+                history.back(-1);
+            })
+        })
+    </script>
 </body>
 </html>

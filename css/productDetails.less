@@ -57,14 +57,14 @@
     }
   }
   //申请条件
-  .productDetails_applicationRequirement{
+  .productDetails_requirement{
     &::before{
       content: '';
       display: block;
       background: #f6f6f6;
       height:20/@r;
     }
-    .productDetails_applicationRequirement_header{
+    .productDetails_requirement_header{
       height:80/@r;
       line-height: 80/@r;
       padding-left: 30/@r;
@@ -72,9 +72,11 @@
       color: #444;
       border-bottom: 1px solid #eaeaea;
     }
-    .productDetails_applicationRequirement_wapper{
+    .productDetails_requirement_wapper{
       padding: 30/@r 30/@r 0;
-      .productDetails_applicationRequirement_list{
+      .productDetails_requirement_list{
+        height: 210/@r;
+        overflow: hidden;
         li{
           color: #888;
           font-size: 26/@r;
@@ -82,7 +84,7 @@
           width:100%;
           padding-left: 18/@r;
           padding-bottom: 26/@r;
-          .applicationRequirement_icon{
+          .requirement_icon{
             position: absolute;
             left: 0;
             top:12/@r;
@@ -94,15 +96,15 @@
           }
         }
       }
-      .productDetails_applicationRequirement_more{
+      .productDetails_requirement_more{
           height: 54/@r;
           line-height: 54/@r;
-          .productDetails_applicationRequirement_more_btn{
+          .productDetails_requirement_more_btn{
             display: block;
             width:100%;
             height:100%;
             color: #ee8269;
-            font-size: 22/@r;
+            font-size: 26/@r;
             text-align: center;
           }
       }
@@ -110,10 +112,9 @@
   }
 }
 //底部
-.productDetails_footer{
-  margin: 53/@r 132/@r 130/@r 130/@r;
   .productDetails_footer_icon{
-    width: 100%;
+    display: none;
+    margin: 4/@r 132/@r 30/@r 130/@r;
     height: 32/@r;
     position: relative;
     i{
@@ -138,7 +139,6 @@
       z-index: 10;
     }
   }
-}
 //立即申请
 .productDetails_apply{
   position: fixed;
@@ -148,13 +148,17 @@
   height: 90/@r;
   text-align: center;
   line-height: 90/@r;
-  background: #ea592e;
   font-size: 30/@r;
   z-index: 100;
   a{
     display: block;
     width:100%;
     height:100%;
+    background: #ea592e;
     color: #fff;
   }
+}
+//底部间距
+.mb{
+  margin-bottom: 120/@r;
 }
