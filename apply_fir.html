@@ -32,6 +32,7 @@
 </head>
 <body>
 <header class="public_header com_header">
+    <a href="javascript:;" class="return"></a>
     立即申请
 </header>
 <div class="m_form">
@@ -95,11 +96,7 @@
     </footer>-->
 </div>
 <div class="cover"></div>
-<div class="alert">
-    <div class="correct"><img src="img/form/correct.png" alt=""></div>
-    <h1>恭喜您注册成功</h1>
-    <div class="a_footer">登录中 <img src="img/form/wait.png" alt=""></div>
-</div>
+
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/form.js"></script>
 <script>
@@ -112,7 +109,7 @@
         }
         Form.init(function () {
             $('.alert').show();
-            window.location.href = './index.html'
+            window.location.href = './apply_sec.html'
         })
 
     })
