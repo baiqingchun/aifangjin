@@ -34,7 +34,7 @@
 </head>
 <body>
     <header class="public_header">
-        <a href="javascript:;" id="return"></a>
+        <a href="javascript:;" class="return"></a>
         <span class="productHeader">信用贷产品</span>
     </header>
     <div class="search_num">为您搜索贷款<span>20</span>个</div>
@@ -59,7 +59,7 @@
 
         </li>
         <li>
-            <a href="#">
+            <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
@@ -78,7 +78,7 @@
 
         </li>
         <li>
-            <a href="#">
+            <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
@@ -97,7 +97,7 @@
 
         </li>
         <li>
-            <a href="#">
+            <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
@@ -116,7 +116,7 @@
 
         </li>
         <li>
-            <a href="#">
+            <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
@@ -135,7 +135,7 @@
 
         </li>
         <li>
-            <a href="#">
+            <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
                     <p class="product_bank"><span>浦发银行</span><i>万用金</i></p>
@@ -200,9 +200,10 @@
             var target = document.getElementById('img_wait');
 
             var spinner = new Spinner(opts).spin(target);
-            $('#return').on('click',function(){
-//                alert(1);
+            //回退功能
+            $('.return').on('touchstart',function(){
                 $(this).css('background-image','img/productList/click.png');
+                history.back(-1);
             });
             var jj=0;
             $(window).scroll(function () {

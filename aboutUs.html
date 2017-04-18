@@ -34,7 +34,7 @@
 </head>
 <body>
     <header class="public_header">
-        <a href="javascript:;" id="return"></a>
+        <a href="javascript:;" class="return"></a>
         <span class="productHeader">关于爱房金</span>
     </header>
     <!--公司介绍-->
@@ -236,7 +236,8 @@
                 })
             }
             //回退功能
-            $('#return').on('touchstart',function(){
+            $('.return').on('touchstart',function(){
+                $(this).css('background-image','img/productList/click.png');
                 history.back(-1);
             })
         })
