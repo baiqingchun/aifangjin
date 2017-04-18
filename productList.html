@@ -155,39 +155,85 @@
         </li>
     </ul>
     <div class="product_tip">没有更多了</div>
-    <div class="product_footer"></div>
+    <div id="img_wait" style="height: 2rem;"></div>
+    <!--<div class="product_footer"></div>-->
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="data.js"></script>
+    <script src="js/spin.js"></script>
     <script>
         $(function(){
-            $('#return').on('touchstart',function(){
+            var opts = {
+
+                lines: 8,
+
+                length: 0,
+
+                width: 4,
+
+                radius: 4,
+
+                corners: 1,
+
+                rotate: 0,
+
+                direction: 1,
+
+                color: '#444444',
+
+                speed: 1,
+
+                trail: 34,
+
+                shadow: false,
+
+                hwaccel: false,
+
+                className: 'spinner',
+
+                zIndex: 2e9,
+                position:'relative',
+
+
+
+
+            };
+            var target = document.getElementById('img_wait');
+
+            var spinner = new Spinner(opts).spin(target);
+            $('#return').on('click',function(){
+//                alert(1);
                 $(this).css('background-image','img/productList/click.png');
             });
+            var jj=0;
             $(window).scroll(function () {
 
                 //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
                 var scrollTop = $(this).scrollTop();
+
                 //整个文档的高度 603
                 var scrollHeight = $(document).height();
                 //可见区域的大小  480
                 var windowHeight = $(this).height();
                 //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-                if (scrollTop + windowHeight == scrollHeight) {
+                if (scrollTop + windowHeight >= (scrollHeight)) {
+                    $('#img_wait').show();
                     var timer = null;
-                    timer = setTimeout(function(){
-                        var html = '';
-                        for(var i=0;i<aData.details.length;i++){
-                            var flag = true;
-                            if(aData.details[i].mortgageSituation == true){
-                                flag = 'product_have_mortgage';
-                                $('.mortgageSituation').html('有抵押');
-                             }else{
-                                flag = 'product_mortgage_without';
-                                $('.mortgageSituation').html('无抵押');
+                    if(jj<2){
+                        timer = setTimeout(function(){
+                            var html = '';
+                            jj++;
+                            for(var i=0;i<aData.details.length;i++){
+                                var flag = true;
+                                if(aData.details[i].mortgageSituation == true){
+                                    flag = 'product_have_mortgage';
+                                    $('.mortgageSituation').html('有抵押');
+                                }else{
+                                    flag = 'product_mortgage_without';
+                                    $('.mortgageSituation').html('无抵押');
 
-                            }
+                                }
 
-                            html += '<li>\
+                                html += '<li>\
                                 <a href="#">\
                                     <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
                                     <div class="product_info">\
@@ -207,9 +253,16 @@
                             </li>';
 
 
-                        }
-                        $('#product-list').append(html);
-                    },300)
+                            }
+                            $('#product-list').append(html);
+
+
+                        },1000)
+                    }else{
+                        $('#img_wait').hide();
+                        $('.product_tip').show();
+                    }
+
                 }
             });
         })
