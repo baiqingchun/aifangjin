@@ -1,0 +1,221 @@
+@r:50rem;
+//公共样式
+.border_none{
+  border-bottom: none;
+}
+//header
+.public_header{
+  text-align: center;
+  position: relative;
+  height:88/@r;
+  width:100%;
+  .productHeader{
+    font-size: 34/@r;
+    color: #444;
+  }
+  #return{
+    position: absolute;
+    left:0;
+    top:0;
+    width:16/@r;
+    height:88/@r;
+    padding: 0 90/@r 0 30/@r;
+    background: url("../img/productList/clickbefore.png") no-repeat 30/@r center;
+    background-size: 16/@r 28/@r;
+  }
+}
+//公共头部
+.aboutUs_header{
+  height:80/@r;
+  color: #444;
+  font-size: 28/@r;
+  line-height: 80/@r;
+  border-bottom: 1px solid #eaeaea;
+  padding-left: 30/@r;
+}
+  //公司介绍
+  .companyIntroduction{
+    &::before{
+      content: '';
+      display: block;
+      height:30/@r;
+      background: #f6f6f6;
+    }
+    .companyIntroduction_content{
+      padding: 19/@r 30/@r 30/@r;
+      color: #888;
+      font-size: 26/@r;
+      line-height: 30/@r;
+      text-indent: 56/@r;
+    }
+  }
+  //业务介绍
+  .aboutIntroduction{
+    &::before{
+      content: '';
+      display: block;
+      height:20/@r;
+      background: #f6f6f6;
+    }
+
+    .aboutIntroduction_content{
+      display: -webkit-flex;
+      align-items: center;//子元素居中
+      margin-left: 30/@r;
+      width: 690/@r;
+      border-bottom: 1px solid #eaeaea;
+
+      .aboutIntroduction_img{
+        width:104/@r;
+        margin-right: 17/@r;
+        img{
+          width:100%;
+        }
+      }
+      .aboutIntroduction_info{
+        flex:1;
+        .aboutIntroduction_info_header{
+          font-size: 26/@r;
+          color: #444;
+          line-height: 1;
+          margin: 30/@r 0 16/@r;
+        }
+        .aboutIntroduction_info_cont{
+          font-size: 26/@r;
+          color: #888;
+          margin-bottom: 30/@r;
+        }
+      }
+    }
+    //公共样式
+    .border_none{
+      border-bottom: none;
+    }
+  }
+  //领导团队
+  .leadingTeams {
+    .aboutIntroduction_content{
+      align-items: stretch;
+      .aboutIntroduction_img {
+        margin-right: 20/@r;
+        margin-top: 30/@r;
+      }
+      .aboutIntroduction_info {
+        .aboutIntroduction_info_header {
+          margin: 30/@r 0 20/@r;
+          //连接线
+          .aboutIntroduction_line{
+            position: relative;
+            margin-right: 70/@r;
+            &::after{
+              content: '';
+              position: absolute;
+              top:50%;
+              right: -52%;
+              margin-top: -1px;
+              width:57/@r;
+              height: 0;
+              border: 1px solid #444;
+              -webkit-transform: scaleY(0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+  //合作机构
+  .partners{
+    &::before{
+      content: '合作机构';
+      display: block;
+      height:60/@r;
+      line-height: 60/@r;
+      font-size: 22/@r;
+      background: #f6f6f6;
+      padding-left: 30/@r;
+      color: #b0b0b0;
+    }
+    .partners_content{
+      margin: 30/@r 30/@r 0;
+      overflow: hidden;
+      //包裹img盒子
+      .partners_content_wrapper{
+        width:720/@r;
+        li{
+          //width:25%;
+          float: left;
+          margin-bottom: 30/@r;
+          margin-right: 30/@r;
+          img{
+            width: 150/@r;
+            height: 48/@r;
+
+          }
+        }
+      }
+    }
+    .partners_office{
+        line-height: 1;
+        padding: 26/@r 0 24/@r 30/@r;
+    }
+  }
+  //联系我们
+.contactUs{
+  margin-bottom: 27/@r;
+  &::before{
+    content: '';
+    display: block;
+    height:20/@r;
+    background: #f6f6f6;
+  }
+  .contactUs_map{
+    width:690/@r;
+    height:400/@r;
+    margin: 30/@r 30/@r 20/@r;
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+  .contactUs_info{
+    color: #444;
+    font-size: 26/@r;
+    line-height: 36/@r;
+    padding-left: 30/@r;
+  }
+}
+//市场合作
+.marketCooperation{
+  &::before{
+    content: '';
+    display: block;
+    height:20/@r;
+    background: #f6f6f6;
+  }
+  ul{
+    padding: 0 30/@r;
+    li{
+      padding: 30/@r 0 35/@r;
+      color: #444;
+      font-size: 26/@r;
+      line-height: 34/@r;
+      border-bottom: 1px solid #eaeaea;
+    }
+  }
+}
+//返回顶部
+#goTop{
+  position: fixed;
+  right: 54/@r;
+  bottom: 90/@r;
+  width: 78/@r;
+  height:78/@r;
+  background-size: 78/@r 78/@r;
+  display: none;
+}
+.clickbefore{
+  background: url("../img/aboutUs/return1.png") no-repeat;
+}
+.clickafter{
+  background: url("../img/aboutUs/return.png") no-repeat;
+}
