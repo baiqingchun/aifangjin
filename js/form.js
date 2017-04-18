@@ -128,7 +128,6 @@ var Form = function () {
                 if (fun) {
                     fun();
                 }
-
             }
         });
 
