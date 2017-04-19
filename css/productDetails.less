@@ -75,9 +75,21 @@
     .productDetails_requirement_wapper{
       padding: 30/@r 30/@r 0;
       .productDetails_requirement_list{
-        height: 210/@r;
-        overflow: hidden;
+
+        //height: 210/@r;
+        //overflow: hidden;
+        &.active{
+          li{
+            &:nth-child(n+4){
+              display: block;
+            }
+          }
+        }
         li{
+          &:nth-child(n+4){
+            display: none;
+          }
+
           color: #888;
           font-size: 26/@r;
           position: relative;

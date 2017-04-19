@@ -74,8 +74,8 @@
         <div class="productDetails_requirement">
             <div class="productDetails_requirement_header">申请条件</div>
             <div class="productDetails_requirement_wapper">
-                <ul class="productDetails_requirement_list" id="productDetails-requirements">
-                    <!--<li>
+                <ul class="productDetails_requirement_list" id="productDetail-requirement-list">
+                    <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
@@ -92,10 +92,10 @@
                     </li>
                     <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>-->
+                    </li>
                 </ul>
                 <div class="productDetails_requirement_more">
-                    <a href="javascript:;" class="productDetails_show_more" id="productDetails-show-more">查看更多</a>
+                    <a href="javascript:;" class="productDetails_show_more">查看更多</a>
                 </div>
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
@@ -105,8 +105,8 @@
         <div class="productDetails_requirement mb">
             <div class="productDetails_requirement_header">所需材料</div>
             <div class="productDetails_requirement_wapper">
-                <ul class="productDetails_requirement_list" id="productDetails-files">
-                    <!--<li>
+                <ul class="productDetails_requirement_list">
+                    <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
@@ -114,7 +114,16 @@
                     </li>
                     <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>-->
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                    </li>
+                    <li>
+                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
+                    </li>
                 </ul>
                 <div class="productDetails_requirement_more">
                     <a href="javascript:;" class="productDetails_show_more">查看更多</a>
@@ -161,13 +170,16 @@
 
 
             $('.productDetails_show_more').on('touchstart',function () {
-                $(this).height();
-                if($(this).length > 0){
+                var node =  $(this).closest('.productDetails_requirement_wapper')
+                node.find('.productDetails_requirement_list').addClass('active');
+                node.find('.productDetails_requirement_more').css('display','none')
+                node.find('.productDetails_footer_icon').show()
+                /*if($(this).length > 0){
                     $(this).css('display','none')
                         .parent('.productDetails_requirement_more').css('height',0)
                         .prev().css('height','auto').siblings('.productDetails_footer_icon').css('display','block');
 //
-                }
+                }*/
             });
             //立即申请
             $('.productDetails_apply > a').on('touchstart',function(){
