@@ -74,8 +74,8 @@
         <div class="productDetails_requirement">
             <div class="productDetails_requirement_header">申请条件</div>
             <div class="productDetails_requirement_wapper">
-                <ul class="productDetails_requirement_list" id="productDetail-requirement-list">
-                    <li>
+                <ul class="productDetails_requirement_list" id="productDetails-requirements">
+                    <!--<li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
@@ -92,10 +92,10 @@
                     </li>
                     <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
+                    </li>-->
                 </ul>
                 <div class="productDetails_requirement_more">
-                    <a href="javascript:;" class="productDetails_show_more">查看更多</a>
+                    <a href="javascript:;" class="productDetails_show_more" id="productDetails-show-more">查看更多</a>
                 </div>
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
@@ -105,8 +105,8 @@
         <div class="productDetails_requirement mb">
             <div class="productDetails_requirement_header">所需材料</div>
             <div class="productDetails_requirement_wapper">
-                <ul class="productDetails_requirement_list">
-                    <li>
+                <ul class="productDetails_requirement_list" id="productDetails-files">
+                    <!--<li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
                     </li>
                     <li>
@@ -114,16 +114,7 @@
                     </li>
                     <li>
                         <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        <i class="requirement_icon"></i>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
+                    </li>-->
                 </ul>
                 <div class="productDetails_requirement_more">
                     <a href="javascript:;" class="productDetails_show_more">查看更多</a>
@@ -137,10 +128,40 @@
 
     <div class="productDetails_apply"><a href="apply_fir.html">立即申请</a></div>
     <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="data.js"></script>
     <script>
         $(function(){
             //显示更多
+            /*getHeight();
+            function getHeight(){
+                if( $('.productDetails_requirement_list').children.length > 0){
+                    var requirementHeight = $('.productDetails_requirement_list li').height()*3;
+                    $('.productDetails_requirement_list').height(requirementHeight);
+
+                }
+            }*/
+            var requirement = aData.requirement;
+            var file = aData.file;
+            showData(requirement,$('#productDetails-requirements'));
+            showData(file,$('#productDetails-files'));
+            function showData(data,context){
+                var html = '';
+                for(var i=0;i<data.length;i++){
+                    html += '<li>\
+                        <i class="requirement_icon"></i>'+ data[i].message +'\
+                    </li>'
+                }
+                context.append(html);
+                var list = context.children().length;
+                console.log(list);
+                if( list >= 3){
+                    $('#productDetails-show-more').css('display','block');
+                }
+            }
+
+
             $('.productDetails_show_more').on('touchstart',function () {
+                $(this).height();
                 if($(this).length > 0){
                     $(this).css('display','none')
                         .parent('.productDetails_requirement_more').css('height',0)

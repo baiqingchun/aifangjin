@@ -113,6 +113,7 @@
   background: url("../img/productList/clickbefore.png") no-repeat 30/@r center;
   background-size: 16/@r 28/@r;
 }
+
 //点击按钮样式
 #footer_aboutUs:link{
   color: #444;
@@ -122,4 +123,21 @@
 }
 #footer_aboutUs:active{
   color: #ea592e;
+}
+//返回顶部
+#goTop{
+  position: fixed;
+  right: 54/@r;
+  bottom: 90/@r;
+  width: 78/@r;
+  height:78/@r;
+  background-size: 78/@r 78/@r;
+  background-repeat: no-repeat;
+  display: none;
+  &.clickbefore{
+    background-image: url("../img/aboutUs/return1.png");
+  }
+  &.clickafter{
+    background-image: url("../img/aboutUs/return.png");
+  }
 }

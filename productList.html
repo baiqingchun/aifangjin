@@ -37,7 +37,7 @@
         <a href="javascript:;" class="return"></a>
         <span class="productHeader">信用贷产品</span>
     </header>
-    <div class="search_num">为您搜索贷款<span id="search_numble">20</span>个</div>
+    <div class="search_num">为您搜索贷款<span id="search_numble"></span>个</div>
     <ul class="product_list" id="product-list">
         <li>
             <a href="productDetails.html">
@@ -252,7 +252,8 @@
                                    </div>\
                                 </a>\
                             </li>';
-
+                            //重新加载个数
+                            getNum();
 
                             }
                             $('#product-list').append(html);
@@ -266,6 +267,13 @@
 
                 }
             });
+            getNum();
+            function getNum(){
+                //搜索个数
+                var listNum = $('#product-list').children().length;
+                $('#search_numble').html(listNum);
+            }
+
         })
     </script>
 </body>
