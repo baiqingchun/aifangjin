@@ -175,7 +175,7 @@ var Form = function () {
                 ulNode.find('.select_ul').fadeOut();
             } else {
                 $('.form_group_select').removeClass('active')
-
+                 $('.select_ul').hide()
                 ulNode.find('.select_ul').fadeIn(10);
                 ulNode.addClass('active');
                 $('.cover_white').show();

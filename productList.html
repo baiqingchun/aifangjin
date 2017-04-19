@@ -219,18 +219,23 @@
                 if (scrollTop + windowHeight == (scrollHeight)) {
                     $('#img_wait').show();
                     var timer = null;
+
                     if(jj<2){
                         timer = setTimeout(function(){
                             var html = '';
+                            var diya =''
                             jj++;
+
                             for(var i=0;i<aData.details.length;i++){
                                 var flag = true;
                                 if(aData.details[i].mortgageSituation == true){
                                     flag = 'product_have_mortgage';
-                                    $('.mortgageSituation').html('有抵押');
+                                    diya= '有抵押'
+//                                    $('.mortgageSituation').html('有抵押');
                                 }else{
+                                    diya='无抵押'
                                     flag = 'product_mortgage_without';
-                                    $('.mortgageSituation').html('无抵押');
+//                                    $('.mortgageSituation').html('无抵押');
 
                                 }
 
@@ -246,7 +251,7 @@
                                             </span>\
                                         </p>\
                                         <p class="product_mortgage_situation clearfix">\
-                                            <span class="' +flag + ' mortgageSituation"></span>\
+                                            <span class="' +flag + ' mortgageSituation">'+diya+'</span>\
                                             <span class="product_loan_amount">可贷<i>'+aData.details[i].loan+'</i>万</span>\
                                         </p>\
                                    </div>\
