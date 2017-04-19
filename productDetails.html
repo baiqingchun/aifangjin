@@ -35,7 +35,7 @@
 </head>
 <body>
     <header class="public_header">
-        <a href="javascript:;" id="return"></a>
+        <a href="javascript:;" class="return"></a>
         <span class="productHeader">信用贷产品</span>
     </header>
     <div class="productDetails_main">
@@ -135,7 +135,7 @@
         </div>
     </div>
 
-    <div class="productDetails_apply"><a href="javascript:;">立即申请</a></div>
+    <div class="productDetails_apply"><a href="apply_fir.html">立即申请</a></div>
     <script src="js/jquery-3.2.0.min.js"></script>
     <script>
         $(function(){
@@ -153,7 +153,8 @@
                 $(this).css('background','#de4c21');
             });
             //回退功能
-            $('#return').on('touchstart',function(){
+            $('.return').on('touchstart',function(){
+                $(this).css('background-image','img/productList/click.png');
                 history.back(-1);
             })
         })
