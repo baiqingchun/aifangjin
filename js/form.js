@@ -172,8 +172,11 @@ var Form = function () {
 
             if (ulNode.hasClass('active')) {
                 ulNode.removeClass('active');
+                ulNode.find('.select_ul').fadeOut();
             } else {
                 $('.form_group_select').removeClass('active')
+
+                ulNode.find('.select_ul').fadeIn(10);
                 ulNode.addClass('active');
                 $('.cover_white').show();
             }
@@ -187,6 +190,7 @@ var Form = function () {
             var pnode=$(this).closest('.form_group_select');
             console.log(val)
             $(this).closest('.select_ul').find('li').removeClass('active');
+            $(this).closest('.select_ul').fadeOut()
             $(this).addClass('active');
             pnode.find('strong').css('visibility', 'hidden')
             pnode.find('em').html(val);
@@ -259,7 +263,7 @@ var Form = function () {
             //年龄单独处理
             $('[name=age]').on('input propertychange',function () {
               var val = $.trim($(this).val());
-              var node = $(this).prev().prev();
+              var node = $(this).siblings('strong');
               if(val){
                   node.css('visibility','hidden')
                   selectIsNotChoose(this);
@@ -272,6 +276,9 @@ var Form = function () {
             $('.cover').on('click', function () {
                 $(this).hide();
                 $('.alert').hide()
+            })
+            $('.age_form').on('click',function () {
+                $('.age_form input').focus()
             })
         }
     }

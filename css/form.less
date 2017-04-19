@@ -32,6 +32,12 @@ body{
 .disabled{
   background-color: #cccccc !important;
 }
+.margintop70{
+  margin-top: 70/@r !important;
+}
+.margintop30{
+  //margin-top: 20/@r !important;
+}
 .m_form {
   /*  ::-webkit-input-placeholder { !* WebKit browsers *!
       font-size:26/@r;
@@ -107,7 +113,7 @@ body{
   .error_bottom{
     display: none;
     padding: 0 30/@r;
-    margin-top: 42/@r;
+    margin-top: 40/@r;
     i{
        background: url("../img/form/error.png") no-repeat 0 0;
        width: 26/@r;
@@ -167,7 +173,7 @@ body{
     .icon_down{
       background-image: url(../img/form/down.png);
       position: relative;
-      top: 15/@r;
+      top: 10/@r;
     }
     .icon_money{
       background-position: 0 0;
@@ -202,7 +208,8 @@ body{
         }
       }
       .select_ul{
-        display: block;
+        //display: block;
+
       }
     }
     .select_con{
@@ -247,19 +254,50 @@ body{
       z-index: 100;
       .active{
         background-color:#fff2ee ;
+        i{
+          display: inline-block;
+
+        }
+        p{
+          color: @com_red;
+        }
       }
       li{
         width: 100%;
         padding: 0 80/@r;
         height: 70/@r;
         line-height: 70/@r;
+        text-align: center;
+        position: relative;
+        i{
+          position: absolute;
+          left: -40/@r;
+          top:50%;
+          margin-top: -11/@r;
+          background:url("../img/form/cross.png") no-repeat 0 0;
+          width: 22/@r;
+          height: 19/@r;
+          background-size: contain;
+          //margin-right: -30/@r;
+          display: none;
 
+        }
+        p{
+          text-align: left;
+          display: table;
+          margin: 0 auto;
+          position: relative;
+          height: 70/@r;
+          line-height: 75/@r;
+        }
       }
     }
-   /* input[name='age']{
+    input[name='age']{
       float: right;
       width: 100/@r;
-    }*/
+      text-align: right;
+      margin-right: 30/@r;
+    }
   }
 
   .form_group {
@@ -377,19 +415,27 @@ body{
     width: 100%;
     padding-right: 15/@r;
   }
+  .agree_l{
+    float: left;
+    width: 100%;
+    //padding: 15/@r;
+  }
   .agree_agreement{
     margin: 0 auto;
     margin-top: 40/@r;
     position: relative;
-    //padding-right: 30/@r;
+    padding-left: 30/@r;
     display: table;
     //width: 100%;
     //padding: 0 30/@r;
     .input_check{
-      float: right;
+      float: left;
       position: relative;
       margin-right: 10/@r;
       margin-top: 2/@r;
+    }
+    input{
+      background-color: transparent;
     }
     .chose{
       background: url("../img/form/chose.png") no-repeat 0 0;
@@ -416,9 +462,12 @@ body{
     p{
       color: #999999;
       font-size: 24/@r;
-      float: right;
+      float: left;
       line-height: 1;
       span{
+        color: #ea592e;
+      }
+      a{
         color: #ea592e;
       }
     }
