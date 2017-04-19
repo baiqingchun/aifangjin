@@ -208,39 +208,11 @@
     </div>
     <div id="goTop" class="clickbefore"></div>
     <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/public.js"></script>
     <script>
-        $(function(){
-            $('#goTop').on('touchstart',function(){
-                $(this).removeClass().addClass('clickafter');
-                $('html,body').animate({
-                    scrollTop:0
-                },140,function () {
-                    $('#goTop').removeClass().addClass('clickbefore');
-                })
-            });
-            goTop();
-            function goTop(){
-                //设定页面最小高度
-                var min_height =  600;
-                //为窗口的scroll事件绑定函数
-                $(window).scroll(function(){
-                    //获取窗口的滚动条的垂直位置
-                    var s = $(window).scrollTop();
-                    //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐
-                    if( s > min_height){
-                        $('#goTop').fadeIn(100);
-                    }else{
-                        $('#goTop').fadeOut(100);
-
-                    }
-                })
-            }
-            //回退功能
-            $('.return').on('touchstart',function(){
-                $(this).css('background-image','img/productList/click.png');
-                history.back(-1);
-
-            })
+        $(document).ready(function () {
+            Public.init();
+            Public.goTop();
         })
     </script>
 </body>
