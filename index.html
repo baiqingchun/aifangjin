@@ -60,7 +60,7 @@
         <div class="loan_category">
             <div class="loan_category_l">
                 <div class="credit_loan">
-                    <a href="productList.html" class="loan_info">
+                    <a href="./productList.html" class="loan_info">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>经营贷款</strong>
@@ -69,7 +69,7 @@
                     </a>
                 </div>
                 <div class="consume_loan">
-                    <a href="productList.html" class="loan_info">
+                    <a href="./productList.html" class="loan_info">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>消费贷款</strong>
@@ -80,7 +80,7 @@
             </div>
             <div class="loan_category_r">
                 <div class="management_loan">
-                    <a href="productList.html" class="loan_info">
+                    <a href="./productList.html" class="loan_info">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>信用贷款</strong>
@@ -97,7 +97,7 @@
     </div>
     <footer class="public_footer">
         <div class="public_footer_wrapper">
-            <div class="about"><a href="aboutUs.html">关于我们</a></div>
+            <div class="about"><a href="./aboutUs.html" id="footer_aboutUs">关于我们</a></div>
             <p class="footer_info">
                 <span class="footer_info_company">一粒控股(北京)有限公司</span><span>京ICP备16060468号-1</span>
             </p>
@@ -116,9 +116,18 @@
             autoplay: true,
             arrows:false
         });*/
-        $('#login').on('click',function(){
+        //注册
+        $('#login').on('touchstart',function(){
+            $(this).css('color','#ea592e');
+        });
+        //关于我们点击
+        document.body.addEventListener('touchstart',function(){});
+        /*$('#footer_aboutUs').on('touchstart',function(){
             $(this).css('color','#ea592e');
         })
+          $('#footer_aboutUs').on('touchend',function(){
+              $(this).css('color','#444');
+          })*/
     </script>
 </body>
 </html>
