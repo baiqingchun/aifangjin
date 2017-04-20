@@ -11,6 +11,8 @@ var Form = function () {
         $('.return').on('click',function () {
             window.history.back()
         })
+        $('input').val('');
+        $('.submit').addClass('disabled');
         $('input').focus(function () {
             $('.submit').removeClass('disabled');
         })
