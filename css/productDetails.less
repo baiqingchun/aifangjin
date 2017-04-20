@@ -22,8 +22,9 @@
               float: left;
               width:72/@r;
               height:60/@r;
+              background: url("../img/productDetails/sprite.png") no-repeat;
               //background: url("../img/productDetails/1.png") no-repeat;
-              //background-size: 72/@r 60/@r;
+              background-size: 700/@r 60/@r;
               margin: 0 30/@r 0 20/@r;
           }
           .productDetails_rate_wrapper{
@@ -37,6 +38,36 @@
               }
 
 
+
+          }
+          .rate{
+            background-position: -16/@r 0;
+          }
+          .day{
+            background-position: -89/@r 0;
+          }
+          .loan{
+            background-position: -161/@r 0;
+
+          }
+          .year{
+            background-position: -233/@r 0;
+
+          }
+          .mortgage{
+            background-position: -306/@r 0;
+
+          }
+          .people{
+            background-position: -379/@r 0;
+
+          }
+          .methods{
+            background-position: -452/@r 0;
+
+          }
+          .area{
+            background-position: -523/@r 0;
 
           }
       }
@@ -93,18 +124,22 @@
           color: #888;
           font-size: 26/@r;
           position: relative;
+          height: 100%;
           width:100%;
           padding-left: 18/@r;
           padding-bottom: 26/@r;
-          .requirement_icon{
+          &::before{
+            content: '';
             position: absolute;
             left: 0;
-            top: 10/@r;
+            top: 0/@r;
             width:14/@r;
-            height:18/@r;
+            height:24/@r;
             background: url("../img/productDetails/item.png") no-repeat;
+            background-position: 0 10/@r ;
             background-size: contain;
-            display: inline-block;
+            //border-radius: 100%;
+            //display: inline-block;
           }
         }
       }
