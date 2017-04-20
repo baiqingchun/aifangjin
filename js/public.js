@@ -11,9 +11,13 @@ var Public = function () {
             var s = $(window).scrollTop();
             //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐
             if( s > min_height){
+                nodeTop.stop()
                 nodeTop.fadeIn(100);
+                // nodeTop.show();
             }else{
+                nodeTop.stop()
                 nodeTop.fadeOut(100);
+                // nodeTop.hide();
             }
         })
         //点击到达顶部按钮
@@ -22,6 +26,7 @@ var Public = function () {
             $('html,body').animate({
                 scrollTop:0
             },140,function () {
+                // nodeTop.hide();
                 // $('#goTop').removeClass().addClass('clickbefore');
             })
         });
