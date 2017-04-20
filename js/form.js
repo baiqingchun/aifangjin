@@ -11,6 +11,9 @@ var Form = function () {
         $('.return').on('click',function () {
             window.history.back()
         })
+        $('input').focus(function () {
+            $('.submit').removeClass('disabled');
+        })
     }());
     var VerifyFlag = false;
     var SubmitFlag = false;
@@ -122,6 +125,9 @@ var Form = function () {
         $('.submit').click(function (e) {
             e.preventDefault();
             var flag = false;
+            if($(this).hasClass('disabled')){
+                return false;
+            }
             flag = errorTip();
             SubmitFlag = true;
             if (flag) {

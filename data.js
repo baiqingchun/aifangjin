@@ -21,69 +21,8 @@ var aData = {
             mortgageSituation:false,
             loan:90
         },
-        {
-            img:4,
-            bank:"东亚银行",
-            rate:5.5,
-            mortgageSituation:false,
-            loan:60
-        },
-        {
-            img:5,
-            bank:"建设银行",
-            rate:5.6,
-            mortgageSituation:true,
-            loan:80
-        },
-        {
-            img:6,
-            bank:"南京银行",
-            rate:5.8,
-            mortgageSituation:false,
-            loan:90
-        }/*,
-        {
-            img:7,
-            bank:"浦发银行",
-            rate:5.5,
-            mortgageSituation:false,
-            loan:60
-        },
-        {
-            img:8,
-                bank:"光大银行",
-            rate:5.6,
-            mortgageSituation:true,
-            loan:80
-        },
-        {
-            img:9,
-            bank:"中信银行",
-            rate:5.8,
-            mortgageSituation:false,
-            loan:90
-        },
-        {
-            img:10,
-            bank:"东亚银行",
-            rate:5.5,
-            mortgageSituation:false,
-            loan:60
-        },
-        {
-            img:11,
-            bank:"建设银行",
-            rate:5.6,
-            mortgageSituation:true,
-            loan:80
-        },
-        {
-            img:12,
-            bank:"南京银行",
-            rate:5.8,
-            mortgageSituation:false,
-            loan:90
-        }*/
+
+
     ],
     information:[
         {

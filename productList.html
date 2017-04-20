@@ -206,6 +206,8 @@
                 history.back(-1);
             });
             var jj=0;
+            var fFlag = true;
+            var timer = null;
             $(window).scroll(function () {
 
                 //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
@@ -215,31 +217,39 @@
                 var scrollHeight = $(document).height();
                 //可见区域的大小  480
                 var windowHeight = $(this).height();
+
+
                 //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-                if (scrollTop + windowHeight == (scrollHeight)) {
+                console.log(scrollTop+windowHeight,":"+scrollHeight)
+                if (scrollTop + windowHeight > (scrollHeight-60)) {
                     $('#img_wait').show();
-                    var timer = null;
-
                     if(jj<2){
-                        timer = setTimeout(function(){
-                            var html = '';
-                            var diya =''
-                            jj++;
+                        console.log(44444)
+                        console.log(fFlag)
+                        if(fFlag){
 
-                            for(var i=0;i<aData.details.length;i++){
-                                var flag = true;
-                                if(aData.details[i].mortgageSituation == true){
-                                    flag = 'product_have_mortgage';
-                                    diya= '有抵押'
+                            console.log(323423)
+                            fFlag = false;
+                         setTimeout(function(){
+                                var html = '';
+                                var diya =''
+                                jj++;
+                             fFlag = true;
+
+                                for(var i=0;i<aData.details.length;i++){
+                                    var flag = true;
+                                    if(aData.details[i].mortgageSituation == true){
+                                        flag = 'product_have_mortgage';
+                                        diya= '有抵押'
 //                                    $('.mortgageSituation').html('有抵押');
-                                }else{
-                                    diya='无抵押'
-                                    flag = 'product_mortgage_without';
+                                    }else{
+                                        diya='无抵押'
+                                        flag = 'product_mortgage_without';
 //                                    $('.mortgageSituation').html('无抵押');
 
-                                }
+                                    }
 
-                                html += '<li>\
+                                    html += '<li>\
                                 <a href="./productDetails.html">\
                                     <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
                                     <div class="product_info">\
@@ -257,18 +267,21 @@
                                    </div>\
                                 </a>\
                             </li>';
-                            //重新加载个数
-                            getNum();
+                                    //重新加载个数
+                                    getNum();
 
-                            }
-                            $('#product-list').append(html);
+                                }
+                                $('#product-list').append(html);
 
 
-                        },1000)
+                            },500)
+                        }
+
                     }else{
                         $('#img_wait').hide();
                         $('.product_tip').show();
                     }
+
 
                 }
             });
