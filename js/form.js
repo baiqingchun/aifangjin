@@ -270,6 +270,7 @@ var Form = function () {
             $('[name=age]').on('input propertychange',function () {
               var val = $.trim($(this).val());
               var node = $(this).siblings('strong');
+
               if(val){
                   node.css('visibility','hidden')
                   selectIsNotChoose(this);
@@ -277,6 +278,10 @@ var Form = function () {
                   node.css('visibility','')
                   selectIsNotChoose(this,true);
               }
+            })
+            $('[name=age]').focus(function () {
+                $('.form_group_select').removeClass('active')
+                $('.select_ul').hide();
             })
             //点击蒙布
             $('.cover').on('click', function () {
