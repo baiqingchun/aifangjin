@@ -31,10 +31,12 @@ var aData = {
 
         },
         {
-
+            rate:6.5,
+            day:2
         },
         {
-
+            rate:7.5,
+            day:3
         }
     ],
     requirement:[

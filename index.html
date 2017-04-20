@@ -109,25 +109,28 @@
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/slider/slick.js"></script>
     <script>
-  /*      $('.slider').slick({
-            dots: true,
-            infinite: false,
-            speed: 300,
-            autoplay: true,
-            arrows:false
-        });*/
-        //注册
-        $('#login').on('touchstart',function(){
-            $(this).css('color','#ea592e');
-        });
-        //关于我们点击
-        document.body.addEventListener('touchstart',function(){});
-        /*$('#footer_aboutUs').on('touchstart',function(){
-            $(this).css('color','#ea592e');
+        $(function(){
+            /*      $('.slider').slick({
+             dots: true,
+             infinite: false,
+             speed: 300,
+             autoplay: true,
+             arrows:false
+             });*/
+            //注册
+            $('#login').on('touchstart',function(){
+                $(this).css('color','#ea592e');
+            });
+            //关于我们 点击事件
+            $('document,body').on('touchstart',function(){});
+            /*$('#footer_aboutUs').on('touchstart',function(){
+             $(this).css('color','#ea592e');
+             })
+             $('#footer_aboutUs').on('touchend',function(){
+             $(this).css('color','#444');
+             })*/
         })
-          $('#footer_aboutUs').on('touchend',function(){
-              $(this).css('color','#444');
-          })*/
+
     </script>
 </body>
 </html>
