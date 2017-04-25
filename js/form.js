@@ -46,9 +46,12 @@ var Form = function () {
                 return false;
             }
         } else {
-            node.text(Message[name].required);
-            ErrorNode.show();
-            return false;
+            if(Message[name]){
+                node.text(Message[name].required);
+                ErrorNode.show();
+                return false;
+            }
+
         }
         ErrorNode.hide();
         return true;
@@ -105,7 +108,17 @@ var Form = function () {
         }
         timecount(second, callback)
     }
-
+    /**
+     * 点击输入验证码
+     * */
+    var changeCaptcha = function () {
+        $('.get_picCode').click(function () {
+            console.log(1)
+            var node  = $('.jcaptcha');
+            var timestamp = Date.parse(new Date());
+            node.attr('src','http://192.168.85.93:8081/userRegister/getYzm?time='+timestamp)
+        })
+    }
     /**
      * 表单验证初始化
      */
@@ -238,6 +251,7 @@ var Form = function () {
             $('.submit').addClass('disabled');
             formValidate(fun);
             agreement();//点击是否同意爱房金协议
+            changeCaptcha();//点击图形验证码
         },
         validate: function (node, ruleo, messageo) {
 
