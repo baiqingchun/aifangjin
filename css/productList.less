@@ -19,6 +19,9 @@
   font-size: 22/@r;
   color: #b0b0b0;
   padding-left: 30/@r;
+  #search_numble{
+    font-size: 22/@r;
+  }
 }
 //搜索列表
 .product_list{
@@ -56,11 +59,13 @@
           margin-bottom: 21/@r;
           span{
             position: relative;
+            font-size: 30/@r;
             &::after{
               content: '';
               position: absolute;
               top:50%;
-              right: -54%;
+              //right: -54%;
+              margin-left: 7/@r;
               margin-top: -1px;
               width:44/@r;
               height: 0;
@@ -70,6 +75,7 @@
           }
           i{
             margin-left: 58/@r;
+            font-size: 30/@r;
           }
         }
         .product_loan{
@@ -79,15 +85,18 @@
           .product_loan_term{
             color: #c6c6c6;
             float: left;
+            font-size: 24/@r;
           }
           .product_rate{
             float: right;
             letter-spacing: 8/@r;
             margin-right: -7/@r;
+            font-size: 24/@r;
             strong{
               color: #ea592e;
               letter-spacing: 0;
               margin-right: 8/@r;
+              font-size: 24/@r;
             }
           }
         }
@@ -115,9 +124,12 @@
           }
             .product_loan_amount{
               float: right;
-              font-size: 28/@r;
+              font-size: 22/@r;
               line-height: 30/@r;
               height: 30/@r;
+              i{
+                font-size: 22/@r;
+              }
             }
         }
       }
@@ -136,4 +148,7 @@
 .product_footer{
   height:78/@r;
   background: #f6f6f6;
+}
+#img_wait{
+  height: 30/@r;
 }

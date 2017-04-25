@@ -20,7 +20,7 @@
     line-height:46/@r;
     text-align: center;
   }
-  //点击
+  //点击注册
   #login{
     position: absolute;
     right:0/@r;
@@ -46,30 +46,43 @@
     width:100%;
     //关于我们
     .about{
-      //line-height: 40/@r;
-      //height: 40/@r;
       a{
         display: inline-block;
-        padding: 12/@r 40/@r;
+        padding: 12/@r 30/@r;
         font-size: 22/@r;
-        //width: 100%;
         margin: 0 auto;
         color: #444;
       }
+      //点击按钮样式
+      .footer_aboutUs:link{
+        color: #444;
+      }
+      .footer_aboutUs:visited{
+        color: #444;
+      }
+      .footer_aboutUs:active{
+        color: #ea592e;
+      }
     }
+    //公司信息备注号
     .footer_info{
       margin-bottom: 12/@r;
+      font-size: 22/@r;
       color: #999;
       .footer_info_company{
         margin-right: 64/@r;
+        font-size: 22/@r;
+      }
+      span{
+        font-size: 22/@r;
       }
     }
+    //版本
     .footer_versions{
       font-size:22/@r;
       height:30/@r;
       line-height:30/@r;
       color: #999;
-      //margin-bottom: 20/@r;
       .footer_tel{
         display: inline-block;
         font-size: 20/@r;
@@ -93,7 +106,7 @@
         text-indent: -2000/@r;
         background: url("../img/index/footer_logo.png") no-repeat;
         background-size: 104/@r 30/@r;
-
+        vertical-align: top;
       }
     }
   }
@@ -118,16 +131,7 @@
 
 }
 
-//点击按钮样式
-#footer_aboutUs:link{
-  color: #444;
-}
-#footer_aboutUs:visited{
-  color: #444;
-}
-#footer_aboutUs:active{
-  color: #ea592e;
-}
+
 //返回顶部
 #goTop{
   position: fixed;

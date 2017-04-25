@@ -174,143 +174,109 @@
         </li>
     </ul>
     <div class="product_tip">没有更多了</div>
-    <div id="img_wait" style="height: 2rem;"></div>
+    <!--加载动画-->
+    <div id="img_wait"></div>
     <!--<div class="product_footer"></div>-->
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="data.js"></script>
     <script src="js/spin.js"></script>
     <script>
         $(function(){
+            //加载动画参数配置
             var opts = {
-
                 lines: 8,
-
                 length: 0,
-
                 width: 4,
-
                 radius: 4,
-
                 corners: 1,
-
                 rotate: 0,
-
                 direction: 1,
-
                 color: '#444444',
-
                 speed: 1,
-
                 trail: 34,
-
                 shadow: false,
-
                 hwaccel: false,
-
                 className: 'spinner',
-
                 zIndex: 2e9,
-                position:'relative',
-
-
-
-
+                position:'relative'
             };
             var target = document.getElementById('img_wait');
-
             var spinner = new Spinner(opts).spin(target);
-            //回退功能
-            $('.return').on('touchstart',function(){
-                $(this).css('background-image','img/productList/click.png');
-                history.back(-1);
-            });
-            var jj=0;
-            var fFlag = true;
+            //初始调用次数
+            var count=0;
+            var flag = true;
             var timer = null;
+            var load = $('#img_wait');
             $(window).scroll(function () {
-
                 //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
                 var scrollTop = $(this).scrollTop();
-
                 //整个文档的高度 603
                 var scrollHeight = $(document).height();
                 //可见区域的大小  480
                 var windowHeight = $(this).height();
-
-
                 //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-//                console.log(scrollTop+windowHeight,":"+scrollHeight)
                 if (scrollTop + windowHeight > (scrollHeight-60)) {
-                    $('#img_wait').show();
-                    if(jj<2){
-                        console.log(44444)
-                        console.log(fFlag)
-                        if(fFlag){
-
-                            console.log(323423)
-                            fFlag = false;
-                         setTimeout(function(){
+                    load.show();
+                    //只调用两次
+                    if(count<2){
+                        if(flag){
+                            flag = false;
+                            setTimeout(function(){
                                 var html = '';
-                                var diya =''
-                                jj++;
-                             fFlag = true;
-
+                                var pledge ='';
+                                count++;
+                                flag = true;
                                 for(var i=0;i<aData.details.length;i++){
-                                    var flag = true;
-                                    if(aData.details[i].mortgageSituation == true){
-                                        flag = 'product_have_mortgage';
-                                        diya= '有抵押'
-//                                    $('.mortgageSituation').html('有抵押');
+                                    var mortgage = '';
+                                    if(aData.details[i].mortgageSituation){
+                                        mortgage = 'product_have_mortgage';
+                                        pledge= '有抵押';
                                     }else{
-                                        diya='无抵押'
-                                        flag = 'product_mortgage_without';
-//                                    $('.mortgageSituation').html('无抵押');
-
+                                        mortgage = 'product_mortgage_without';
+                                        pledge='无抵押';
                                     }
 
                                     html += '<li>\
-                                <a href="./productDetails.html">\
-                                    <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
-                                    <div class="product_info">\
-                                        <p class="product_bank"><span>'+aData.details[i].bank+'</span><i>万用金</i></p>\
-                                        <p class="product_loan clearfix">\
-                                            <i class="product_loan_term">1天放款</i>\
-                                            <span class="product_rate">\
-                                                <strong>'+aData.details[i].rate+'%</strong>/年\
-                                            </span>\
-                                        </p>\
-                                        <p class="product_mortgage_situation clearfix">\
-                                            <span class="' +flag + ' mortgageSituation">'+diya+'</span>\
-                                            <span class="product_loan_amount">可贷<i>'+aData.details[i].loan+'</i>万</span>\
-                                        </p>\
-                                   </div>\
-                                </a>\
-                            </li>';
-
-
+                                        <a href="./productDetails.html">\
+                                            <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
+                                            <div class="product_info">\
+                                                <p class="product_bank"><span>'+aData.details[i].bank+'</span><i>万用金</i></p>\
+                                                <p class="product_loan clearfix">\
+                                                    <i class="product_loan_term">'+aData.information[i].day+'天放款</i>\
+                                                    <span class="product_rate">\
+                                                        <strong>'+aData.details[i].rate+'%</strong>/年\
+                                                    </span>\
+                                                </p>\
+                                                <p class="product_mortgage_situation clearfix">\
+                                                    <span class="' +mortgage + ' mortgageSituation">'+ pledge +'</span>\
+                                                    <span class="product_loan_amount">可贷<i>'+aData.details[i].loan+'</i>万</span>\
+                                                </p>\
+                                           </div>\
+                                        </a>\
+                                    </li>';
                                 }
                                 $('#product-list').append(html);
                                  //重新加载个数
                                  getNum();
-
                             },500)
                         }
-
                     }else{
-                        $('#img_wait').hide();
+                        load.hide();
                         $('.product_tip').show();
                     }
-
-
                 }
             });
+            //搜索个数
             getNum();
             function getNum(){
-                //搜索个数
                 var listNum = $('#product-list').children().length;
                 $('#search_numble').html(listNum);
             }
-
+            //回退功能
+            $('.return').on('click',function(){
+                $(this).css('background-image','img/productList/click.png');
+                history.back(-1);
+            });
         })
     </script>
 </body>

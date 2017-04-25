@@ -21,7 +21,7 @@ var Public = function () {
             }
         })
         //点击到达顶部按钮
-        $('#goTop').on('touchstart',function(){
+        $('#goTop').on('click',function(){
             // $(this).removeClass().addClass('clickafter');
             $('html,body').animate({
                 scrollTop:0
@@ -33,7 +33,7 @@ var Public = function () {
     }
     var goBack = function () {
         //回退功能
-        $('.return').on('touchstart',function(){
+        $('.return').on('click',function(){
             $(this).css('background-image','img/productList/click.png');
             history.back(-1);
         })
