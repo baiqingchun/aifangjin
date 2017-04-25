@@ -11,8 +11,7 @@ var Form = function () {
         $('.return').on('click',function () {
             window.history.back()
         })
-        $('input').val('');
-        $('.submit').addClass('disabled');
+
         $('input').focus(function () {
             $('.submit').removeClass('disabled');
         })
@@ -235,6 +234,8 @@ var Form = function () {
    }
     return {
         init: function (fun) {
+            $('input').val('');
+            $('.submit').addClass('disabled');
             formValidate(fun);
             agreement();//点击是否同意爱房金协议
         },
