@@ -245,6 +245,36 @@ var Form = function () {
            }
        })
    }
+   /**
+    * 申请第二步，点击确定提交申请
+    * */
+   var applyAjaxSec = function () {
+    var selectParameter={userName:'啊啊啊',phone:"1503290822"};
+    $('.form_group_select').each(function (k,v) {
+        var option = $(v).data('parameter');
+        if(option=='age'){
+            selectParameter[option] = $(v).find('input').val()
+        }else {
+            selectParameter[option] = $(v).find('em').text();
+        }
+
+    })
+       console.log(selectParameter)
+       $.ajax({
+           type: "POST",
+           url: "http://192.168.85.54:8080/SignPo/SubmitApplication",
+           data: selectParameter,
+           dataType: "jsonp",
+           jsonp: 'jsonpcallback',
+           success: function (data) {
+               console.log(data)
+               // Play with returned data in JSON format
+           },
+           error: function (msg) {
+               console.error(msg);
+           }
+       });
+   }
     return {
         init: function (fun) {
             $('input').val('');
@@ -257,14 +287,16 @@ var Form = function () {
 
         },
         select: function () {
+
             selectCostum();//自定义select
             agreement();//点击是否同意爱房金协议
             //点击提交信息按钮
             $('.submit').on('click', function (e) {
                 e.preventDefault();
+                applyAjaxSec();
                 var _this = this;
                 var falg = $(_this).hasClass('disabled');
-                var input_flag = true;
+                var input_flag = true;//true代表所有输入框都已输入  false代表还有 没有选择的
                 $('.form_group_select').each(function (k,v) {
                       if(!$(v).hasClass('selected')){
                           input_flag= false;
@@ -305,6 +337,7 @@ var Form = function () {
                 $(this).hide();
                 $('.alert').hide()
             })
+            //年龄扩大点击范围
             $('.age_form').on('click',function () {
                 $('.age_form input').focus()
             })
