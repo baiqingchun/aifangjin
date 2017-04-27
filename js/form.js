@@ -10,8 +10,7 @@ var Form = function () {
         $('.cover').css('height',$(document).height());
         $('.return').on('click',function () {
             window.history.back()
-        })
-
+        });
         $('input').focus(function () {
             $('.submit').removeClass('disabled');
         })
@@ -21,6 +20,7 @@ var Form = function () {
     var TelFlag = false;//判断手机号是否输入到11位，11之后开始验证手机号
     var CaptchaFlag = false;//判断验证码是否输入到4位，4位之后开始验证验证码
     var CaptchaCheckFlag = false;
+    // var URL = 'http://192.168.85.48:8080';
     var URL = 'http://192.168.85.253:8081';
     var Message = {
         name: {required: '请输入姓名'},
@@ -155,6 +155,60 @@ var Form = function () {
             }
         });
     };
+    //密码登录ajax请求
+    var loginFirAjax = function () {
+        var phone = $('.tel').val();
+        var pass = $('#password').val();
+        $.ajax({
+            type: "POST",
+            url: URL+"/Login/loginByA",
+            data: {
+                phone:phone,
+                password:pass
+            },
+            dataType: "jsonp",
+            jsonp: 'jsonpcallback',
+            success: function (data) {
+                console.log(data)
+                if(data.code==0){
+
+                }else{
+
+                }
+                // Play with returned data in JSON format
+            },
+            error: function (msg) {
+                console.error(msg);
+            }
+        });
+    };
+    //验证码登录ajax请求
+    var loginSecAjax = function () {
+        var phone = $('.tel').val();
+        var pass = $('.smscaptcha').val();
+        $.ajax({
+            type: "POST",
+            url: URL+"/Login/loginByB",
+            data: {
+                phone:phone,
+                smscode:pass
+            },
+            dataType: "jsonp",
+            jsonp: 'jsonpcallback',
+            success: function (data) {
+                console.log(data)
+                if(data.code==0){
+
+                }else{
+
+                }
+                // Play with returned data in JSON format
+            },
+            error: function (msg) {
+                console.error(msg);
+            }
+        });
+    };
     //加上ajax验证
     var verifyAjax = function (name, val) {
         var nodeerror =  $('.error_bottom');//公共的错误
@@ -281,6 +335,21 @@ var Form = function () {
             node.attr('src',URL+'/userRegister/getPic_code?time='+timestamp)
         })
     };
+    var entiretyVerify = function (node) {
+        var flag = false;
+        var cssError = $('.error_bottom ').css('display');
+        if($(node).hasClass('disabled')){
+            return false;
+
+        }
+
+        if(cssError==='block'){
+            return false;
+        }
+        flag = errorTip();
+        SubmitFlag = true;
+        return flag
+    };
     /**
      * 注册点击提交按钮
      * */
@@ -288,22 +357,11 @@ var Form = function () {
         //给提交按钮添加事件
         $('.submit').click(function (e) {
             e.preventDefault();
-            var flag = false;
-            var cssError = $('.error_bottom ').css('display');
-            if($(this).hasClass('disabled')){
-                return false;
-            }
-            if(cssError==='block'){
-                return false;
-            }
-            flag = errorTip();
-            SubmitFlag = true;
-            if(flag){
+            if(entiretyVerify(this)){
                 registerAjax();
             }
-
         });
-    }
+    };
     /**
      * 表单验证初始化
      */
@@ -466,6 +524,24 @@ var Form = function () {
         },
         register:function () {
             register();
+        },
+        loginFir:function () {
+            //给提交按钮添加事件
+            $('.submit').click(function (e) {
+                e.preventDefault();
+                if(entiretyVerify(this)){
+                    loginFirAjax();
+                }
+            });
+        },
+        loginSec:function () {
+            //给提交按钮添加事件
+            $('.submit').click(function (e) {
+                e.preventDefault();
+                if(entiretyVerify(this)){
+                    loginSecAjax();
+                }
+            });
         },
         validate: function (node, ruleo, messageo) {
 

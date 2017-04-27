@@ -48,7 +48,7 @@
                 </div>
                 <div class="form_group">
                     <div class="icon_code icon_com"></div>
-                    <input type="text" class="captcha m_input m_input_mid" name="captcha" id="captcha" value=""
+                    <input type="text" class="smscaptcha m_input m_input_mid" name="smscaptcha" id="smscaptcha" value=""
                            placeholder="验证码"/>
                     <a class="get_code">获取验证码</a>
                     <!--<div class="get_code_c"></div>-->
@@ -90,8 +90,8 @@
         }
         Form.init(function () {
             window.location.href = './index.html'
-        })
-
+        });
+        Form.loginSec();
     })
 
 </script>
