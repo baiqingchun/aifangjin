@@ -209,6 +209,33 @@ var Form = function () {
             }
         });
     };
+    //找回密码第一步
+    var findPassFir = function () {
+        var phone = $('.tel').val();
+        var pass = $('.smscaptcha').val();
+        $.ajax({
+            type: "POST",
+            url: URL+"/userRegister/checkPhoneValidateMethod",
+            data: {
+                phone:phone,
+                content:pass
+            },
+            dataType: "jsonp",
+            jsonp: 'jsonpcallback',
+            success: function (data) {
+                console.log(data)
+                if(data.code==0){
+
+                }else{
+
+                }
+                // Play with returned data in JSON format
+            },
+            error: function (msg) {
+                console.error(msg);
+            }
+        });
+    };
     //加上ajax验证
     var verifyAjax = function (name, val) {
         var nodeerror =  $('.error_bottom');//公共的错误
@@ -342,7 +369,10 @@ var Form = function () {
             return false;
 
         }
-
+        if(!CaptchaCheckFlag){
+            showError(ErrorNode,Message.captcha.remote)
+            return false;
+        }
         if(cssError==='block'){
             return false;
         }
@@ -540,6 +570,15 @@ var Form = function () {
                 e.preventDefault();
                 if(entiretyVerify(this)){
                     loginSecAjax();
+                }
+            });
+        },
+        findPassFir:function () {
+            //给提交按钮添加事件
+            $('.submit').click(function (e) {
+                e.preventDefault();
+                if(entiretyVerify(this)){
+                    findPassFir();
                 }
             });
         },
