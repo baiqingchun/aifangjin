@@ -43,17 +43,17 @@
             <div class="input_container">
                 <div class="form_group">
                     <div class="icon_pass icon_com"><i class=""></i></div>
-                    <input type="text" name="password" id="password" class="password m_input m_input_large" value=""
+                    <input type="password" name="password" id="password" class="password m_input m_input_large" value=""
                            placeholder="新登录密码"  />
                 </div>
                 <div class="form_group">
                     <div class="icon_repass icon_com"><i class=""></i></div>
-                    <input type="text" name="rePassword" class="re_password m_input m_input_large" value=""
+                    <input type="password" name="rePassword" class="re_password m_input m_input_large" value=""
                            placeholder="确认新登录密码"  />
                 </div>
             </div>
             <!--<div class="pass_login"> <a class=""><i></i>密码登录</a></div>-->
-            <div class="error_bottom">
+            <div class="error_bottom error_com">
                 <i></i><span>手机号错误</span>
             </div>
             <div class="submit_c">
@@ -75,6 +75,7 @@
 
     </footer>-->
 </div>
+<div class="cover"></div>
 <div class="alert">
     <div class="correct"><img src="img/form/correct.png" alt=""></div>
     <h1>重置成功</h1>
@@ -91,10 +92,12 @@
             a[i].addEventListener('touchstart',function(){},false);
         }
         Form.init(function () {
-            $('alter').show();
-            window.location.href='./index.html'
-        })
+//            $('alter').show();
 
+        })
+        Form.findPassSec(function () {
+            window.location.href='./login_fir.html'
+        })
     })
 
 </script>
