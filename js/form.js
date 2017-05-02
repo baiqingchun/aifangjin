@@ -250,7 +250,7 @@ var Form = function () {
                     window.location.href = './apply_sec.html';
                 }else{
 
-                    // showError(ErrorNode,Message.captcha.remote)
+                    showError(ErrorNode,data.msg)
                 }
                 // Play with returned data in JSON format
             },
@@ -265,6 +265,7 @@ var Form = function () {
     var applyAjaxSec = function () {
 
         var selectParameter={userName:sessionStorage.name,phone:sessionStorage.phone};
+        // var selectParameter={userName:'啛啛喳喳',phone:'15032990822'};
         $('.form_group_select').each(function (k,v) {
             var option = $(v).data('parameter');
             if(option==='age'){
@@ -274,6 +275,9 @@ var Form = function () {
             }
 
         });
+        selectParameter.application_amount=0;
+        selectParameter.providentFund==='是'?selectParameter.providentFund=1:selectParameter.providentFund=0;
+        selectParameter.car==='是'?selectParameter.car=1:selectParameter.car=0;
         console.log(selectParameter)
         $.ajax({
             type: "POST",
@@ -283,10 +287,17 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
-                    $('.form_group_select').removeClass('active');
+
+                if(data.code===9999){
+
+                    $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
                     $('.alert').show();
                     $('.cover').show();
+
+                }else if(data.code===9998){
+                    $('.alert').show();
+                    $('.cover').show();
+                    // $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
                 }
 
                 // Play with returned data in JSON format
@@ -353,7 +364,7 @@ var Form = function () {
                     setCookie('phone',phone);
                     window.location.href='./index.html'
                 }else{
-
+                    showError(ErrorNode,data.msg);
                 }
                 // Play with returned data in JSON format
             },
@@ -381,7 +392,7 @@ var Form = function () {
                     setCookie('phone',phone);
                     window.location.href='./index.html'
                 }else{
-
+                    showError(ErrorNode,data.msg)
                 }
                 // Play with returned data in JSON format
             },
@@ -469,14 +480,14 @@ var Form = function () {
                 }
             }
             if(name=='captcha'){
-                console.log('aaaa'+val.length,":"+CaptchaFlag)
+                console.log('aaaa'+val.length,":"+CaptchaFlag);
                 if(val.length>=4){
                     CaptchaFlag = true;
                 }
                 if(CaptchaFlag){
-                    if(val.length<4){
+                    if(val.length!==4){
                         CaptchaCheckFlag = false;
-                        showError(nodeerror,Message[name].remote)
+                        showError(nodeerror,Message[name].remote);
                         return false;
                     }else{
                         captchafun();//图形验证码ajax请求验证
@@ -496,22 +507,25 @@ var Form = function () {
         return true;
     };
     //没有ajax的验证
-    var verify = function (name, val) {
+    var verify = function (name, val,v) {
         var nodeerror =  $('.error_bottom');//公共的错误
         if (val) {
             if (name === 'tel' && !telRuleCheck(val)) {
                 showError(nodeerror,Message[name].phone);
+                $(v).focus();
                 return false;
             }
              if(name==='captcha') {
-                 if (val.length < 4||(!CaptchaCheckFlag)) {
-                     showError(nodeerror, Message[name].remote)
+                 if (val.length!==4||(!CaptchaCheckFlag)) {
+                     showError(nodeerror, Message[name].remote);
+                     $(v).focus();
                      return false;
                  }
              }
         } else {
             if(Message[name]){
                 showError(nodeerror,Message[name].required);
+                $(v).focus();
                 return false;
             }
 
@@ -525,7 +539,7 @@ var Form = function () {
         $('input').each(function (k, v) {
             var val = $.trim($(v).val());
             var name = $(v).attr('name');
-            if (!verify(name, val)) {
+            if (!verify(name, val,v)) {
                 flag = false;
                 console.log(name)
                 return false;
@@ -694,7 +708,7 @@ var Form = function () {
             }
 
         });
-        $('.cover_white').on('touchstart', function () {
+        $('.cover_white').on('click', function () {
             hideUl();
         });
         $('.select_ul li').click(function () {
