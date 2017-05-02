@@ -386,6 +386,7 @@ var Form = function () {
                 // Play with returned data in JSON format
             },
             error: function (msg) {
+                alert(JSON.stringify(msg))
                 console.error(msg);
             }
         });
@@ -836,9 +837,7 @@ var Form = function () {
                 console.log(input_flag);
                 console.log(!falg&&input_flag)
                 if((!falg)&&input_flag){
-
                     applyAjaxSec();
-
                 }
 
             });
