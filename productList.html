@@ -39,7 +39,27 @@
     </header>
     <div class="search_num">为您搜索贷款<span id="search_numble"></span>个</div>
     <ul class="product_list" id="product-list">
-        <li>
+        <li v-for="item in items">
+            <a :href="[url + item.id]">
+                <div class="product_img"><img :src="[img + item.channel_source +'.png']" alt=""></div>
+                <div class="product_info">
+                    <p class="product_bank"><span v-text="item.product_bank"></span><i>万用金</i></p>
+                    <p class="product_loan clearfix">
+                        <i class="product_loan_term"><strong v-text="item.lending_time"></strong>天放款</i>
+                        <span class="product_rate">
+                            <strong><em v-text="item.annualized_interest"></em>%</strong>/年
+                        </span>
+                    </p>
+                    <p class="product_mortgage_situation clearfix">
+                        <span class="product_mortgage_without" v-if="item.whether_mortgage == 1">无抵押</span>
+                        <span class="product_have_mortgage" v-else>有抵押</span>
+                        <span class="product_loan_amount">可贷<i v-text="item.maximum_amount"></i>万</span>
+                    </p>
+                </div>
+            </a>
+
+        </li>
+        <!--<li>
             <a href="productDetails.html">
                 <div class="product_img"><img src="img/productList/1.png" alt=""></div>
                 <div class="product_info">
@@ -171,17 +191,62 @@
                 </div>
             </a>
 
-        </li>
+        </li>-->
     </ul>
     <div class="product_tip">没有更多了</div>
     <!--加载动画-->
     <div id="img_wait"></div>
     <!--<div class="product_footer"></div>-->
+    
     <script src="js/jquery-3.2.0.min.js"></script>
-    <script src="data.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/vue.min.js"></script>
     <script src="js/spin.js"></script>
+
     <script>
+
         $(function(){
+            //获取url查询字符串里的键值
+            function getRequest(url) {
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+            //获取列表页点击的id
+            var id = getRequest(window.location.search).id;
+            var url = "http://192.168.85.245:8080/product/queryProductList";
+            var products;
+            var vm = new Vue({
+                el: '#product-list',
+                data: {
+                    items: products,
+                    url:'./productDetails.html?id=',
+                    img:'img/productList/'
+                }
+            });
+
+            //发送ajax请求
+                $.ajax({
+                    type:"POST",
+                    url:url,
+                    data:{ loan : id},
+                    dataType:"jsonp",
+                    jsonp: 'jsonpcallback',
+                    success:function(data) {
+                        if(data.code === 0){
+                            products = data.data.data;
+                            vm.$data.items = products;
+                            getNum();
+                        }
+                    }
+                });
+
             //加载动画参数配置
             var opts = {
                 lines: 8,
@@ -202,12 +267,11 @@
             };
             var target = document.getElementById('img_wait');
             var spinner = new Spinner(opts).spin(target);
-            //初始调用次数
-            var count=0;
+            var page = 1;
             var flag = true;
             var timer = null;
             var load = $('#img_wait');
-            $(window).scroll(function () {
+            $(window).scroll(function(){
                 //获取垂直滚动的距离  即当前滚动的地方的窗口顶端到整个页面顶端的距离
                 var scrollTop = $(this).scrollTop();
                 //整个文档的高度 603
@@ -215,69 +279,76 @@
                 //可见区域的大小  480
                 var windowHeight = $(this).height();
                 //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-                if (scrollTop + windowHeight > (scrollHeight-60)) {
+                if (scrollTop + windowHeight == scrollHeight) {
                     load.show();
-                    //只调用两次
-                    if(count<2){
-                        if(flag){
-                            flag = false;
-                            setTimeout(function(){
-                                var html = '';
-                                var pledge ='';
-                                count++;
-                                flag = true;
-                                for(var i=0;i<aData.details.length;i++){
-                                    var mortgage = '';
-                                    if(aData.details[i].mortgageSituation){
-                                        mortgage = 'product_have_mortgage';
-                                        pledge= '有抵押';
-                                    }else{
-                                        mortgage = 'product_mortgage_without';
-                                        pledge='无抵押';
-                                    }
+                    page++;
+                    $.ajax({
+                        type:"POST",
+                        url:"http://192.168.85.245:8080/product/queryProductList",
+                        data:{ loan:id,page:page},
+                        dataType:"jsonp",
+                        jsonp: 'jsonpcallback',
+                        success:function(data){
+                            var count = data.data.total;
+                            products = data.data.data;
+                            vm.$data.items = vm.$data.items.concat(products);
+                            getNum();
+                            if(page > count){
+                                load.hide();
+                                $('.product_tip').show();
 
-                                    html += '<li>\
-                                        <a href="./productDetails.html">\
-                                            <div class="product_img"><img src="img/productList/'+aData.details[i].img+'.png" alt="" /></div>\
-                                            <div class="product_info">\
-                                                <p class="product_bank"><span>'+aData.details[i].bank+'</span><i>万用金</i></p>\
-                                                <p class="product_loan clearfix">\
-                                                    <i class="product_loan_term">'+aData.information[i].day+'天放款</i>\
-                                                    <span class="product_rate">\
-                                                        <strong>'+aData.details[i].rate+'%</strong>/年\
-                                                    </span>\
-                                                </p>\
-                                                <p class="product_mortgage_situation clearfix">\
-                                                    <span class="' +mortgage + ' mortgageSituation">'+ pledge +'</span>\
-                                                    <span class="product_loan_amount">可贷<i>'+aData.details[i].loan+'</i>万</span>\
-                                                </p>\
-                                           </div>\
-                                        </a>\
-                                    </li>';
-                                }
-                                $('#product-list').append(html);
-                                 //重新加载个数
-                                 getNum();
-                            },500)
+                            }
                         }
-                    }else{
-                        load.hide();
-                        $('.product_tip').show();
-                    }
+                    });
+                               /* var list = $('#product-list');
+                                var mortgage;
+                                var pledge;
+                                for(var i=0;i<moredata.data.length;i++){
+                                    var Data = moredata.data[i];
+                                    var html = '';
+                                    if (Data.whether_mortgage == 1) {
+                                        mortgage = 'product_mortgage_without';
+                                        pledge= '无';
+                                    } else {
+                                        mortgage = 'product_have_mortgage';
+                                        pledge= '有';
+                                    }
+                                    html += '<li>\
+                                    <a href="productDetails.html">\
+                                        <div class="product_img"><img src="img/productList/'+Data.channel_source+'.png" alt=""></div>\
+                                        <div class="product_info">\
+                                            <p class="product_bank"><span>'+ Data.product_bank +'</span><i>万用金</i></p>\
+                                            <p class="product_loan clearfix">\
+                                                <i class="product_loan_term">'+ Data.lending_time +'天放款</i>\
+                                                <span class="product_rate">\
+                                                <strong>'+ Data.annualized_interest +'</strong>/年\
+                                                </span>\
+                                            </p>\
+                                            <p class="product_mortgage_situation clearfix">\
+                                                <span class="'+ mortgage +'">' + pledge + '抵押</span>\
+                                                <span class="product_loan_amount">可贷<i>'+ Data.maximum_amount +'</i>万</span>\
+                                            </p>\
+                                        </div>\
+                                    </a>\
+                                </li>';
+                                    list.append(html);*/
                 }
+
             });
+
             //搜索个数
-            getNum();
+//            getNum();
             function getNum(){
-                var listNum = $('#product-list').children().length;
+                var listNum = vm.$data.items.length;
                 $('#search_numble').html(listNum);
             }
             //回退功能
-            $('.return').on('click',function(){
+            Public.init();
+           /* $('.return').on('click',function(){
                 $(this).css('background-image','img/productList/click.png');
                 history.back(-1);
-            });
-        })
+            });*/
+        });
     </script>
 </body>
 </html>
