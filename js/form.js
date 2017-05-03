@@ -22,7 +22,7 @@ var Form = function () {
     var CaptchaFlag = false;//判断验证码是否输入到4位，4位之后开始验证验证码
     var CaptchaCheckFlag = false;
     var URL1 = 'http://192.168.85.248:8080';
-    var URL = 'http://192.168.85.253:8081';
+    var URL = 'http://192.168.85.253:8090';
     var Message = {
         name: {required: '请输入姓名'},
         tel: {required: '手机号为空', phone: '请输入正确的手机号'},
@@ -101,7 +101,7 @@ var Form = function () {
         CaptchaCheckFlag= true;
         $.ajax({
             type: "POST",
-            url: URL+"/userRegister/picVerification",
+            url: URL+"/PicVerify/picVerification",
             data: {
                 picVerification:val
             },
@@ -316,7 +316,7 @@ var Form = function () {
         alertCover();
         $.ajax({
             type: "POST",
-            url: URL+"/userRegister/registerTest",
+            url: URL+"//userRegister/register",
             // url: URL+"/userRegister/register",
             data: {
                 phone:phone,
@@ -588,7 +588,7 @@ var Form = function () {
             var node  = $('.jcaptcha');
             var timestamp = Date.parse(new Date());
             // node.attr('src',URL+'/userRegister/getPic_code?time='+timestamp)
-            node.attr('src',URL1+'/PicVerify/getPic_code?time='+timestamp)
+            node.attr('src',URL+'/PicVerify/getPic_code?time='+timestamp)
         })
     };
     var entiretyVerify = function (node) {
@@ -663,8 +663,8 @@ var Form = function () {
                 return;
             }
             if(TimeFlag){
-                TimeFlag =false;
                 if(CaptchaCheckFlag){
+                    TimeFlag =false;
                     if(type==='login'){
                         smsAjaxLogin();
                     }else if(type==='apply'){
@@ -807,7 +807,6 @@ var Form = function () {
                 e.preventDefault();
                 var pass = $('.password').val();
                 var repas = $('.re_password').val();
-
                 if(entiretyVerify(this)){
                     if(passDiff(pass,repas)){
                         showError(ErrorNode,Message.rePassword.different);
@@ -830,9 +829,9 @@ var Form = function () {
 
         },
         select: function () {
-            if(!sessionStorage.name){
+            /*if(!sessionStorage.name){
                 window.location.href='./apply_fir.html'
-            }
+            }*/
             selectCostum();//自定义select
             agreement();//点击是否同意爱房金协议
             //点击提交信息按钮
