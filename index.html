@@ -38,6 +38,7 @@
     <header class="public_header">
         <div class="logo">爱房金</div>
         <a href="./register.html" id="login">注册</a>
+        <span class="user_name"></span>
     </header>
     <div class="main">
         <div class="slider">
@@ -116,10 +117,31 @@
         </div>
     </footer>
     <script src="js/jquery-3.2.0.min.js"></script>
-    <!--<script src="js/jquery.cookie.js"></script>-->
     <script src="js/slider/slick.js"></script>
     <script>
         $(function(){
+            /**
+             * 获得cookie
+             * */
+            function getCookie(name)
+            {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                if(arr=document.cookie.match(reg))
+                    return unescape(arr[2]);
+                else
+                    return null;
+            }
+            /**
+             * 删除cookie
+             * */
+            function delCookie(name)
+            {
+                var exp = new Date();
+                exp.setTime(exp.getTime() - 1);
+                var cval=getCookie(name);
+                if(cval!=null)
+                    document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+            }
             $('#credit_loan').delegate('a','click',function(){
                 window.location.href = './productList.html?id='+ $(this).attr('id');
             });
@@ -136,6 +158,12 @@
             });
             //关于我们 点击事件
             $('document,body').on('touchstart',function(){});
+            var phone = getCookie('phone');
+            if(phone){
+              /*     $('.user_name').show();
+                   $('.public_header').find('a').hide();*/
+//                   $('.user_name').text(phone)
+            }
             /*$('#footer_aboutUs').on('touchstart',function(){
              $(this).css('color','#ea592e');
              })

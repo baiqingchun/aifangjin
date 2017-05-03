@@ -1,0 +1,63 @@
+@import "../base.css";
+@r:50rem;
+@boder:#eaeaea;
+@fontcolor:#444444;
+body{
+  background-color: #f6f6f6;
+  height: 100%;
+}
+.com_header{
+  border-bottom: 1px solid @boder;
+}
+.tool_container{
+  padding: 0 30/@r;
+  box-sizing:border-box;
+  background-color: #FFFFFF;
+   height:80.3% ;
+  .row{
+    display:flex;
+    border-bottom: 1px solid @boder;
+    height: 33.33%;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  .col{
+    //height: 346/@r;
+    height: 100%;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    border-right: 1px solid @boder;
+    align-items: center;
+    &:last-child{
+      border-right: none;
+    }
+    >div{
+       display: table;
+       margin: 0 auto;
+    }
+    p{
+      color: @fontcolor;
+      font-size: 30/@r;
+      margin-top: 48/@r;
+      display: block;
+    }
+    img{
+      width: 102/@r;
+      height: 102/@r;
+    }
+
+  }
+}
+.footer{
+  position: relative;
+
+  min-height: 167/@r;
+  bottom: 0;
+  width: 100%;
+}
+.public_footer{
+  margin-top: 20/@r;
+  bottom: 0;
+}

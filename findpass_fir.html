@@ -47,8 +47,15 @@
                            placeholder="手机号"  />
                 </div>
                 <div class="form_group">
+                    <div class="icon_pic icon_com"></div>
+                    <input type="text" class="captcha m_input m_input_mid" name="captcha"  value=""
+                           placeholder="图形验证码"/>
+                    <a class="get_picCode" href="javascript:;"><img class="jcaptcha" src="http://192.168.85.253:8081/userRegister/getPic_code" alt=""></a>
+                    <p class=""></p>
+                </div>
+                <div class="form_group">
                     <div class="icon_code icon_com"></div>
-                    <input type="text" class="captcha m_input m_input_mid" name="captcha" id="captcha" value=""
+                    <input type="text" class="smscaptcha m_input m_input_mid" name="smscaptcha" id="smscaptcha" value=""
                            placeholder="验证码"/>
                     <a class="get_code">获取验证码</a>
                     <!--<div class="get_code_c"></div>-->
@@ -56,7 +63,7 @@
                 </div>
             </div>
             <!--<div class="pass_login"> <a class=""><i></i>密码登录</a></div>-->
-            <div class="error_bottom">
+            <div class="error_bottom error_com">
                 <i></i><span>手机号错误</span>
             </div>
             <div class="submit_c">
@@ -91,7 +98,7 @@
         Form.init(function () {
             window.location.href = './findpass_sec.html'
         })
-
+        Form.findPassFir();
     })
 
 </script>

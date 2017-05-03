@@ -44,7 +44,7 @@
                 <div class="form_group">
                     <div class="icon_com icon_person"><i class=""></i>
                     </div>
-                    <input type="text" name="name" class=" m_input m_input_large" value=""
+                    <input type="text" name="name" class="name m_input m_input_large" value=""
                            placeholder="请输入姓名" AUTOCOMPLETE="off"/>
                 </div>
                 <div class="form_group">
@@ -54,23 +54,24 @@
                            placeholder="请输入手机号" AUTOCOMPLETE="off"/>
                 </div>
                 <div class="form_group">
-                    <div class="icon_code icon_com"></div>
-                    <input type="text" class="captcha m_input m_input_mid" name="captcha" id="captcha" value=""
-                           placeholder="验证码" AUTOCOMPLETE="off"/>
-                    <a class="get_code">获取验证码</a>
-                    <!--<div class="get_code_c"></div>-->
-                    <p class=""></p>
-                </div>
-                <div class="form_group">
                     <div class="icon_pic icon_com"></div>
                     <input type="text" class="captcha m_input m_input_mid" name="captcha"  value=""
                            placeholder="图形验证码"/>
                     <a class="get_picCode"><img class="jcaptcha" src="img/form/yanzheng.png" alt=""></a>
                     <p class=""></p>
                 </div>
+                <div class="form_group">
+                    <div class="icon_code icon_com"></div>
+                    <input type="text" class="smscaptcha m_input m_input_mid" name="smscaptcha" id="smscaptcha" value=""
+                           placeholder="验证码" AUTOCOMPLETE="off"/>
+                    <a class="get_code" data-type="apply" >获取验证码</a>
+                    <!--<div class="get_code_c"></div>-->
+                    <p class=""></p>
+                </div>
+
 
             </div>
-            <div class="error_bottom">
+            <div class="error_bottom error_com">
                 <i></i><span>手机号错误</span>
             </div>
             <div class="submit_c">
@@ -118,7 +119,7 @@
             $('.alert').show();
             window.location.href = './apply_sec.html'
         })
-
+         Form.applyFir();
     })
 
 </script>

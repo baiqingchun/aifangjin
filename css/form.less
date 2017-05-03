@@ -24,7 +24,7 @@ body{
   padding:0 30/@r !important;
 }
 .padd_bottom198{
-  padding-bottom: 198/@r;
+  padding-bottom: 80/@r;
 }
 .color_black{
   color: #444444 !important;
@@ -101,6 +101,7 @@ body{
     color: rgba(0, 0, 0, 0.6);
     background-color: #DEDEDE;
   }
+
   .error_tip{
     color: #ea592e;
     background-color: #fae3c6;
@@ -110,13 +111,13 @@ body{
     text-align: center;
     display: none;
   }
-  .error_bottom{
+  .error_com{
     display: none;
     padding: 0 30/@r;
     margin-top: 40/@r;
     i{
-       background: url("../img/form/error.png") no-repeat 0 0;
-       width: 26/@r;
+      background: url("../img/form/error.png") no-repeat 0 0;
+      width: 26/@r;
       height: 26/@r;
       background-size: contain;
       display: inline-block;
@@ -128,8 +129,11 @@ body{
       line-height: 1;
       color: @com_red;
       display: inline-block;
-
+      font-size: 24/@r;
     }
+  }
+  .error_bottom{
+
   }
   .icon_com{
     background-size: contain;
@@ -206,6 +210,7 @@ body{
         .icon_down{
           background-image: url(../img/form/up.png);
         }
+
       }
       .select_ul{
         //display: block;
@@ -224,6 +229,10 @@ body{
       strong{
         margin-left: 20/@r;
         color: #ea592e;
+        font-size: 24/@r;
+      }
+      span{
+        font-size: 24/@r;
       }
       em{
         float: right;
@@ -646,7 +655,7 @@ position: absolute;
   left:0;
   bottom: 0;
   width: 100%;
-  height: 10%;
+  height: 100%;
   background-color: transparent;
   z-index: 1;
 }

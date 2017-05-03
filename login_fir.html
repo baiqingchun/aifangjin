@@ -48,22 +48,15 @@
                 </div>
                 <div class="form_group">
                     <div class="icon_pass icon_com"><i class=""></i></div>
-                    <input type="text" name="password" id="password" class="icon_repass m_input m_input_large" value=""
+                    <input type="password" name="password" id="password" class="icon_repass m_input m_input_large" value=""
                            placeholder="密码"/>
-                </div>
-                <div class="form_group">
-                    <div class="icon_pic icon_com"></div>
-                    <input type="text" class="captcha m_input m_input_mid" name="captcha"  value=""
-                           placeholder="图形验证码"/>
-                    <a class="get_picCode" href="javascript:;"><img class="jcaptcha" src="http://192.168.85.93:8081/userRegister/getYzm" alt=""></a>
-                    <p class=""></p>
                 </div>
             </div>
             <div class="pass_login">
                 <a href="./findpass_fir.html" class="forget">忘记密码</a>
                 <a class="ways" href="./login_sec.html"><i></i>手机验证码登录</a>
             </div>
-            <div class="error_bottom">
+            <div class="error_bottom error_com">
                 <i></i><span>手机号错误</span>
             </div>
             <div class="submit_c">
@@ -97,8 +90,8 @@
         }
         Form.init(function () {
             window.location.href = './index.html'
-        })
-
+        });
+        Form.loginFir();
     })
 
 </script>
