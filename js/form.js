@@ -28,7 +28,7 @@ var Form = function () {
         tel: {required: '手机号为空', phone: '请输入正确的手机号'},
         captcha: {required: '验证码不能为空', remote: '请输入正确的图形验证码', have: '您已注册过，请重新登录'},
         smscaptcha: {required: '短信验证码不能为空', remote: '请输入正确的短信验证码', have: '您已注册过，请重新登录'},
-        password: {required: '密码不能为空'},
+        password: {required: '密码不能为空',num:'密码至少8个字符',str:'密码为数字和字母的组合'},
         rePassword:{required: '密码不能为空',different:'密码不一致，请重新输入'}
     };
     var ErrorNode = $('.error_bottom');
@@ -313,7 +313,7 @@ var Form = function () {
         var pass = $('#password').val();
         var piccode = $('.captcha').val();
         var smscode = $('.smscaptcha').val();
-        alertCover();
+
         $.ajax({
             type: "POST",
             url: URL+"//userRegister/register",
@@ -328,12 +328,13 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
+                if(data.code===0||data.code===-300){
+                    alertCover();
                     setCookie('phone',phone);
                     window.location.href='./index.html'
                 }else{
                     hideCover();
-                    showError(ErrorNode,'注册失败')
+                    showError(ErrorNode,data.msg)
                     // showError(ErrorNode,Message.captcha.remote)
                 }
                 // Play with returned data in JSON format
@@ -417,7 +418,7 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
+                if(data.code===0||data.code===-302){
                     sessionStorage.phone = phone;
                     window.location.href = './findpass_sec.html'
                 }else{
@@ -506,6 +507,20 @@ var Form = function () {
 
         return true;
     };
+    //密码必须包含数字和字母
+    function CheckPassWord(password) {
+        var str = password;
+        if (str == null || str.length < 8) {
+            return false;
+        }
+        var reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
+        if (reg.test(str)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     //没有ajax的验证
     var verify = function (name, val,v) {
         var nodeerror =  $('.error_bottom');//公共的错误
@@ -521,6 +536,17 @@ var Form = function () {
                      $(v).focus();
                      return false;
                  }
+             }
+             if(name==='password'){
+                if(val.length<8){
+                    $(v).focus();
+                    showError(nodeerror, Message[name].num);
+                    return false;
+                }else if(!CheckPassWord(val)){
+                    $(v).focus();
+                    showError(nodeerror, Message[name].str);
+                    return false;
+                }
              }
         } else {
             if(Message[name]){
