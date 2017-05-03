@@ -35,7 +35,7 @@
 <body>
     <header class="public_header">
         <a href="javascript:;" class="return"></a>
-        <span class="productHeader">信用贷产品</span>
+        <span class="productHeader"><i></i>贷产品</span>
     </header>
     <div class="search_num">为您搜索贷款<span id="search_numble"></span>个</div>
     <ul class="product_list" id="product-list">
@@ -45,9 +45,9 @@
                 <div class="product_info">
                     <p class="product_bank"><span v-text="item.product_bank"></span><i>万用金</i></p>
                     <p class="product_loan clearfix">
-                        <i class="product_loan_term"><strong v-text="item.lending_time"></strong>天放款</i>
+                        <i class="product_loan_term"><strong v-text="item.lending_time"  class="product_loan_term"></strong>天放款</i>
                         <span class="product_rate">
-                            <strong><em v-text="item.annualized_interest"></em>%</strong>/年
+                            <strong class="product_rate_style"><em v-text="item.annualized_interest"  class="product_rate_style"></em>%</strong>/年
                         </span>
                     </p>
                     <p class="product_mortgage_situation clearfix">
@@ -197,14 +197,13 @@
     <!--加载动画-->
     <div id="img_wait"></div>
     <!--<div class="product_footer"></div>-->
-    
+
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/public.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="js/spin.js"></script>
 
     <script>
-
         $(function(){
             //获取url查询字符串里的键值
             function getRequest(url) {
@@ -220,6 +219,14 @@
             }
             //获取列表页点击的id
             var id = getRequest(window.location.search).id;
+            //根据点击的id显示产品种类
+            if(id == 4){
+                $('.productHeader i').text('经营');
+            }else if(id == 5){
+                $('.productHeader i').text('消费');
+            }else if(id == 6){
+                $('.productHeader i').text('信用');
+            }
             var url = "http://192.168.85.245:8080/product/queryProductList";
             var products;
             var vm = new Vue({
@@ -344,10 +351,6 @@
             }
             //回退功能
             Public.init();
-           /* $('.return').on('click',function(){
-                $(this).css('background-image','img/productList/click.png');
-                history.back(-1);
-            });*/
         });
     </script>
 </body>

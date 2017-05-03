@@ -142,6 +142,7 @@
                 if(cval!=null)
                     document.cookie= name + "="+cval+";expires="+exp.toGMTString();
             }
+            //点击产品模块跳转地址
             $('#credit_loan').delegate('a','click',function(){
                 window.location.href = './productList.html?id='+ $(this).attr('id');
             });
@@ -156,8 +157,9 @@
             $('#login').on('click',function(){
                 $(this).css('color','#ea592e');
             });
-            //关于我们 点击事件
+            //关于我们 点击变色
             $('document,body').on('touchstart',function(){});
+
             var phone = getCookie('phone');
             if(phone){
               /*     $('.user_name').show();

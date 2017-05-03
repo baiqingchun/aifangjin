@@ -83,8 +83,8 @@
                         <li><span>5年</span></li>
                         <li><span>10年</span></li>
                         <li><span>15年</span></li>
+                        <li><span>20年</span></li>
                         <li id="definition"><strong>自定义</strong><input type="number" placeholder="输入自定义期限" class="loan_input" id="loan-input"><strong>年</strong></li>
-
                     </ul>
                 </div>
             </div>
@@ -205,24 +205,18 @@
         function hideBox(){
             $('#loan_wrapper').css('display','none');
         }
-        $('#dropdownMenu').delegate('li','click',function(ev){
-            var evt = ev.srcElement ? ev.srcElement : ev.target;
-            console.log(evt)
-            if(evt.id == 'definition'){
-                alert(1)
+        $('#dropdownMenu').on('click',function(ev){
+            var liTarget = $(ev.target).closest('li').eq(0).attr('id');
+//            console.log(liTarget);
+            if(liTarget == 'definition'){
+                return;
             }else{
-                $('#dropdownMenu li').removeClass('active');
-                 var text = $(this).addClass('active').find('span').text();
-                 console.log(text);
-                 $('#loan-year').html(text);
+                $(this).find('li').removeClass('active');
+                var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
+                $('#loan-year').html(text);
                 hideBox();
             }
-
-            /*$('#dropdownMenu li').removeClass('active');
-            var text = $(this).addClass('active').find('span').text();
-            console.log(text);
-            $('#loan-year').html(text)*/;
-        })
+        });
         /*$('#loan_wrapper').delegate('li','click',function(ev){
             // 如果是元素本身，则返回
             var evt = ev.srcElement ? ev.srcElement : ev.target;

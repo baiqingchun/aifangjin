@@ -110,80 +110,74 @@
     <script src="js/public.js"></script>
     <script src="js/vue.min.js"></script>
     <script>
-
-               $(function(){
-                   //获取url查询字符串里的键值
-                   function getRequest(url) {
-                       var theRequest = new Object();
-                       if (url.indexOf("?") != -1) {
-                           var str = url.substr(1);
-                           strs = str.split("&");
-                           for (var i = 0; i < strs.length; i++) {
-                               theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
-                           }
+           $(function(){
+               //获取url查询字符串里的键值
+               function getRequest(url) {
+                   var theRequest = new Object();
+                   if (url.indexOf("?") != -1) {
+                       var str = url.substr(1);
+                       strs = str.split("&");
+                       for (var i = 0; i < strs.length; i++) {
+                           theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
                        }
-                       return theRequest;
                    }
-                   //获取列表页点击的id
-                   var id = getRequest(window.location.search).id;
-                   var url = "http://192.168.85.245:8080/product/queryProductInfo";
-                   //发送ajax请求
-                   $.ajax({
-                       type:"POST",
-                       url:url,
-                       data:{ productId:id },
-                       dataType:"jsonp",
-                       jsonp: 'jsonpcallback',
-                       success:function(data){
-                           if(data.code === 0){
-                               var product = data.data.data;
-                               var vm = new Vue({
-                                   el: '#product-details',
-                                   data: {
-                                       product: product
-                                   }
-                               });
-                               vm.$data.product = product;
-                           }
-                       },
-                       error:function(){
+                   return theRequest;
+               }
+               //获取列表页点击的id
+               var id = getRequest(window.location.search).id;
+               var url = "http://192.168.85.245:8080/product/queryProductInfo";
+               //发送ajax请求
+               $.ajax({
+                   type:"POST",
+                   url:url,
+                   data:{ productId:id },
+                   dataType:"jsonp",
+                   jsonp: 'jsonpcallback',
+                   success:function(data){
+                       if(data.code === 0){
+                           var product = data.data.data;
+                           var vm = new Vue({
+                               el: '#product-details',
+                               data: {
+                                   product: product
+                               }
+                           });
+                           vm.$data.product = product;
                        }
-                   });
-                   /*//显示更多
-                    function getmore(aData){
-                    var requirement = aData.requirement;
-                    var file = aData.file;
-                    showData(requirement,$('#productDetails-requirements'));
-                    showData(file,$('#productDetails-files'));
-                    function showData(data,context){
-                    var html = '';
-                    for(var i=0;i<data.length;i++){
-                    html += '<li>\
-                    <i class="requirement_icon"></i>'+ data[i].message +'\
-                    </li>'
-                    }
-                    context.append(html);
-                    }
-                    $('.productDetails_show_more').on('click',function () {
-                    var node =  $(this).closest('.productDetails_requirement_wapper');
-                    node.find('.productDetails_requirement_list').addClass('active');
-                    node.find('.productDetails_requirement_more').css('display','none');
-                    node.find('.productDetails_footer_icon').show();
-                    });
-                    }*/
+                   },
+                   error:function(){
+                   }
+               });
+               /*//显示更多
+                function getmore(aData){
+                var requirement = aData.requirement;
+                var file = aData.file;
+                showData(requirement,$('#productDetails-requirements'));
+                showData(file,$('#productDetails-files'));
+                function showData(data,context){
+                var html = '';
+                for(var i=0;i<data.length;i++){
+                html += '<li>\
+                <i class="requirement_icon"></i>'+ data[i].message +'\
+                </li>'
+                }
+                context.append(html);
+                }
+                $('.productDetails_show_more').on('click',function () {
+                var node =  $(this).closest('.productDetails_requirement_wapper');
+                node.find('.productDetails_requirement_list').addClass('active');
+                node.find('.productDetails_requirement_more').css('display','none');
+                node.find('.productDetails_footer_icon').show();
+                });
+                }*/
 
-                   //立即申请
-                   $('.productDetails_apply > a').on('click',function(){
-                       $(this).css('background','#de4c21');
-                   });
-                   //回退功能
-                   Public.init();
-                   /*$('.return').on('click',function(){
-                       $(this).css('background-image','img/productList/click.png');
-                       history.back(-1);
-                   })*/
-               })
-
+               //立即申请
+               $('.productDetails_apply > a').on('click',function(){
+                   $(this).css('background','#de4c21');
+               });
+               //回退功能
+               Public.init();
+           })
     </script>
 </body>
 </html>
