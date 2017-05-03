@@ -58,10 +58,10 @@
                 </a>
             </div>-->
         </div>
-        <div class="loan_category">
+        <div class="loan_category" id="credit_loan">
             <div class="loan_category_l">
                 <div class="credit_loan">
-                    <a href="./productList.html" class="loan_info">
+                    <a class="loan_info"  id="4">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>经营贷款</strong>
@@ -70,7 +70,7 @@
                     </a>
                 </div>
                 <div class="consume_loan">
-                    <a href="./productList.html" class="loan_info">
+                    <a class="loan_info" id="5">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>消费贷款</strong>
@@ -81,7 +81,7 @@
             </div>
             <div class="loan_category_r">
                 <div class="management_loan">
-                    <a href="./productList.html" class="loan_info">
+                    <a class="loan_info" id="6">
                         <div class="loan_info_wrapper">
                             <i></i>
                             <strong>信用贷款</strong>
@@ -89,6 +89,15 @@
                         </div>
                     </a>
                 </div>
+                <!--<div class="management_loan">
+                    <a href="javascript:;" class="loan_info">
+                        <div class="loan_info_wrapper">
+                            <i></i>
+                            <strong>房抵贷</strong>
+                            <span>无抵押 无担保</span>
+                        </div>
+                    </a>
+                </div>-->
             </div>
 
         </div>
@@ -133,6 +142,10 @@
                 if(cval!=null)
                     document.cookie= name + "="+cval+";expires="+exp.toGMTString();
             }
+            //点击产品模块跳转地址
+            $('#credit_loan').delegate('a','click',function(){
+                window.location.href = './productList.html?id='+ $(this).attr('id');
+            });
             /*      $('.slider').slick({
              dots: true,
              infinite: false,
@@ -144,8 +157,9 @@
             $('#login').on('click',function(){
                 $(this).css('color','#ea592e');
             });
-            //关于我们 点击事件
+            //关于我们 点击变色
             $('document,body').on('touchstart',function(){});
+
             var phone = getCookie('phone');
             if(phone){
               /*     $('.user_name').show();

@@ -556,16 +556,16 @@
         newSlides = document.createDocumentFragment();
         originalSlides = _.$slider.children();
 
-        if(_.options.rows > 1) {
+        if(_.optionsdata > 1) {
 
-            slidesPerSection = _.options.slidesPerRow * _.options.rows;
+            slidesPerSection = _.options.slidesPerRow * _.optionsdata;
             numOfSlides = Math.ceil(
                 originalSlides.length / slidesPerSection
             );
 
             for(a = 0; a < numOfSlides; a++){
                 var slide = document.createElement('div');
-                for(b = 0; b < _.options.rows; b++) {
+                for(b = 0; b < _.optionsdata; b++) {
                     var row = document.createElement('div');
                     for(c = 0; c < _.options.slidesPerRow; c++) {
                         var target = (a * slidesPerSection + ((b * _.options.slidesPerRow) + c));
@@ -811,7 +811,7 @@
 
         var _ = this, originalSlides;
 
-        if(_.options.rows > 1) {
+        if(_.optionsdata > 1) {
             originalSlides = _.$slides.children().children();
             originalSlides.removeAttr('style');
             _.$slider.empty().append(originalSlides);

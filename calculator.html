@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--全屏模式，隐藏地址栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--定制iphone中safari顶端的状态条样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--禁止百度转码显示-->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!--关闭页面自动探测电话号码功能-->
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--禁止识别电话号码和邮箱-->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--优先使用ie最新版和chrome-->
+    <meta http-equiv="X-UA-compatible" content="IE=edge chrome=1">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--页面关键字-->
+    <meta content="" name="爱房金，贷款">
+    <!--页面描述-->
+    <meta content="" name="爱房金，贷款">
+    <title>房贷计算器</title>
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet/less" type="text/css" href="css/public.less">
+    <link rel="stylesheet/less" type="text/css" href="css/calculator.less">
+    <script src="js/less.js"></script>
+</head>
+<body>
+<header class="public_header">
+    <a href="javascript:;" class="return"></a>
+    <span class="productHeader">房贷计算器</span>
+</header>
+<div class="container">
+    <ul class="tabs">
+        <li class="active"><a href="#business">商业贷款</a></li>
+        <li><a href="#accumulation">公积金贷款</a></li>
+        <li><a href="#combind">组合贷款</a></li>
+    </ul>
+    <div class="tab_container">
+        <div id="business" class="tab_content" style="display: none;">
+            <form>
+                <div class="main">
+                    <div class="loan clearfix">
+                        <span class="loan_icon"></span><strong class="loan_amount">贷款金额</strong>
+                        <input type="number" class="cont">万
+                    </div>
+                    <div class="loan loan_period clearfix" id="business-loan-period">
+                        <span class="loan_icon"></span><strong class="loan_amount">贷款期限</strong>
+                        <span class="cont" id="loan-year">25年</span><i class="loan_choose"></i>
+                    </div>
+                    <div class="loan loan_rate">
+                        <span class="loan_icon"></span><strong class="loan_amount">商贷利率</strong>
+                        <span class="cont">基准利率</span><i class="loan_choose"></i>
+                        <div style="display: none">
+                            <div>商贷利率</div>
+                            <ul class="dropdown-menu">
+                                <li>基准利率</li>
+                                <li>基准利率8.5折</li>
+                                <li>10年</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="loan year_rate">
+                        <span class="loan_icon"></span><strong class="loan_amount">年利率输入</strong>
+                        <span class="cont">4.9</span>%
+                    </div>
+                    <div class="btn"><a href="javascript:;">计算</a></div>
+                </div>
+            </form>
+            <!--弹出框-->
+            <div id="loan_wrapper">
+                <div class="loan_cont" id="loan-cont">
+                    <p class="loan_cont_header">货款期限</p>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li class="active"><span>25年</span></li>
+                        <li><span>5年</span></li>
+                        <li><span>10年</span></li>
+                        <li><span>15年</span></li>
+                        <li><span>20年</span></li>
+                        <li id="definition"><strong>自定义</strong><input type="number" placeholder="输入自定义期限" class="loan_input" id="loan-input"><strong>年</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="accumulation" class="tab_content" style="display: none; ">
+                <form>
+                    <div class="main">
+                        <div class="loan clearfix">
+                            <span class="loan_icon"></span><strong class="loan_amount">贷款金额</strong>
+                            <input type="number" class="cont">万
+                        </div>
+                        <div class="loan loan_period clearfix" id="loan-period">
+                            <span class="loan_icon"></span><strong class="loan_amount">贷款期限</strong>
+                            <span class="cont">25年</span><i class="loan_choose"></i>
+                            <div style="display: none">
+                                <div>货款期限</div>
+                                <ul class="dropdown-menu">
+                                    <li>25年</li>
+                                    <li>5年</li>
+                                    <li>10年</li>
+                                    <li>15年</li>
+                                    <li>自定义<input type="number" placeholder="输入自定义期限">年</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="loan loan_rate">
+                            <span class="loan_icon"></span><strong class="loan_amount">商贷利率</strong>
+                            <span class="cont">基准利率</span><i class="loan_choose"></i>
+                            <div style="display: none">
+                                <div>商贷利率</div>
+                                <ul class="dropdown-menu">
+                                    <li>基准利率</li>
+                                    <li>基准利率8.5折</li>
+                                    <li>10年</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="loan year_rate">
+                            <span class="loan_icon"></span><strong class="loan_amount">年利率输入</strong>
+                            <span class="cont">4.9</span>%
+
+                        </div>
+                        <div class="btn"><a href="javascript:;">计算</a></div>
+                    </div>
+                </form>
+        </div>
+        <div id="combind" class="tab_content" style="display: none; ">
+                <form>
+                    <div class="main">
+                        <div class="loan clearfix">
+                            <span class="loan_icon"></span><strong class="loan_amount">贷款金额</strong>
+                            <input type="number" class="cont">万
+                        </div>
+                        <div class="loan loan_period clearfix">
+                            <span class="loan_icon"></span><strong class="loan_amount">贷款期限</strong>
+                            <span class="cont">25年</span><i class="loan_choose"></i>
+                            <div style="display: none">
+                                <div>货款期限</div>
+                                <ul class="dropdown-menu">
+                                    <li>25年</li>
+                                    <li>5年</li>
+                                    <li>10年</li>
+                                    <li>15年</li>
+                                    <li>自定义<input type="number" placeholder="输入自定义期限">年</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="loan loan_rate">
+                            <span class="loan_icon"></span><strong class="loan_amount">商贷利率</strong>
+                            <span class="cont">基准利率</span><i class="loan_choose"></i>
+                            <div style="display: none">
+                                <div>商贷利率</div>
+                                <ul class="dropdown-menu">
+                                    <li>基准利率</li>
+                                    <li>基准利率8.5折</li>
+                                    <li>10年</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="loan year_rate">
+                            <span class="loan_icon"></span><strong class="loan_amount">年利率输入</strong>
+                            <span class="cont">4.9</span>%
+
+                        </div>
+                        <div class="btn"><a href="javascript:;">计算</a></div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/calculator.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //Default Action
+        $(".tab_content").hide();
+        $("ul.tabs li:first").addClass("active").show();
+        $(".tab_content:first").show();
+
+        //On Click Event
+        $("ul.tabs li").click(function() {
+            $("ul.tabs li").removeClass("active");
+            $(this).addClass("active");
+            $(".tab_content").hide();
+            var activeTab = $(this).find("a").attr("href");
+            $(activeTab).fadeIn();
+            return false;
+        });
+        //点击显示弹出框
+        $('#business-loan-period').on('click',function(){
+            showBox();
+        });
+        function showBox(){
+            $('#loan_wrapper').css('display','block');
+        }
+        function hideBox(){
+            $('#loan_wrapper').css('display','none');
+        }
+        $('#dropdownMenu').on('click',function(ev){
+            var liTarget = $(ev.target).closest('li').eq(0).attr('id');
+//            console.log(liTarget);
+            if(liTarget == 'definition'){
+                return;
+            }else{
+                $(this).find('li').removeClass('active');
+                var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
+                $('#loan-year').html(text);
+                hideBox();
+            }
+        });
+        /*$('#loan_wrapper').delegate('li','click',function(ev){
+            // 如果是元素本身，则返回
+            var evt = ev.srcElement ? ev.srcElement : ev.target;
+            console.log(evt)
+            /!*if(evId == 'loan-cont'){
+                //选择弹出框选项
+                $('#dropdownMenu li').on('click',function(){
+                    $('#dropdownMenu li').removeClass('active');
+                    $(this).addClass('active');
+                });
+                return;
+            }*!/
+            /!*else {
+//                $(this).hide(); // 如不是则隐藏元素
+            }*!/
+        });*/
+    });
+</script>
+</body>
+</html>

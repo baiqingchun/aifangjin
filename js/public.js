@@ -15,11 +15,11 @@ var Public = function () {
                 nodeTop.fadeIn(100);
                 // nodeTop.show();
             }else{
-                nodeTop.stop()
+                nodeTop.stop();
                 nodeTop.fadeOut(100);
                 // nodeTop.hide();
             }
-        })
+        });
         //点击到达顶部按钮
         $('#goTop').on('click',function(){
             // $(this).removeClass().addClass('clickafter');
@@ -30,14 +30,14 @@ var Public = function () {
                 // $('#goTop').removeClass().addClass('clickbefore');
             })
         });
-    }
+    };
     var goBack = function () {
         //回退功能
         $('.return').on('click',function(){
             $(this).css('background-image','img/productList/click.png');
             history.back(-1);
         })
-    }
+    };
     return {
         init:function () {
             goBack();
@@ -46,4 +46,4 @@ var Public = function () {
             goTop();
         }
     }
-}()
+}();

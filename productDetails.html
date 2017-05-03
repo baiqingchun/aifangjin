@@ -38,65 +38,51 @@
         <a href="javascript:;" class="return"></a>
         <span class="productHeader">信用贷产品</span>
     </header>
-    <div class="productDetails_main">
+    <div class="productDetails_main" id="product-details" v-model="product">
         <div class="productDetails_info">
             <ul id="productDetails-info-list" class="productDetails_info_list clearfix">
                 <li>
-                    <i class="productDetails_icon rate"></i><span class="productDetails_item">最低<strong class="productDetails_rate">5.5%</strong>/年</span>
+                    <i class="productDetails_icon rate"></i><span class="productDetails_item">最低<strong class="productDetails_rate"><em v-text="product.annualized_interest"></em>%</strong>/年</span>
                 </li>
                 <li>
-                    <i class="productDetails_icon day"></i><span class="productDetails_item"><!--<strong class="productDetails_rate"></strong>-->1天放款</span>
+                    <i class="productDetails_icon day"></i><span class="productDetails_item"><strong  class="productDetails_rate"><em v-text="product.lending_time"></em>天</strong>放款</span>
                 </li>
                 <li>
-                    <i class="productDetails_icon loan"></i><span class="productDetails_item">最高可达100万</span>
+                    <i class="productDetails_icon loan"></i><span class="productDetails_item">最高可达<strong v-text="product.maximum_amount"></strong>万</span>
                 </li>
                 <li>
-                    <i class="productDetails_icon year"></i><span class="productDetails_item">1~5年</span>
+                    <i class="productDetails_icon year"></i><span class="productDetails_item"><strong class="start" v-text="product.product_term_1"></strong>~<strong class="end" v-text="product.product_term_2"></strong>年</span>
                 </li>
                 <li>
-                    <i class="productDetails_icon mortgage"></i><span class="productDetails_item">无需抵押</span>
+                    <i class="productDetails_icon mortgage"></i>
+                    <span class="productDetails_item">
+                        <strong v-if="product.whether_mortgage"></strong>
+                        <strong v-else>无</strong>需抵押</span>
                 </li>
                 <li>
-                    <i class="productDetails_icon people"></i><span class="productDetails_item">人群不限</span>
+                    <i class="productDetails_icon people"></i><span class="productDetails_item"><strong v-text="product.crowd_demand"></strong></span>
                 </li>
                 <li class="productDetails_repayment">
                     <i class="productDetails_icon methods"></i>
                     <span class="productDetails_item">
                         <!--<i class="productDetails_average_capital_plus_interest">等额本息</i>-->
-                        <strong class="productDetails_average_capital">等额本金</strong>
+                        <strong class="productDetails_average_capital" v-text="product.repayment_method"></strong>
                     </span>
                 </li>
-                <li>
-                    <i class="productDetails_icon area"></i><span class="productDetails_item">限北京</span>
-                </li>
+                <!--<li>
+                    <i class="productDetails_icon area"></i><span class="productDetails_item"></span>
+                </li>-->
             </ul>
         </div>
         <div class="productDetails_requirement">
             <div class="productDetails_requirement_header">申请条件</div>
             <div class="productDetails_requirement_wapper">
                 <ul class="productDetails_requirement_list" id="productDetails-requirements">
-                    <li>
-                        白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。
-                    </li>
-                    <li>
-                        白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        白日依山尽，黄河入海流。
-                    </li>
-                    <li>
-                        白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
-                    <li>
-                        白日依山尽，黄河入海流。欲穷千里目，更上一层楼。
-                    </li>
+                    <li v-text="product.application_conditions"></li>
                 </ul>
-                <div class="productDetails_requirement_more">
+                <!--<div class="productDetails_requirement_more">
                     <a href="javascript:;" class="productDetails_show_more">查看更多</a>
-                </div>
+                </div>-->
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
                 </div>
@@ -106,16 +92,11 @@
             <div class="productDetails_requirement_header">所需材料</div>
             <div class="productDetails_requirement_wapper">
                 <ul class="productDetails_requirement_list" id="productDetails-files">
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。白日依山尽，黄河入海流。</li>
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。</li>
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。</li>
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。</li>
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。</li>
-                    <li>白日依山尽，黄河入海流。欲穷千里目，更上一层楼。</li>
+                    <li v-text="product.materials_required"></li>
                 </ul>
-                <div class="productDetails_requirement_more">
+                <!--<div class="productDetails_requirement_more">
                     <a href="javascript:;" class="productDetails_show_more">查看更多</a>
-                </div>
+                </div>-->
                 <div class="productDetails_footer_icon">
                     <i></i><span></span>
                 </div>
@@ -124,40 +105,79 @@
     </div>
 
     <div class="productDetails_apply"><a href="./apply_fir.html">立即申请</a></div>
+
     <script src="js/jquery-3.2.0.min.js"></script>
-    <script src="data.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/vue.min.js"></script>
     <script>
-        $(function(){
-            //显示更多
-            var requirement = aData.requirement;
-            var file = aData.file;
-            showData(requirement,$('#productDetails-requirements'));
-            showData(file,$('#productDetails-files'));
-            function showData(data,context){
+           $(function(){
+               //获取url查询字符串里的键值
+               function getRequest(url) {
+                   var theRequest = new Object();
+                   if (url.indexOf("?") != -1) {
+                       var str = url.substr(1);
+                       strs = str.split("&");
+                       for (var i = 0; i < strs.length; i++) {
+                           theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+                       }
+                   }
+                   return theRequest;
+               }
+               //获取列表页点击的id
+               var id = getRequest(window.location.search).id;
+               var url = "http://192.168.85.245:8080/product/queryProductInfo";
+               //发送ajax请求
+               $.ajax({
+                   type:"POST",
+                   url:url,
+                   data:{ productId:id },
+                   dataType:"jsonp",
+                   jsonp: 'jsonpcallback',
+                   success:function(data){
+                       if(data.code === 0){
+                           var product = data.data.data;
+                           var vm = new Vue({
+                               el: '#product-details',
+                               data: {
+                                   product: product
+                               }
+                           });
+                           vm.$data.product = product;
+                       }
+                   },
+                   error:function(){
+                   }
+               });
+               /*//显示更多
+                function getmore(aData){
+                var requirement = aData.requirement;
+                var file = aData.file;
+                showData(requirement,$('#productDetails-requirements'));
+                showData(file,$('#productDetails-files'));
+                function showData(data,context){
                 var html = '';
                 for(var i=0;i<data.length;i++){
-                    html += '<li>\
-                        <i class="requirement_icon"></i>'+ data[i].message +'\
-                    </li>'
+                html += '<li>\
+                <i class="requirement_icon"></i>'+ data[i].message +'\
+                </li>'
                 }
                 context.append(html);
-            }
-            $('.productDetails_show_more').on('click',function () {
+                }
+                $('.productDetails_show_more').on('click',function () {
                 var node =  $(this).closest('.productDetails_requirement_wapper');
                 node.find('.productDetails_requirement_list').addClass('active');
                 node.find('.productDetails_requirement_more').css('display','none');
                 node.find('.productDetails_footer_icon').show();
-            });
-            //立即申请
-            $('.productDetails_apply > a').on('click',function(){
-                $(this).css('background','#de4c21');
-            });
-            //回退功能
-            $('.return').on('click',function(){
-                $(this).css('background-image','img/productList/click.png');
-                history.back(-1);
-            })
-        })
+                });
+                }*/
+
+               //立即申请
+               $('.productDetails_apply > a').on('click',function(){
+                   $(this).css('background','#de4c21');
+               });
+               //回退功能
+               Public.init();
+           })
     </script>
 </body>
 </html>
