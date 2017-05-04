@@ -22,14 +22,25 @@ var Form = function () {
     var CaptchaFlag = false;//判断验证码是否输入到4位，4位之后开始验证验证码
     var CaptchaCheckFlag = false;
     var URL1 = 'http://192.168.85.248:8080';
-    var URL = 'http://192.168.85.253:8081';
+    var URL = 'http://192.168.85.253:8090';
     var Message = {
         name: {required: '请输入姓名'},
         tel: {required: '手机号为空', phone: '请输入正确的手机号'},
         captcha: {required: '验证码不能为空', remote: '请输入正确的图形验证码', have: '您已注册过，请重新登录'},
         smscaptcha: {required: '短信验证码不能为空', remote: '请输入正确的短信验证码', have: '您已注册过，请重新登录'},
-        password: {required: '密码不能为空'},
-        rePassword:{required: '密码不能为空',different:'密码不一致，请重新输入'}
+        password: {required: '密码不能为空',num:'密码至少8个字符',str:'密码为数字和字母的组合'},
+        rePassword:{required: '密码不能为空',different:'密码不一致，请重新输入'},
+
+    };
+    var Select = {
+        application_amount: {required: '请选择贷款金额'},
+        loan_period: {required: '请选择贷款期限'},
+        credit:{required:'请选择信用情况'},
+        age: {required: '请输入年龄', num:'年龄在18到99之间'},
+        profession: {required: '请选择职业身份'},
+        providentFund: {required: '请选择公积金'},
+        house_type:{required: '请选择名下房产类型'},
+        car:{required: '请选择名下是否有车'}
     };
     var ErrorNode = $('.error_bottom');
     var TimeFlag = true;
@@ -43,6 +54,22 @@ var Form = function () {
         }
         // console.log('check mobile phone ' + string + ' failed.');
         return false;
+    };
+    /**
+     * 判断年龄
+     * */
+    var ageCheck = function (age) {
+        var pattern= /^\+?[1-9][0-9]*$/;
+        if(pattern.test(age)){
+             if(age>18&&age<99){
+                 return true;
+             }else{
+                 return false;
+             }
+        }else{
+            return false;
+        }
+
     };
     /*
     * 判断密码不一致
@@ -101,7 +128,7 @@ var Form = function () {
         CaptchaCheckFlag= true;
         $.ajax({
             type: "POST",
-            url: URL+"/userRegister/picVerification",
+            url: URL+"/PicVerify/picVerification",
             data: {
                 picVerification:val
             },
@@ -265,47 +292,69 @@ var Form = function () {
     var applyAjaxSec = function () {
 
         var selectParameter={userName:sessionStorage.name,phone:sessionStorage.phone};
+        var flag = true;
         // var selectParameter={userName:'啛啛喳喳',phone:'15032990822'};
         $('.form_group_select').each(function (k,v) {
             var option = $(v).data('parameter');
             if(option==='age'){
-                selectParameter[option] = $(v).find('input').val()
+                selectParameter[option] = $.trim($(v).find('input').val());
+                if(! selectParameter[option]){
+                    showError(ErrorNode,Select.age.required);
+                    flag = false;
+                    return false;
+                }
+                console.log('ageCheck(selectParameter[option])',ageCheck(selectParameter[option]));
+                console.log(selectParameter[option])
+                if(!ageCheck(selectParameter[option])){
+                    showError(ErrorNode,Select.age.num);
+                    flag = false;
+                    return false;
+                }
             }else {
                 selectParameter[option] = $(v).find('em').text();
-            }
-
-        });
-        selectParameter.application_amount=0;
-        selectParameter.providentFund==='是'?selectParameter.providentFund=1:selectParameter.providentFund=0;
-        selectParameter.car==='是'?selectParameter.car=1:selectParameter.car=0;
-        console.log(selectParameter)
-        $.ajax({
-            type: "POST",
-            url: URL1+"/LendRequestPo/SubmitApplication",
-            data: selectParameter,
-            dataType: "jsonp",
-            jsonp: 'jsonpcallback',
-            success: function (data) {
-                console.log(data);
-
-                if(data.code===9999){
-
-                    $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
-                    $('.alert').show();
-                    $('.cover').show();
-
-                }else if(data.code===9998){
-                    $('.alert').show();
-                    $('.cover').show();
-                    // $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
+                if(!selectParameter[option]){
+                    showError(ErrorNode,Select[option].required);
+                    flag = false;
+                    return false;
                 }
-
-                // Play with returned data in JSON format
-            },
-            error: function (msg) {
-                console.error(msg);
             }
+
         });
+        if(flag){
+            hideError(ErrorNode);
+            selectParameter.application_amount=0;
+            selectParameter.providentFund==='是'?selectParameter.providentFund=1:selectParameter.providentFund=0;
+            selectParameter.car==='是'?selectParameter.car=1:selectParameter.car=0;
+            console.log(selectParameter)
+            $.ajax({
+                type: "POST",
+                url: URL1+"/LendRequestPo/SubmitApplication",
+                data: selectParameter,
+                dataType: "jsonp",
+                jsonp: 'jsonpcallback',
+                success: function (data) {
+                    console.log(data);
+
+                    if(data.code===9999){
+
+                        $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
+                        $('.alert').show();
+                        $('.cover').show();
+
+                    }else if(data.code===9998){
+                        $('.alert').show();
+                        $('.cover').show();
+                        // $('.applay_alert p').text('我们会在24小时内联系您，请保持手机通畅');
+                    }
+
+                    // Play with returned data in JSON format
+                },
+                error: function (msg) {
+                    console.error(msg);
+                }
+            });
+        }
+
     };
     //注册ajax请求
     var registerAjax = function () {
@@ -313,10 +362,10 @@ var Form = function () {
         var pass = $('#password').val();
         var piccode = $('.captcha').val();
         var smscode = $('.smscaptcha').val();
-        alertCover();
+
         $.ajax({
             type: "POST",
-            url: URL+"/userRegister/registerTest",
+            url: URL+"//userRegister/register",
             // url: URL+"/userRegister/register",
             data: {
                 phone:phone,
@@ -328,12 +377,13 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
+                if(data.code===0||data.code===-300){
+                    alertCover();
                     setCookie('phone',phone);
                     window.location.href='./index.html'
                 }else{
                     hideCover();
-                    showError(ErrorNode,'注册失败')
+                    showError(ErrorNode,data.msg)
                     // showError(ErrorNode,Message.captcha.remote)
                 }
                 // Play with returned data in JSON format
@@ -417,7 +467,7 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
+                if(data.code===0||data.code===-302){
                     sessionStorage.phone = phone;
                     window.location.href = './findpass_sec.html'
                 }else{
@@ -506,6 +556,40 @@ var Form = function () {
 
         return true;
     };
+    //密码必须包含数字和字母，可以包含特殊字符
+    function CheckPassWordS(password) {
+        var str = password;
+        if (str == null || str.length < 8) {
+            return false;
+        }
+        var reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
+        if (reg.test(str)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    //必须包含数字加字母 不能包含特殊符号等
+    /**
+     * @return {boolean}
+     */
+    function CheckPassWord(password) {//必须为字母加数字且长度不小于8位
+        var str = password;
+        if (str === null || str.length <8) {
+            return false;
+        }
+        var reg1 = new RegExp(/^[0-9A-Za-z]+$/);
+        if (!reg1.test(str)) {
+            return false;
+        }
+        var reg = new RegExp(/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/);
+        if (reg.test(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     //没有ajax的验证
     var verify = function (name, val,v) {
         var nodeerror =  $('.error_bottom');//公共的错误
@@ -521,6 +605,17 @@ var Form = function () {
                      $(v).focus();
                      return false;
                  }
+             }
+             if(name==='password'){
+                if(val.length<8){
+                    $(v).focus();
+                    showError(nodeerror, Message[name].num);
+                    return false;
+                }else if(!CheckPassWord(val)){
+                    $(v).focus();
+                    showError(nodeerror, Message[name].str);
+                    return false;
+                }
              }
         } else {
             if(Message[name]){
@@ -588,7 +683,7 @@ var Form = function () {
             var node  = $('.jcaptcha');
             var timestamp = Date.parse(new Date());
             // node.attr('src',URL+'/userRegister/getPic_code?time='+timestamp)
-            node.attr('src',URL1+'/PicVerify/getPic_code?time='+timestamp)
+            node.attr('src',URL+'/PicVerify/getPic_code?time='+timestamp)
         })
     };
     var entiretyVerify = function (node) {
@@ -663,8 +758,8 @@ var Form = function () {
                 return;
             }
             if(TimeFlag){
-                TimeFlag =false;
                 if(CaptchaCheckFlag){
+                    TimeFlag =false;
                     if(type==='login'){
                         smsAjaxLogin();
                     }else if(type==='apply'){
@@ -689,16 +784,20 @@ var Form = function () {
         var hideUl = function () {
 
             $('.cover_white').hide();
-            $('.select_ul').fadeOut();
-            $('.form_group_select').removeClass('active');
+            $('.select_ul').fadeOut(function () {
+                $('.form_group_select').removeClass('active');
+            });
+
         };
         $('.select').click(function () {
             var _this = this;
             var ulNode = $(_this).closest('.form_group_select')
 
             if (ulNode.hasClass('active')) {
-                ulNode.removeClass('active');
-                ulNode.find('.select_ul').fadeOut();
+
+                ulNode.find('.select_ul').fadeOut(function () {
+                    ulNode.removeClass('active');
+                });
             } else {
                 $('.form_group_select').removeClass('active')
                  $('.select_ul').hide()
@@ -713,10 +812,11 @@ var Form = function () {
         });
         $('.select_ul li').click(function () {
             var val = $(this).text();
+            var _this = this;
             var pnode=$(this).closest('.form_group_select');
             console.log(val)
-            $(this).closest('.select_ul').find('li').removeClass('active');
-            $(this).closest('.select_ul').fadeOut()
+            $(_this).closest('.select_ul').find('li').removeClass('active');
+            $(this).closest('.select_ul').fadeOut();
             $(this).addClass('active');
             pnode.find('strong').css('visibility', 'hidden')
             pnode.find('em').html(val);
@@ -807,7 +907,6 @@ var Form = function () {
                 e.preventDefault();
                 var pass = $('.password').val();
                 var repas = $('.re_password').val();
-
                 if(entiretyVerify(this)){
                     if(passDiff(pass,repas)){
                         showError(ErrorNode,Message.rePassword.different);
@@ -830,9 +929,9 @@ var Form = function () {
 
         },
         select: function () {
-            if(!sessionStorage.name){
+          /*  if(!sessionStorage.name){
                 window.location.href='./apply_fir.html'
-            }
+            }*/
             selectCostum();//自定义select
             agreement();//点击是否同意爱房金协议
             //点击提交信息按钮
@@ -841,16 +940,16 @@ var Form = function () {
                 var _this = this;
                 var falg = $(_this).hasClass('disabled');
                 var input_flag = true;//true代表所有输入框都已输入  false代表还有 没有选择的
-                $('.form_group_select').each(function (k,v) {
+               /* $('.form_group_select').each(function (k,v) {
                       if(!$(v).hasClass('selected')){
                           input_flag= false;
                       }
-                });
+                });*/
                 // applyAjaxSec();
                 // input_flag = true;
                 console.log(input_flag);
                 console.log(!falg&&input_flag)
-                if((!falg)&&input_flag){
+                if((!falg)){
                     applyAjaxSec();
                 }
 

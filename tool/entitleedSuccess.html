@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--全屏模式，隐藏地址栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--定制iphone中safari顶端的状态条样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--禁止百度转码显示-->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!--关闭页面自动探测电话号码功能-->
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--禁止识别电话号码和邮箱-->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--优先使用ie最新版和chrome-->
+    <meta http-equiv="X-UA-compatible" content="IE=edge chrome=1">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <title>购房资格测试</title>
+    <script src="../js/rem.js"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="../css/public.less"/>
+    <link rel="stylesheet/less" type="text/css" href="../css/tool/entitle.less"/>
+    <script src="../js/less.js"></script>
+</head>
+<body>
+<div class="entitle_container house_two">
+    <header class="public_header com_header">
+        <a href="javascript:;" class="return"></a>
+        购房资格测试
+    </header>
+    <div class="house_container padding30 margintop185">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div class="table_fir">
+            <div class="house_info">
+                <div class="house_left">
+                    <img src="../img/tool/one.png" alt="">
+                </div>
+                <div class="house_right table_back_one">
+                    <div class="h_top h_border"></div>
+                    <table class="one">
+                        <tr>
+                            <th>房屋性质</th>
+                            <th class="width118">首付</th>
+                            <th class="lastCol">利率</th>
+                        </tr>
+                        <tr>
+                            <td>普通住宅</td>
+                            <td><span>35%</span></td>
+                            <td class="lastCol"><span>4.655%</span>(95折)</td>
+                        </tr>
+                        <tr class="lastrow">
+                            <td>非普通住宅</td>
+                            <td><span>35%</span></td>
+                            <td class="lastCol"><span>4.655%</span>(95折)</td>
+                        </tr>
+                    </table>
+                    <div class="h_bottom h_border"></div>
+                    <p>部分银行会根据情况调高首付成数及利率甚至拒贷</p>
+                </div>
+            </div>
+        </div>
+        <div class="line"><div class="line_dotted"></div></div>
+        <div class="table_sec">
+            <div class="house_info">
+                <div class="house_left">
+                    <img src="../img/tool/two.png" alt="">
+                </div>
+                <div class="house_right table_back_two">
+                    <div class="h_top h_border"></div>
+                    <table class="two">
+                        <tr>
+                            <th>房屋性质</th>
+                            <th class="width118">首付</th>
+                            <th class="lastCol">利率</th>
+                        </tr>
+                        <tr>
+                            <td>普通住宅</td>
+                            <td><span>35%</span></td>
+                            <td class="lastCol"><span>4.655%</span>(95折)</td>
+                        </tr>
+                        <tr class="lastrow">
+                            <td>非普通住宅</td>
+                            <td><span>35%</span></td>
+                            <td class="lastCol"><span>4.655%</span>(95折)</td>
+                        </tr>
+                    </table>
+                    <div class="h_bottom h_border"></div>
+                    <p>部分银行会根据情况调高首付成数及利率甚至拒贷</p>
+                </div>
+            </div>
+        </div>
+        <div class="house_bottom">
+            <a href="javascript:;">重新评估</a>
+        </div>
+    </div>
+</div>
+<script>
+    var a = document.getElementsByTagName('a');
+    for(var i = 0; i < a.length; i++)
+    {
+        a[i].addEventListener('touchstart',function(){},false);
+    }
+</script>
+</body>
+</html>
