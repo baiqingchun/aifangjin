@@ -102,7 +102,7 @@
 
         </div>
         <div class="application_channel">
-            <a href="./apply_fir.html">快速申请通道</a>
+            <a id="application_channel_btn">快速申请通道</a>
         </div>
     </div>
     <footer class="public_footer">
@@ -144,7 +144,7 @@
             }
             //点击产品模块跳转地址
             $('#credit_loan').delegate('a','click',function(){
-                window.location.href = './productList.html?id='+ $(this).attr('id');
+                window.location.href = './productList.html?id='+ $(this).attr('id')+'m';
             });
             /*      $('.slider').slick({
              dots: true,
@@ -159,7 +159,12 @@
             });
             //关于我们 点击变色
             $('document,body').on('touchstart',function(){});
+            //快速申请通道
+            $('#application_channel_btn').on('click',function () {
+                $(this).css('background','#de4c21');
+                window.location.href = "./apply_fir.html";
 
+            });
             var phone = getCookie('phone');
             if(phone){
               /*     $('.user_name').show();

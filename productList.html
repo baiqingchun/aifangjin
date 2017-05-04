@@ -219,12 +219,13 @@
             }
             //获取列表页点击的id
             var id = getRequest(window.location.search).id;
+//            console.log(id)
             //根据点击的id显示产品种类
-            if(id == 4){
+            if(id === '4m'){
                 $('.productHeader i').text('经营');
-            }else if(id == 5){
+            }else if(id === '5m'){
                 $('.productHeader i').text('消费');
-            }else if(id == 6){
+            }else if(id === '6m'){
                 $('.productHeader i').text('信用');
             }
             var url = "http://192.168.85.245:8080/product/queryProductList";

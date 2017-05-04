@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--全屏模式，隐藏地址栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--定制iphone中safari顶端的状态条样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--禁止百度转码显示-->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!--关闭页面自动探测电话号码功能-->
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <!--禁止识别电话号码和邮箱-->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--优先使用ie最新版和chrome-->
+    <meta http-equiv="X-UA-compatible" content="IE=edge chrome=1">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!--页面关键字-->
+    <meta content="" name="爱房金，贷款">
+    <!--页面描述-->
+    <meta content="" name="爱房金，贷款">
+    <title>房贷计算器</title>
+    <script src="../js/rem.js"></script>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet/less" type="text/css" href="../css/public.less">
+    <link rel="stylesheet/less" type="text/css" href="../css/calculator.less">
+    <link rel="stylesheet/less" type="text/css" href="../css/calculator_result.less">
+    <script src="../js/less.js"></script>
+</head>
+<body>
+<header class="public_header">
+    <a href="javascript:;" class="return"></a>
+    <span class="productHeader">房贷计算器</span>
+</header>
+<div class="container" id="afterCompute">
+    <ul class="tabs">
+        <li class="active"><a href="#fixed-payment-mortgage">等额本息</a></li>
+        <li><a href="#fixed-basis-mortgage">等额本金</a></li>
+    </ul>
+    <div class="tab_container">
+        <div class="contBox" id="fixed-payment-mortgage">
+            <form>
+                <div class="main">
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">贷款金额</strong><span class="loan_amount_calculate loan_money"><i></i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">还款月数</strong><span class="loan_amount_calculate loan_month"><i></i>个月</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">总支付利息</strong><span class="loan_amount_calculate payments_rate"><i>5000000.00</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">本息合计</strong><span class="loan_amount_calculate"><i>5000000.00</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">首月月供</strong><span class="loan_amount_calculate first_month_payment"><i>1890</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">每月递减</strong><span class="loan_amount_calculate"><i>--</i>元</span>
+                    </div>
+                    <p class="loan_calculator_info">*贷款利率仅供计算使用，实际交易利率由银行评估结果为准</p>
+
+                </div>
+            </form>
+        </div>
+        <div class="contBox" id="fixed-basis-mortgage">
+            <form>
+                <div class="main">
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">贷款金额</strong><span class="loan_amount_calculate loan_money"><i></i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">还款月数</strong><span class="loan_amount_calculate loan_month"><i>360</i>个月</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">总支付利息</strong><span class="loan_amount_calculate payments_rate"><i>5000000.00</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">本息合计</strong><span class="loan_amount_calculate"><i>5000000.00</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">首月月供</strong><span class="loan_amount_calculate first_month_payment"><i>1890</i>元</span>
+                    </div>
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">每月递减</strong><span class="loan_amount_calculate"><i>189</i>元</span>
+                    </div>
+                    <p class="loan_calculator_info">*贷款利率仅供计算使用，实际交易利率由银行评估结果为准</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/jquery-3.2.0.min.js"></script>
+    <script src="../js/public.js"></script>
+    <script src="../js/calculator.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //Default Action
+            $(".contBox").hide();
+            $("ul.tabs li:first").addClass("active").show();
+            $(".contBox:first").show();
+
+            //On Click Event
+            $("ul.tabs li").click(function() {
+                $("ul.tabs li").removeClass("active");
+                $(this).addClass("active");
+                $(".contBox").hide();
+                var activeTab = $(this).find("a").attr("href");
+                $(activeTab).fadeIn();
+                return false;
+            });
+            //从本地存储里获取数据
+            var strStoreDate = window.localStorage?localStorage.getItem('data'):Cookie.read('data');
+            //分割字符串
+            var array = strStoreDate.split(',');
+            console.log(array);
+            //贷款金额
+            var money = array[0];
+            //还款月数
+            var months = array[1];
+            //年利率
+            var rate = array[2];
+            //月利率
+            var monthRate = rate / 12;
+//            console.log(monthRate);
+            //贷款金额
+            $('.loan_money i').text(money);
+            //还款月数
+            $('.loan_month i').text(months);
+            //每月月供额
+            var a = 1 + monthRate;
+            var b = Math.pow(a,months);
+            var monthAmount = (money * monthRate * b) / (b - 1);
+//            console.log(monthAmount);
+            //总支付利息
+            var payRate = months * monthAmount - money;
+
+            $('.payments_rate i').text(payRate);
+
+            /*$.each(array,function(key,value){
+                console.log(key);
+                console.log(value);*/
+                //根据数据进行赋值操作
+                /*$('.loan_money i').text(array[0]);
+                $('.loan_month i').text(array[1]);*/
+//            });
+
+            //回退功能
+            Public.init();
+
+        });
+    </script>
+</body>
+</html>
