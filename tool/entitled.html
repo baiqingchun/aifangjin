@@ -35,7 +35,7 @@
         <a href="javascript:;" class="return"></a>
         购房资格测试
     </header>
-    <div class="house_container padding50 margintop288">
+    <div id="one" class="main_page house_container padding50 margintop288" style="display: table">
         <div class="house_back">
             <img src="../img/tool/back.png" alt="">
         </div>
@@ -43,15 +43,15 @@
             <h2>
                 您的户籍情况？
             </h2>
-            <div class="check_group">
+            <div class="check_group" data-num="1a" data-next="two">
                 <div class="input_check">
                     <input type="checkbox" >
                     <div class="chose"></div>
-                    <p>本地户口「含集体户口（非学生）」</p>
+                    <p>本地户口(含集体户口（非学生）]</p>
                 </div>
                 <div class="clear"></div>
             </div>
-            <div class="check_group">
+            <div class="check_group" data-num="1b" data-next="three">
                 <div class="input_check">
                     <input type="checkbox" >
                     <div class="chose"></div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="clear"></div>
             </div>
-            <div class="check_group">
+            <div class="check_group" data-num="1c" data-next="five">
                 <div class="input_check">
                     <input type="checkbox" >
                     <div class="chose"></div>
@@ -67,23 +67,334 @@
                 </div>
                 <div class="clear"></div>
             </div>
-            <div class="check_group">
+            <div class="check_group" data-num="1d" data-next="two">
                 <div class="input_check">
                     <input type="checkbox" >
                     <div class="chose"></div>
-                    <p>外地户口，但有北京居住证</p>
+                    <p>外地户口，但有北京工作居住证</p>
                 </div>
 
 
 
                 <div class="clear"></div>
             </div>
-            <div class="house_bottom">
-                <a href="./entitleedSuccess.html">上一步</a>
+            <div class="check_group" data-num="1e" data-next="six">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>港澳台人士</p>
+                </div>
+                <div class="clear"></div>
             </div>
+            <div class="check_group" data-num="1f" data-next="six">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>外籍人士</p>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div id="two" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div>
+            <h2>
+                您的婚姻状况
+            </h2>
+            <div class="check_group" data-num="2a" data-next="three">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>已婚</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="2b" data-next="three">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>未婚、丧偶</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="2c" data-next="seven">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>离异</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div id="three" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div>
+            <h2>
+                当前您家庭名下在京住宅数量
+            </h2>
+            <div class="check_group" data-num="3a" data-next="four">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>无房</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="3b" data-next="four" data-result="C"><!--//结果-->
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>1套</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="3c" data-result="C">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>2套或以上</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div id="four" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div class="result_container">
+            <h2>
+                当前您全国贷款记录情况
+            </h2>
+            <div class="check_group" data-num="4a"  data-result="B1" data-result1="B2" data-result3="A1"><!--//结果-->
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>全国无贷款记录</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="4b" data-result="A2" data-result1="B2" ><!--//结果-->
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>全国有任意数量已结清贷款记录</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="4c" data-result="A2" data-result1="B2"><!--//结果-->
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>全国有1套未结清贷款记录</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="4d" data-result="A3" data-result1="B3"><!--//结果-->
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>全国有2套或2套以上未结清贷款记录</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div id="five" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div>
+            <h2>
+                您在北京社保或个人所得税连续缴存月数
+            </h2>
+            <div class="check_group" data-num="5a" data-next="two">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>60个月及以上</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="5b" data-result="C">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>不足60个月</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div id="six" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div>
+            <h2>
+                您在中国境内情况
+            </h2>
+            <div class="check_group" data-num="6a" data-next="two">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>在境内工作</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="6b" data-next="two">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>在境内学习</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="6c" data-result="C">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>在境内无工作</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div id="seven" class="main_page house_container padding50 margintop288">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div>
+            <h2>
+                您在什么时候离异
+            </h2>
+            <div class="check_group" data-num="7a" data-next="three">
+                <div class="input_check">
+                    <input type="checkbox">
+                    <div class="chose"></div>
+                    <p>一年内</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="check_group" data-num="7b" data-next="three">
+                <div class="input_check">
+                    <input type="checkbox" >
+                    <div class="chose"></div>
+                    <p>一年前</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="house_bottom">
+                <a class="last" href="javascript:;">上一步</a>
+            </div>
+        </div>
+    </div>
+    <div class="main_page house_container padding30 margintop185" id="vue_container">
+        <div class="house_back">
+            <img src="../img/tool/back.png" alt="">
+        </div>
+        <div class="table_fir" v-show="!message.buy">
+            <div class="house_info">
+                <div class="house_left">
+                    <img src="../img/tool/one.png" alt="">
+                </div>
+                <div class="house_right table_back_one">
+                    <div class="h_top h_border"></div>
+                    <table class="one">
+                        <tr>
+                            <th>房屋性质</th>
+                            <th class="width118">首付</th>
+                            <th class="lastCol">利率</th>
+                        </tr>
+                        <tr>
+                            <td>普通住宅</td>
+                            <td><span>{{message.payDown}}</span></td>
+                            <td class="lastCol"><span>{{message.reta}}<!--4.655%--></span>({{message.discount}})</td>
+                        </tr>
+                        <tr class="lastrow">
+                            <td>非普通住宅</td>
+                            <td><span>{{message.payDownNot}}</span></td>
+                            <td class="lastCol"><span>{{message.retaNot}}</span>({{message.discountNot}})</td>
+                        </tr>
+                    </table>
+                    <div class="h_bottom h_border"></div>
+                    <p v-show="message.ps">部分银行会根据情况调高首付成数及利率甚至拒贷</p>
+                </div>
+            </div>
+        </div>
+        <div class="line"  v-show="message.show"><div class="line_dotted"></div></div>
+        <div class="table_sec" v-show="message.show&&!message.buy">
+            <div class="house_info">
+                <div class="house_left">
+                    <img src="../img/tool/two.png" alt="">
+                </div>
+                <div class="house_right table_back_two">
+                    <div class="h_top h_border"></div>
+                    <table class="two">
+                        <tr>
+                            <th>房屋性质</th>
+                            <th class="width118">首付</th>
+                            <th class="lastCol">利率</th>
+                        </tr>
+                        <tr>
+                            <td>普通住宅</td>
+                            <td><span>{{message.payDownSec}}</span></td>
+                            <td class="lastCol"><span>{{message.retaSec}}</span>({{message.discountSec}})</td>
+                        </tr>
+                        <tr class="lastrow">
+                            <td>非普通住宅</td>
+                            <td><span>{{message.payDownSecNot}}</span></td>
+                            <td class="lastCol"><span>{{message.retaSecNot}}</span>({{message.discountSecNot}})</td>
+                        </tr>
+                    </table>
+                    <div class="h_bottom h_border"></div>
+                    <p v-show="message.ps"> 部分银行会根据情况调高首付成数及利率甚至拒贷</p>
+                </div>
+            </div>
+        </div>
+        <div class="table_no" v-show="message.buy" >
+            <img src="../img/tool/try.png" alt="">
+        </div>
+        <div class="house_bottom">
+            <a href="javascript:;">重新评估</a>
         </div>
     </div>
 </div>
 <div class="clear"></div>
+<script src="../js/vue.min.js"></script>
+<script src="../js/jquery-3.2.0.min.js"></script>
+<script src="/aifangjin/js/houseTest.js"></script>
+<script>
+    var a = document.getElementsByTagName('a');
+    for(var i = 0; i < a.length; i++)
+    {
+        a[i].addEventListener('touchstart',function(){},false);
+    }
+    $(document).ready(function () {
+        HouseTest.init();
+    })
+</script>
 </body>
 </html>

@@ -34,11 +34,11 @@
         <a href="javascript:;" class="return"></a>
         购房资格测试
     </header>
-    <div class="house_container padding30 margintop185">
+    <div class="house_container padding30 margintop185" id="vue_container">
         <div class="house_back">
             <img src="../img/tool/back.png" alt="">
         </div>
-        <div class="table_fir">
+  <!--      <div class="table_fir">
             <div class="house_info">
                 <div class="house_left">
                     <img src="../img/tool/one.png" alt="">
@@ -96,18 +96,33 @@
                     <p>部分银行会根据情况调高首付成数及利率甚至拒贷</p>
                 </div>
             </div>
+        </div>-->
+        <div class="table_no">
+            <img src="../img/tool/try.png" alt="">
         </div>
         <div class="house_bottom">
             <a href="javascript:;">重新评估</a>
         </div>
+        
     </div>
 </div>
+<script src="../js/vue.min.js"></script>
+<script src=""></script>
 <script>
     var a = document.getElementsByTagName('a');
     for(var i = 0; i < a.length; i++)
     {
         a[i].addEventListener('touchstart',function(){},false);
     }
+/*    var app = new Vue({
+        el: '#vue_container',
+        data: {
+            message:{
+                a:1234566,
+                show:false
+            }
+        }
+    })*/
 </script>
 </body>
 </html>
