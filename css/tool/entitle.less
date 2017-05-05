@@ -118,6 +118,23 @@ body{
       margin-top: 3/@r;
 
     }
+    &.active{
+      .input_check{
+        .chose{
+          background-image: url("../../img/form/chose_ac.png");
+          width: 22/@r;
+          height: 22/@r;
+          background-size: contain;
+          border: 1px solid red;
+        }
+        p{
+          color: @fontcolor;
+        }
+      }
+
+
+
+    }
     .chose{
       background: url("../../img/form/chose.png") no-repeat 0 0;
       width: 22/@r;
@@ -134,7 +151,7 @@ body{
       /*     border: 1px solid;
            width: 50px;
            height: 50px;*/
-      &:checked + .chose{
+ /*     &:checked + .chose{
         background-image: url("../../img/form/chose_ac.png");
         width: 22/@r;
         height: 22/@r;
@@ -143,7 +160,7 @@ body{
       }
       &:checked + .chose + p{
         color: @fontcolor;
-      }
+      }*/
     }
 
     p{
