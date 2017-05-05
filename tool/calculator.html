@@ -283,8 +283,6 @@
             var defined = $('#loan-input').val();
             if(defined == '' || defined == '0'){
                 defined = '25';
-            }else{
-
             }
             $('#business-year').html(defined);
             console.log(defined);
@@ -381,10 +379,12 @@
         //自定义输入框失焦事件
         $('#accumulation-loan-input').on('blur',function(){
             var defined = $('#accumulation-loan-input').val();
-            console.log(defined);
-            var html = '';
-            html += defined;
-            $('#accumulation-period').html(html);
+                if(defined == '' || defined == '0'){
+                    defined = '25';
+                }
+                $('#accumulation-period').html(defined);
+                console.log(defined);
+
         });
         //点击公积金利率
         $('#accumulation-loan-rate').on('click',function(){
