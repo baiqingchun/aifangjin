@@ -25,7 +25,7 @@ var HouseTest = function () {
             lastPage_record = e;
             //alert("PUSHED:"+e);
         }
-        history.pushState({label: e}, "");
+        // history.pushState({label: e}, "");
         History.push(e);
     };
     /*
@@ -54,18 +54,21 @@ var HouseTest = function () {
         $('.return').click(function () {
             his();
         });
-        window.onpopstate = function (event) {
+        $('.last').click(function () {
+            his();
+        })
+       /* window.onpopstate = function (event) {
             his();
 
-          /*  if (event.state) {
+          /!*  if (event.state) {
                 //labelOutput.textContent = event.state.label;
                 //alert("backward");
                 //alert(JSON.stringify(event.state))
             } else {
                 // alert("last Page");
-            }*/
+            }*!/
 
-        }
+        }*/
 
     };
     /**
@@ -76,9 +79,11 @@ var HouseTest = function () {
         var nodeBack = $('.entitle_container')
         $('.main_page').hide();
         obj.css('display','table');
+        console.log(obj.attr('id'))
+        nodeBack.removeClass();
+        nodeBack.addClass('entitle_container');
         if(obj.attr('id')==='vue_container'){
-            nodeBack.removeClass();
-            nodeBack.addClass('entitle_container');
+
             console.log(house)
             if(house.indexOf('A')>-1){
                 nodeBack.addClass('house_two');
@@ -100,7 +105,6 @@ var HouseTest = function () {
      * 显示结果页面
      * */
     var showResult = function (info) {
-        alert(info)
         showPage($('#vue_container'),false,info);
          if(info==='A1'){
              App.$data.message = {
@@ -229,11 +233,12 @@ var HouseTest = function () {
          }
     };
     /**
-     *给上一步添加事件
+     *给评估添加事件
      */
-    var last = function () {
-      $('.last').click(function () {
-          showPage($('#two'));
+    var repeat = function () {
+      $('.repeat_assess').click(function () {
+          History= ['one'];
+          showPage($('#one'),true);
       })
     };
 
@@ -252,17 +257,9 @@ var HouseTest = function () {
               var result2 = $(_this).data('result2');
               var num = $(_this).data('num');
               List.push(num);
-              nodeC.find('input').attr('checked',false);
-          /*    $('.check_group',nodeC).each(function (k,v) {
-                 $(v).removeAttr('checked');
-              });*/
+          nodeC.find('.check_group').removeClass('active');
+          $(_this).addClass('active')
 
-
-              if(nodeinput.is(':checked')){//判断是否选中
-                  nodeinput.removeAttr('checked')
-              }else {
-                  nodeinput.attr('checked',true)
-              }
               var len = List.length
               if(num === '3b'){
                   if(List[len-2]==='2b'||List[len-2].indexOf('7')>0){
@@ -293,6 +290,7 @@ var HouseTest = function () {
                   }else{
                       showResult('B1');
                   }
+                  return
               }else if(num==='4b'){
                   if(List[1]==='2a'&&List[2]==='3a'){
                       showResult('A2');//结果A1
@@ -337,8 +335,9 @@ var HouseTest = function () {
                 }
             });
             backwardEventHandle();
-            last();//上一步
+            // last();//上一步
             chice();//单选框
+            repeat();
         }
     }
 }();
