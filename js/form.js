@@ -178,6 +178,7 @@ var Form = function () {
                     });
                 }else{
                     showError(ErrorNode,Message.captcha.remote)
+                    TimeFlag = true;
                 }
                 // Play with returned data in JSON format
             },
@@ -211,6 +212,7 @@ var Form = function () {
                     TimeFlag = false;
                 }else{
                     showError(ErrorNode,data.msg)
+                    TimeFlag = true;
                 }
                 // Play with returned data in JSON format
             },
@@ -245,6 +247,7 @@ var Form = function () {
                     });
                 }else{
                     showError(ErrorNode,data.msg)
+                    TimeFlag = true;
                 }
                 // Play with returned data in JSON format
             },
