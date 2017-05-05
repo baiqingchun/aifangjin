@@ -116,7 +116,8 @@
                 return false;
             });
             //从本地存储里获取数据
-            var strStoreDate = window.localStorage?localStorage.getItem('data'):Cookie.read('data');
+            var strStoreDate = window.localStorage?localStorage.getItem('accumulation_data'):Cookie.read('data');
+            console.log(strStoreDate)
             //分割字符串
             var array = strStoreDate.split(',');
             console.log(array);
@@ -138,7 +139,6 @@
             var b = Math.pow(a,months);
             var monthAmount = parseInt((money * monthRate * b) / (b - 1));
             console.log(monthAmount);
-
             //总支付利息 等额本息
             var payment = months * monthAmount - money;
             var payRate = (payment).toFixed(2);
@@ -154,7 +154,7 @@
             //等额本金
             var allTotal_basis = (money + basis).toFixed(2);
             $('#loan-total-basis i').text(allTotal_basis);
-           //首月月供
+            //首月月供
             var first_month = parseInt((money / months) + money * monthRate);
             $('.first_month_payment i').text(first_month);
             //每月月供
