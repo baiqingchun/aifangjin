@@ -285,7 +285,7 @@
         //选择贷款利率下拉列表内容
         var defualtRate = 4.9;
         var defualtDiscount = 0.85;
-
+        selectRateMenu($('#rate-dropdownMenu'),$('#loan-base-rate'),$('#loan-rate-wrapper'),$('#rate-percent'),'rate-base','rate-base-discount')
         $('#rate-dropdownMenu').on('click',function(ev){
             var liTarget = $(ev.target).closest('li').eq(0).attr('id');
             if(liTarget === 'definition'){
@@ -513,9 +513,13 @@
         });
     }
     //选择贷款利率下拉列表内容
-    /*function selectRateMenu(ratePercent,rateBase,rateBaceDiscount,defualtRate,defualtDiscount ){
-        var liTarget = $(ev.target).closest('li').eq(0).attr('id');
-        selectMenu($('#rate-dropdownMenu'),$('#loan-base-rate'),$('#loan-rate-wrapper'));
+    function selectRateMenu(menu,loanBaseRate,loanRateWrapper,ratePercent,rateBase,rateBaceDiscount,defualtRate,defualtDiscount ){
+        menu.on('click',function(ev){
+             var liTarget = $(ev.target).closest('li').eq(0).attr('id');
+             $(this).find('li').removeClass('active');
+             var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
+             loanBaseRate.html(text);
+             loanRateWrapper.removeClass('show').addClass('hide');
             //根据选项展示不同数值
             if(liTarget === rateBase){
                 ratePercent.val(defualtRate);
@@ -523,8 +527,8 @@
                 var rate = defualtRate * defualtDiscount;
                 ratePercent.val(rate);
             }
+        });
     }
-*/
 </script>
 </body>
 </html>
