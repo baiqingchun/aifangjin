@@ -22,7 +22,8 @@ var Form = function () {
     var CaptchaFlag = false;//判断验证码是否输入到4位，4位之后开始验证验证码
     var CaptchaCheckFlag = false;
     var URL1 = 'http://192.168.85.248:8080';
-    var URL = 'http://192.168.85.253:8090';
+    // var URL = 'http://192.168.85.248:8080';
+    var URL = 'http://192.168.85.253:8080';
     var Message = {
         name: {required: '请输入姓名'},
         tel: {required: '手机号为空', phone: '请输入正确的手机号'},
@@ -128,7 +129,7 @@ var Form = function () {
         CaptchaCheckFlag= true;
         $.ajax({
             type: "POST",
-            url: URL+"/PicVerify/picVerification",
+            url: URL1+"/PicVerify/picVerification",
             data: {
                 picVerification:val
             },
@@ -184,6 +185,7 @@ var Form = function () {
             },
             error: function (msg) {
                 console.error(msg);
+                TimeFlag = true;
             }
         });
     };
@@ -686,7 +688,7 @@ var Form = function () {
             var node  = $('.jcaptcha');
             var timestamp = Date.parse(new Date());
             // node.attr('src',URL+'/userRegister/getPic_code?time='+timestamp)
-            node.attr('src',URL+'/PicVerify/getPic_code?time='+timestamp)
+            node.attr('src',URL1+'/PicVerify/getPic_code?time='+timestamp)
         })
     };
     var entiretyVerify = function (node) {
@@ -754,12 +756,14 @@ var Form = function () {
             var phone = $('.tel').val();
             var code = $('.captcha ').val();
             var type = $(this).data('type');
+            var time = 60
             console.log(code)
             console.log(type)
             if(!telRuleCheck(phone)){
                 showError(ErrorNode,Message.tel.phone);
                 return;
             }
+            console.log(TimeFlag)
             if(TimeFlag){
                 if(CaptchaCheckFlag){
                     TimeFlag =false;
@@ -769,6 +773,10 @@ var Form = function () {
                         smsApplyFir();
                     }else{
                         smsAjax();
+                    /*    authCode(time, function () {
+                            TimeFlag = true;
+                            console.log(234)
+                        });*/
                         /*captchafun(function () {
 
                         })*/
