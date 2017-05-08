@@ -1,0 +1,121 @@
+@r:50rem;
+/******************下面弹出层********************/
+.loan_wrapper{
+  &.active{
+    display: block;
+  }
+  box-sizing:border-box;
+  display: none;
+  width:100%;
+  height:100%;
+  position: relative;
+  .loan_mask{
+    width:100%;
+    height:100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.4);
+  }
+  .loan_cont{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+    height:520/@r;
+    background: #fff;
+    width:100%;
+    .loan_cont_header{
+      height: 90/@r;
+      line-height: 90/@r;
+      border-bottom: 1px solid #eaeaea;
+      font-family: '微软雅黑', sans-serif;
+      font-size: 26/@r;
+      color: #444;
+      text-align: center;
+    }
+    .dropdown-menu{
+      height: 380/@r;
+      overflow: scroll;
+      li{
+        width: 100%;
+      /*  height: 90/@r;
+        line-height: 90/@r;*/
+        span{
+          display: block;
+          width:400/@r;
+          margin: 0 auto;
+          border-bottom: 1px solid #eaeaea;
+          font-family: "Microsoft YaHei", sans-serif;
+          font-size: 28/@r;
+          color: #444;
+          text-align: center;
+          height: 90/@r;
+          line-height: 90/@r;
+          i{
+            display: inline-block;
+
+            font-size: 28/@r;
+          }
+        }
+      }
+      li.last_item{
+        span{
+          border-bottom: none;
+        }
+      }
+      li.active{
+        span{
+          i{
+            color: #ea592e;
+            position: relative;
+            &::before{
+              content: '';
+              position: absolute;
+              left: -42/@r;
+              top: 50%;
+              margin-top: -11/@r;
+              width:24/@r;
+              height: 22/@r;
+              background: url("../img/calculator/assistor.png") no-repeat;
+              background-size: 22/@r 19/@r;
+            }
+          }
+        }
+      }
+
+    }
+    //自定义输入框
+    #definition,#accumulation-definition{
+      width:100%;
+      height: 90/@r;
+      line-height: 90/@r;
+      font-family: "Microsoft YaHei";
+      font-size: 26/@r;
+      color: #444;
+      border-top:1px solid #eaeaea;
+      text-align: center;
+      strong{
+        font-size: 28/@r;
+      }
+      .loan_input{
+        margin: 0 20/@r;
+        width:240/@r;
+        //padding: 12/@r 0 11/@r 0;
+        line-height: 52;
+        line-height: 52/@r;
+        font-size: 26/@r;
+        border: 1px solid #dfdfdf;
+        text-align: center;
+        background: #fafafa;
+      }
+    }
+  }
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}

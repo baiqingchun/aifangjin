@@ -943,8 +943,9 @@ var Form = function () {
           /*  if(!sessionStorage.name){
                 window.location.href='./apply_fir.html'
             }*/
-            selectCostum();//自定义select
+            // selectCostum();//自定义select
             agreement();//点击是否同意爱房金协议
+            $('.form_group_select').alertBottom();
             //点击提交信息按钮
             $('.submit').on('click', function (e) {
                 e.preventDefault();
