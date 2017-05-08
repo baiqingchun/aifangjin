@@ -49,7 +49,7 @@
                 <div class="main">
                     <div class="loan clearfix">
                         <span class="loan_icon"></span><strong class="loan_amount">贷款金额</strong>
-                        <input type="number" class="cont" id="loan-money" value="" placeholder="0">万
+                        <input type="tel" class="cont" id="loan-money" value="" placeholder="0" minlength="1" maxlength="6">万
                     </div>
                     <div class="loan loan_period clearfix" id="business-loan-period">
                         <span class="loan_icon"></span><strong class="loan_amount">贷款期限</strong>
@@ -82,7 +82,7 @@
                     </div>
                     <div id="definition">
                         <strong>自定义</strong>
-                        <input type="number" placeholder="输入自定义期限" class="loan_input" id="loan-input">
+                        <input type="tel" placeholder="输入自定义期限" class="loan_input" id="loan-input" maxlength="2">
                         <strong>年</strong>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     <div class="main">
                         <div class="loan clearfix">
                             <span class="loan_icon"></span><strong class="loan_amount">贷款金额</strong>
-                            <input type="number" class="cont" id="accumulation-amount" value="" placeholder="0">万
+                            <input type="tel" class="cont" id="accumulation-amount" value="" placeholder="0" minlength="1" maxlength="6">万
                         </div>
                         <div class="loan loan_period clearfix" id="loan-period">
                             <span class="loan_icon"></span><strong class="loan_amount">贷款期限</strong>
@@ -139,7 +139,7 @@
                         </div>
                         <div id="accumulation-definition">
                             <strong>自定义</strong>
-                            <input type="number" placeholder="输入自定义期限" class="loan_input" id="accumulation-loan-input">
+                            <input type="tel" placeholder="输入自定义期限" class="loan_input" id="accumulation-loan-input" maxlength="2">
                             <strong>年</strong>
                         </div>
                     </div>
@@ -253,54 +253,39 @@
             $(activeTab).fadeIn();
             return false;
         });
-        //点击显示弹出框
-        $('#business-loan-period').on('click',function(){
-            $('#loan-wrapper').removeClass('hide').addClass('show');
-        });
-        //选择下拉列表内容
-        $('#dropdownMenu').on('click',function(ev){
-            var liTarget = $(ev.target).closest('li').eq(0).attr('id');
-            if(liTarget === 'definition'){
-                return false;
-            }else{
-                $(this).find('li').removeClass('active');
-                var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
-                $('#business-year').html(text.substring(0,text.length-1));
-                $('#loan-wrapper').removeClass('show').addClass('hide');
-            }
-        });
-        //点击遮罩层隐藏
-        $('#loan-wrapper').on('click',function(ev){
-            var target = ev.target;
-            var t = $(target).attr('class');
-            if(t === 'loan_mask'){
-                ev.stopPropagation();
-                $('#loan-wrapper').removeClass('show').addClass('hide');
-            }
-        });
-        //自定义输入框失焦事件
-        $('#loan-input').on('blur',function(){
-            var defined = $('#loan-input').val();
-            if(defined == '' || defined == '0'){
-                defined = '25';
-            }
-            $('#business-year').html(defined);
-            console.log(defined);
-        });
-        //点击商贷利率
-        $('#business-loan-rate').on('click',function(){
-            $('#loan-rate-wrapper').removeClass('hide').addClass('show');
+        //贷款金额输入框失焦匹配
+        /*必须是1到6位的正整数*/
+        var businessLoanAmount = $('#loan-money');
+        loanAmount(businessLoanAmount);
 
-        });
-        $('#loan-rate-wrapper').on('click',function(ev){
-            var target = ev.target;
-            var t = $(target).attr('id');
-            if(t === 'loan-rate-mask'){
-                ev.stopPropagation();
-                $('#loan-rate-wrapper').removeClass('show').addClass('hide');
-            }
-        });
-        //选择下拉列表内容
+        //点击显示弹出框
+        var businessLoanPeriod = $('#business-loan-period');
+        var businessMaskWrapper = $('#loan-wrapper');
+        showMask(businessLoanPeriod,businessMaskWrapper);
+
+        //选择贷款年限下拉列表内容
+        var yearMenu = $('#dropdownMenu');
+        var yearCont = $('#business-year');
+        var yearWrapper = $('#loan-wrapper');
+        selectMenu(yearMenu,yearCont,yearWrapper,'definition');
+
+        //自定义年限输入框失焦事件
+        var businessInput = $('#loan-input');
+        var businessCont = $('#business-year');
+        definedYear(businessInput,businessCont);
+
+        //点击遮罩层隐藏
+        maskHide(yearWrapper,'loan_mask');
+
+        //点击商贷利率
+        var businessLoanRate = $('#business-loan-rate');
+        var businessLoanRateWrapper = $('#loan-rate-wrapper');
+        selectRate(businessLoanRate,businessLoanRateWrapper,'loan-rate-mask');
+
+        //选择贷款利率下拉列表内容
+        var defualtRate = 4.9;
+        var defualtDiscount = 0.85;
+
         $('#rate-dropdownMenu').on('click',function(ev){
             var liTarget = $(ev.target).closest('li').eq(0).attr('id');
             if(liTarget === 'definition'){
@@ -315,10 +300,21 @@
             //根据选项展示不同数值
 //            console.log(liTarget);
             if(liTarget === 'rate-base'){
-                $('#rate-percent').val('4.9');
+                $('#rate-percent').val(defualtRate);
             }else if(liTarget === 'rate-base-discount'){
-                var rate = 4.9*0.85;
+                var rate = defualtRate * defualtDiscount;
                 $('#rate-percent').val(rate);
+            }
+        });
+        //自定义输入年利率
+        $('#rate-percent').on('blur',function(){
+            var yearRateStr = $(this).val();
+            var yearRate = parseFloat(yearRateStr);
+            var reg = /^[0-9]{1,2}(\.\d{1,3})*$/;
+            var isValid = reg.test(yearRateStr) && yearRate > 0 && yearRate < 100;
+            var defaultValue = 4.9;
+            if(!isValid){
+               $(this).val(defaultValue);
             }
         });
         //点击计算按钮
@@ -326,12 +322,23 @@
             var money = $('#loan-money').val();
             var period = $('#business-year').text();
             var rate = $('#rate-percent').val();
+            var defualtRate = 4.9;
+            //如果年利率没有输入或者输入值为0的时候，默认为4.9
+            if(rate == ''|| rate == '0'){
+                rate = defualtRate;
+                $('#rate-percent').val(rate);
+            }
             var m = money*10000;
             var p = period*12;
             var r = rate/100;
+
             if(money == ''){
                 $('#loan-money').attr('placeholder','请填写贷款金额');
+            }else if(money == '0'){
+                $('#loan-money').val('');
+                $('#loan-money').attr('placeholder','请填写贷款金额');
             }else{
+
                 window.location.href = 'calculator_result.html';
             }
             var arr = [m,p,r];
@@ -351,54 +358,40 @@
 
 
         /*公积金计算器*/
+
+        //贷款金额输入框失焦匹配
+        /*必须是1到6位的正整数*/
+        var accumulationLoanAmount = $('#accumulation-amount');
+        loanAmount(accumulationLoanAmount);
+
         //点击显示弹出框
-        $('#accumulation-cont').on('click',function(){
-            $('#accumulation-loan-wrapper').removeClass('hide').addClass('show');
-        });
-        //选择下拉列表内容
-        $('#accumulation-dropdownMenu').on('click',function(ev){
-            var liTarget = $(ev.target).closest('li').eq(0).attr('id');
-            if(liTarget === 'accumulation-definition'){
-                return false;
-            }else{
-                $(this).find('li').removeClass('active');
-                var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
-                $('#accumulation-period').html(text.substring(0,text.length-1));
-                $('#accumulation-loan-wrapper').removeClass('show').addClass('hide');
-            }
-        });
+        var accumulationLoanPeriod = $('#accumulation-cont');
+        var accumulationMaskWrapper = $('#accumulation-loan-wrapper');
+        showMask(accumulationLoanPeriod,accumulationMaskWrapper);
+
         //点击遮罩层隐藏
-        $('#accumulation-loan-wrapper').on('click',function(ev){
-            var target = ev.target;
-            var t = $(target).attr('class');
-            if(t === 'loan_mask'){
-                ev.stopPropagation();
-                $('#accumulation-loan-wrapper').removeClass('show').addClass('hide');
-            }
-        });
+        maskHide(yearWrapper,'loan_mask');
+
+        //选择贷款年限下拉列表内容
+        var accumulationYearMenu = $('#accumulation-dropdownMenu');
+        var accumulationYearCont = $('#accumulation-period');
+        var accumulationYearWrapper = $('#accumulation-loan-wrapper');
+        selectMenu(accumulationYearMenu,accumulationYearCont,accumulationYearWrapper,'accumulation-definition');
+
         //自定义输入框失焦事件
-        $('#accumulation-loan-input').on('blur',function(){
-            var defined = $('#accumulation-loan-input').val();
-                if(defined == '' || defined == '0'){
-                    defined = '25';
-                }
-                $('#accumulation-period').html(defined);
-                console.log(defined);
+        var accumulationLoanInput = $('#accumulation-loan-input');
+        var accumulationloanCont = $('#accumulation-period');
+        definedYear(accumulationLoanInput,accumulationloanCont);
 
-        });
+        //点击遮罩层隐藏
+        var accumulationLoanMask = $('#accumulation-loan-wrapper');
+        maskHide(accumulationLoanMask,'loan_mask');
+
         //点击公积金利率
-        $('#accumulation-loan-rate').on('click',function(){
-            $('#accumulation-loan-rate-wrapper').removeClass('hide').addClass('show');
+        var accumulationLoanRate = $('#accumulation-loan-rate');
+        var accumulationLoanRateWrapper = $('#accumulation-loan-rate-wrapper');
+        selectRate(accumulationLoanRate,accumulationLoanRateWrapper,'accumulation-loan-rate-mask');
 
-        });
-        $('#accumulation-loan-rate-wrapper').on('click',function(ev){
-            var target = ev.target;
-            var t = $(target).attr('id');
-            if(t === 'accumulation-loan-rate-mask'){
-                ev.stopPropagation();
-                $('#accumulation-loan-rate-wrapper').removeClass('show').addClass('hide');
-            }
-        });
         //选择下拉列表内容
         $('#accumulation-rate-dropdownMenu').on('click',function(ev){
             var liTarget = $(ev.target).closest('li').eq(0).attr('id');
@@ -407,7 +400,6 @@
             }else{*/
                 $(this).find('li').removeClass('active');
                 var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
-//                console.log(text);
                 $('#accumulation-loan-rate').html(text);
                 $('#accumulation-loan-rate-wrapper').removeClass('show').addClass('hide');
 //            }
@@ -448,6 +440,91 @@
         });
 
     });
+    //方法封装
+    //贷款金额输入框失焦匹配
+    /*必须是1到6位的正整数*/
+    function loanAmount(target){
+        target.on('blur',function(){
+            var loanAmount = $(this).val();
+            var reg = /^[1-9][0-9]{0,6}$/;
+            var isValid = reg.test(loanAmount);
+            if(!isValid){
+                $(this).val('0');
+            }
+        });
+    }
+    //点击显示弹出框
+    function showMask(target,mask){
+        target.on('click',function(){
+            mask.removeClass('hide').addClass('show');
+        });
+    }
+    //选择贷款年限下拉列表内容
+    function selectMenu(menu,year,wrapper,menuClassname){
+        menu.on('click',function(ev){
+            var liTarget = $(ev.target).closest('li').eq(0).attr('id');
+            if(liTarget === menuClassname){
+                return false;
+            }else{
+                $(this).find('li').removeClass('active');
+                var text = $(ev.target).closest('li').eq(0).addClass('active').find('span').text();
+                year.html(text.substring(0,text.length-1));
+                wrapper.removeClass('show').addClass('hide');
+            }
+        });
+    }
+    //点击遮罩层隐藏
+    function maskHide(wrapper,maskClassname){
+        wrapper.on('click',function(ev){
+            var target = ev.target;
+            var t = $(target).attr('class');
+            if(t === maskClassname){
+                ev.stopPropagation();
+                $(this).removeClass('show').addClass('hide');
+            }
+        });
+    }
+    //自定义年限输入框失焦事件
+    function definedYear(input,yearCont){
+        input.on('blur',function(){
+            var yearlimitStr = $(this).val();
+            var reg = /^[1-9]$|(^[1-2][0-9]$)|30/;
+            var isValid = reg.test(yearlimitStr);
+            var defaultYearlimit = 25;
+            if(!isValid){
+                yearCont.html(defaultYearlimit);
+            }else{
+                yearCont.html(yearlimitStr);
+            }
+        });
+    }
+    //点击贷款利率
+    function selectRate(target,wrapper,classname){
+        target.on('click',function(){
+            wrapper.removeClass('hide').addClass('show');
+        });
+        wrapper.on('click',function(ev){
+            var target = ev.target;
+            var t = $(target).attr('id');
+            if(t === classname){
+                ev.stopPropagation();
+                $(this).removeClass('show').addClass('hide');
+            }
+        });
+    }
+    //选择贷款利率下拉列表内容
+    /*function selectRateMenu(ratePercent,rateBase,rateBaceDiscount,defualtRate,defualtDiscount ){
+        var liTarget = $(ev.target).closest('li').eq(0).attr('id');
+        selectMenu($('#rate-dropdownMenu'),$('#loan-base-rate'),$('#loan-rate-wrapper'));
+            //根据选项展示不同数值
+            if(liTarget === rateBase){
+                ratePercent.val(defualtRate);
+            }else if(liTarget === rateBaceDiscount){
+                var rate = defualtRate * defualtDiscount;
+                ratePercent.val(rate);
+            }
+    }
+*/
 </script>
 </body>
 </html>
