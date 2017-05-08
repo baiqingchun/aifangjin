@@ -25,7 +25,7 @@ var HouseTest = function () {
             lastPage_record = e;
             //alert("PUSHED:"+e);
         }
-        history.pushState({label: e}, "");
+        // history.pushState({label: e}, "");
         History.push(e);
     };
     /*
@@ -37,6 +37,7 @@ var HouseTest = function () {
             console.log(History[History.length-1]);
             if(History.length<2){
                 console.log('没有记录了');
+                history.back()
                 return
             }
            console.log('111111111111111111',History)
@@ -54,18 +55,21 @@ var HouseTest = function () {
         $('.return').click(function () {
             his();
         });
-        window.onpopstate = function (event) {
+        $('.last').click(function () {
+            his();
+        })
+       /* window.onpopstate = function (event) {
             his();
 
-          /*  if (event.state) {
+          /!*  if (event.state) {
                 //labelOutput.textContent = event.state.label;
                 //alert("backward");
                 //alert(JSON.stringify(event.state))
             } else {
                 // alert("last Page");
-            }*/
+            }*!/
 
-        }
+        }*/
 
     };
     /**
@@ -76,10 +80,13 @@ var HouseTest = function () {
         var nodeBack = $('.entitle_container')
         $('.main_page').hide();
         obj.css('display','table');
+        // obj.animate({'display':'table'})
+        // console.log(obj.attr('id'))
+        nodeBack.removeClass();
+        nodeBack.addClass('entitle_container');
         if(obj.attr('id')==='vue_container'){
-            nodeBack.removeClass();
-            nodeBack.addClass('entitle_container');
-            console.log(house)
+
+            // console.log(house)
             if(house.indexOf('A')>-1){
                 nodeBack.addClass('house_two');
             }else if(house.indexOf('B')>-1){
@@ -93,27 +100,28 @@ var HouseTest = function () {
         if(!flag){
             history_record(obj.attr('id'));
         }
-        console.log(History)
+        // console.log(History)
 
     };
     /**
      * 显示结果页面
      * */
     var showResult = function (info) {
-        alert(info)
         showPage($('#vue_container'),false,info);
+        console.log(List+"  ",info);
+        // console.log(info);
          if(info==='A1'){
              App.$data.message = {
-                 payDown:"3.5成",
+                 payDown:"35%",
                  reta:"4.655%",
                  discount:"9.5折",
-                 payDownNot:"4成",
+                 payDownNot:"40%",
                  retaNot:"4.655%",
                  discountNot:"9.5折",
-                 payDownSec:"6成",
+                 payDownSec:"60%",
                  retaSec:"5.39%",
                  discountSec:" 1.1倍",
-                 payDownSecNot:"8成",
+                 payDownSecNot:"80%",
                  retaSecNot:"5.39%",
                  discountSecNot:"1.1倍",
                  show:true,
@@ -121,16 +129,16 @@ var HouseTest = function () {
              }
          }else if(info==='A2'){
              App.$data.message = {
-                 payDown:"6成",
+                 payDown:"60%",
                  reta:"5.39%",
                  discount:"1.1倍",
-                 payDownNot:"8成",
+                 payDownNot:"80%",
                  retaNot:"5.39%",
                  discountNot:"1.1倍",
-                 payDownSec:"6成",
+                 payDownSec:"60%",
                  retaSec:"5.39%",
                  discountSec:"1.1倍",
-                 payDownSecNot:"8成",
+                 payDownSecNot:"80%",
                  retaSecNot:"5.39%",
                  discountSecNot:"1.1倍",
                  show:true,
@@ -138,16 +146,16 @@ var HouseTest = function () {
              }
          }else if(info==='A3'){
              App.$data.message = {
-                 payDown:"6成",
+                 payDown:"60%",
                  reta:"5.39%",
                  discount:"1.1倍",
-                 payDownNot:"8成",
+                 payDownNot:"80%",
                  retaNot:"5.39%",
                  discountNot:"1.1倍",
-                 payDownSec:"6成",
+                 payDownSec:"60%",
                  retaSec:"5.39%",
                  discountSec:"1.1倍",
-                 payDownSecNot:"8成",
+                 payDownSecNot:"80%",
                  retaSecNot:"5.39%",
                  discountSecNot:"1.1倍",
                  show:true,
@@ -156,10 +164,10 @@ var HouseTest = function () {
              }
          } else if(info==='B1'){
              App.$data.message = {
-                 payDown:"3.5成",
+                 payDown:"35%",
                  reta:"4.655%",
                  discount:"9.5折",
-                 payDownNot:"4成",
+                 payDownNot:"40%",
                  retaNot:"4.655%",
                  discountNot:"9.5折",
                  payDownSec:"",
@@ -174,10 +182,10 @@ var HouseTest = function () {
              }
          }else if(info==='B2'){
              App.$data.message = {
-                 payDown:"6成",
+                 payDown:"60%",
                  reta:"5.39%",
                  discount:"1.1倍",
-                 payDownNot:"8成",
+                 payDownNot:"80%",
                  retaNot:"5.39%",
                  discountNot:"1.1倍",
                  payDownSec:"",
@@ -192,10 +200,10 @@ var HouseTest = function () {
              }
          }else if(info==='B3'){
              App.$data.message = {
-                 payDown:"6成",
+                 payDown:"60%",
                  reta:"5.39%",
                  discount:"1.1倍",
-                 payDownNot:"8成",
+                 payDownNot:"80%",
                  retaNot:"5.39%",
                  discountNot:"1.1倍",
                  payDownSec:"",
@@ -210,10 +218,10 @@ var HouseTest = function () {
              }
          }else if(info==='C'){
              App.$data.message = {
-                 payDown:"6成",
+                 payDown:"60%",
                  reta:"5.39%",
                  discount:"1.1倍",
-                 payDownNot:"8成",
+                 payDownNot:"80%",
                  retaNot:"5.39%",
                  discountNot:"1.1倍",
                  payDownSec:"",
@@ -229,11 +237,13 @@ var HouseTest = function () {
          }
     };
     /**
-     *给上一步添加事件
+     *给评估添加事件
      */
-    var last = function () {
-      $('.last').click(function () {
-          showPage($('#two'));
+    var repeat = function () {
+      $('.repeat_assess').click(function () {
+          History= ['one'];
+          List=[];
+          showPage($('#one'),true);
       })
     };
 
@@ -252,21 +262,15 @@ var HouseTest = function () {
               var result2 = $(_this).data('result2');
               var num = $(_this).data('num');
               List.push(num);
-              nodeC.find('input').attr('checked',false);
-          /*    $('.check_group',nodeC).each(function (k,v) {
-                 $(v).removeAttr('checked');
-              });*/
-
-
-              if(nodeinput.is(':checked')){//判断是否选中
-                  nodeinput.removeAttr('checked')
-              }else {
-                  nodeinput.attr('checked',true)
-              }
-              var len = List.length
+          nodeC.find('.check_group').removeClass('active');
+          $(_this).addClass('active');
+          // console.log(List);
+          $(_this).find('p').animate({color:'#444444'},100,function () {
+              var len = List.length;
               if(num === '3b'){
                   if(List[len-2]==='2b'||List[len-2].indexOf('7')>0){
                       showResult(result);
+                      // console.log(result)
                   }else{
                       showPage(nextnode);
                   }
@@ -293,6 +297,7 @@ var HouseTest = function () {
                   }else{
                       showResult('B1');
                   }
+                  return
               }else if(num==='4b'){
                   if(List[1]==='2a'&&List[2]==='3a'){
                       showResult('A2');//结果A1
@@ -320,7 +325,10 @@ var HouseTest = function () {
                   showPage(nextnode);
               }else if(result){
                   showResult(result);
+                  // console.log(result)
               }
+          }) 
+
 
       })
     };
@@ -337,8 +345,9 @@ var HouseTest = function () {
                 }
             });
             backwardEventHandle();
-            last();//上一步
+            // last();//上一步
             chice();//单选框
+            repeat();
         }
     }
 }();
