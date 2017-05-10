@@ -44,7 +44,6 @@
         <li><a href="#combind">组合贷款</a></li>
     </ul>
     <div class="tab_container">
-        <!--商贷计算器-->
         <div id="business" class="tab_content contBox" style="display: none;">
             <form>
                 <div class="main">
@@ -241,7 +240,38 @@
         </div>
     </div>
 </div>
+<!--<div class="container hide" id="afterCompute">
+    <ul class="tabs">
+        <li class="active"><a href="#business">等额本息</a></li>
+        <li><a href="#accumulation">等额本金</a></li>
+    </ul>
+    <div class="tab_container">
+        <div class="contBox show">
+            <form>
+                <div class="main">
+                    <div class="loan clearfix">
+                        <strong class="loan_amount">贷款金额</strong>
+                        <input type="number" class="cont">元
+                    </div>
+                    &lt;!&ndash;<div class="loan loan_period clearfix">
+                        &lt;!&ndash;<span class="loan_icon"></span>&ndash;&gt;<strong class="loan_amount">还款月数</strong>
+                        <span class="cont">个月</span>&lt;!&ndash;<i class="loan_choose">个月</i>&ndash;&gt;
+                    </div>
+                    <div class="loan loan_rate">
+                        <span class="loan_icon"></span><strong class="loan_amount">商贷利率</strong>
+                        <span class="cont" id="loan-base-rate">基准利率</span><i class="loan_choose"></i>
 
+                    </div>
+                    <div class="loan year_rate">
+                        <span class="loan_icon"></span><strong class="loan_amount">年利率输入</strong>
+                        <input class="cont" type="number" id="rate-percent" value="4.9">%
+                    </div>
+                    <div class="btn" id="loan-btn"><a href="javascript:;">计算</a></div>&ndash;&gt;
+                </div>
+            </form>
+
+    </div>
+</div>-->
 <script src="../js/jquery-3.2.0.min.js"></script>
 <script src="../js/public.js"></script>
 <script src="../js/tool/calculator.js"></script>
@@ -250,8 +280,8 @@
         /*商贷计算器*/
         //Default Action
         $(".tab_content").hide();
-        $("ul.tabs li").removeClass("active").eq(1).addClass("active").show();
-        $(".tab_content").eq(1).show();
+        $("ul.tabs li").removeClass("active").eq(2).addClass("active").show();
+        $(".tab_content").eq(2).show();
 
         //On Click Event
         $("ul.tabs li").click(function() {
@@ -266,9 +296,6 @@
         Calculator.accumulation();
         Calculator.combind();
         Calculator.count();
-        //回退功能
-        Public.init();
-
     });
 </script>
 </body>

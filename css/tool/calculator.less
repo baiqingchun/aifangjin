@@ -71,7 +71,7 @@ body{
                 width:30/@r;
                 height: 30/@r;
                 margin: 0/@r 30/@r 0/@r 0/@r;
-                background: url("../img/calculator/business.png") no-repeat;
+                background: url("../../img/tool/calculator/business.png") no-repeat;
                 background-size: 247/@r 32/@r;
                 background-position: -80/@r 0;
               }
@@ -79,13 +79,15 @@ body{
                 float: left;
                 font-size: 26/@r;
                 line-height: 90/@r;
-                font-family: "Microsoft YaHei";
+                font-family: "Microsoft YaHei", serif;
                 color: #555;
                 margin-right: 20/@r;
               }
               .cont{
                 float: left;
                 font-size: 28/@r;
+                height: 90/@r;
+                line-height: 90/@r;
                 font-family: "Microsoft YaHei";
                 color: #555;
                 flex: 1;
@@ -103,7 +105,7 @@ body{
                 margin-top: -13/@r;
                 width: 14/@r;
                 height:26/@r;
-                background: url("../img/calculator/business.png") no-repeat;
+                background: url("../../img/tool/calculator/business.png") no-repeat;
                 background-size: 247/@r 32/@r;
                 background-position: -24/@r 0;
               }
@@ -117,7 +119,7 @@ body{
               .loan_icon{
                 width: 30/@r;
                 height:28/@r;
-                background: url("../img/calculator/business.png") no-repeat;
+                background: url("../../img/tool/calculator/business.png") no-repeat;
                 background-size: 247/@r 32/@r;
                 background-position: -120/@r 0;
               }
@@ -134,7 +136,7 @@ body{
               width: 38/@r;
               height:35/@r;
               margin-right: 23/@r;
-              background: url("../img/calculator/business.png") no-repeat;
+              background: url("../../img/tool/calculator/business.png") no-repeat;
               background-size: 247/@r 32/@r;
               background-position: -209/@r 0;
             }
@@ -149,7 +151,7 @@ body{
               width: 38/@r;
               height:35/@r;
               margin-right: 23/@r;
-              background: url("../img/calculator/business.png") no-repeat;
+              background: url("../../img/tool/calculator/business.png") no-repeat;
               background-size: 247/@r 32/@r;
               background-position: -159/@r 0;
             }
@@ -176,9 +178,7 @@ body{
         }
       }
   }
-
 }
-
 //弹出层
 .loan_wrapper{
   //display: none;
@@ -252,7 +252,7 @@ body{
                 margin-top: -11/@r;
                 width:24/@r;
                 height: 22/@r;
-                background: url("../img/calculator/assistor.png") no-repeat;
+                background: url("../../img/tool/calculator/assistor.png") no-repeat;
                 background-size: 22/@r 19/@r;
             }
           }
@@ -261,25 +261,27 @@ body{
 
     }
     //自定义输入框
-    #definition,#accumulation-definition{
+    #definition,#accumulation-definition,#combind-definition{
       width:100%;
       height: 90/@r;
       line-height: 90/@r;
       font-family: "Microsoft YaHei";
-      font-size: 26/@r;
+      //font-size: 26/@r;
       color: #444;
       border-top:1px solid #eaeaea;
       text-align: center;
+      vertical-align: middle;
       strong{
         font-size: 28/@r;
       }
       .loan_input{
         margin: 0 20/@r;
         width:240/@r;
-        //padding: 12/@r 0 11/@r 0;
-        line-height: 52;
-        line-height: 52/@r;
+        //height: 26/@r;
+        padding: 10/@r 0 13/@r 0;
+        //line-height: 52/@r;
         font-size: 26/@r;
+
         border: 1px solid #dfdfdf;
         text-align: center;
         background: #fafafa;
@@ -300,7 +302,7 @@ body{
     width: 37/@r;
     height:32/@r;
     margin-right: 23/@r;
-    background: url("/aifangjin/img/calculator/publicAssistor.png") no-repeat;
+    background: url("../../img/tool/calculator/publicAssistor.png") no-repeat;
     background-size: contain;
   }
 }

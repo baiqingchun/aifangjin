@@ -29,8 +29,8 @@
     <script src="../js/rem.js"></script>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet/less" type="text/css" href="../css/public.less">
-    <link rel="stylesheet/less" type="text/css" href="../css/calculator.less">
-    <link rel="stylesheet/less" type="text/css" href="../css/calculator_result.less">
+    <link rel="stylesheet/less" type="text/css" href="../css/tool/calculator.less">
+    <link rel="stylesheet/less" type="text/css" href="../css/tool/calculator_result.less">
     <script src="../js/less.js"></script>
 </head>
 <body>
@@ -98,10 +98,12 @@
     </div>
     <script src="../js/jquery-3.2.0.min.js"></script>
     <script src="../js/public.js"></script>
-    <script src="../js/calculator.js"></script>
+    <script src="../js/tool/calculator.js"></script>
+    <!--<script src="../js/tool/calculator.js"></script>-->
+    <!--<script src="../js/tool/calculator_result.js"></script>-->
     <script type="text/javascript">
         $(document).ready(function(){
-            //Default Action
+           /* //Default Action
             $(".contBox").hide();
             $("ul.tabs li:first").addClass("active").show();
             $(".contBox:first").show();
@@ -114,54 +116,9 @@
                 var activeTab = $(this).find("a").attr("href");
                 $(activeTab).fadeIn();
                 return false;
-            });
-            //从本地存储里获取数据
-            var strStoreDate = window.localStorage?localStorage.getItem('accumulation_data'):Cookie.read('data');
-            console.log(strStoreDate)
-            //分割字符串
-            var array = strStoreDate.split(',');
-            console.log(array);
-            //贷款金额
-            var money = parseInt(array[0]);
-            //还款月数
-            var months = parseInt(array[1]);
-            //年利率
-            var rate = parseFloat(array[2]);
-            //月利率
-            var monthRate = parseFloat(rate / 12);
-//            console.log(monthRate);
-            //贷款金额
-            $('.loan_money i').text(money);
-            //还款月数
-            $('.loan_month i').text(months);
-            //每月月供额
-            var a = parseFloat(1 + monthRate);
-            var b = Math.pow(a,months);
-            var monthAmount = parseInt((money * monthRate * b) / (b - 1));
-            console.log(monthAmount);
-            //总支付利息 等额本息
-            var payment = months * monthAmount - money;
-            var payRate = (payment).toFixed(2);
-            $('#payments-rate i').text(payRate);
-            //总支付利息 等额本金
-            var basis = (months * (money * monthRate - monthRate * (money/months)*(months -1)/2)+money/months);
-            var basRate = basis.toFixed(2);
-            $('#payments_rate_basis i').text(basRate);
-            //本息合计
-            //等额本息
-            var allTotal = (money + payment).toFixed(2);
-            $('#loan-total-payment i').text(allTotal);
-            //等额本金
-            var allTotal_basis = (money + basis).toFixed(2);
-            $('#loan-total-basis i').text(allTotal_basis);
-            //首月月供
-            var first_month = parseInt((money / months) + money * monthRate);
-            $('.first_month_payment i').text(first_month);
-            //每月月供
-            $('#month-pay').text(monthAmount);
-            //每月月供递减
-            var monthly_decline = parseInt(money / months * monthRate);
-            $('#monthly-decline').text(monthly_decline);
+            });*/
+            Calculator.init();
+            Calculator.count();
             //回退功能
             Public.init();
 
