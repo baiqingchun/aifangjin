@@ -62,11 +62,7 @@ var Form = function () {
     var ageCheck = function (age) {
         var pattern= /^\+?[1-9][0-9]*$/;
         if(pattern.test(age)){
-             if(age>18&&age<99){
-                 return true;
-             }else{
-                 return false;
-             }
+             return age > 18 && age < 99;
         }else{
             return false;
         }
@@ -108,7 +104,7 @@ var Form = function () {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
         var cval=getCookie(name);
-        if(cval!=null)
+        if(cval!==null)
             document.cookie= name + "="+cval+";expires="+exp.toGMTString();
     }
     //显示错误信息
@@ -137,7 +133,7 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code==0){
+                if(data.code===0){
                     CaptchaCheckFlag= true;
                     hideError(nodeerror);
                     if(fun){
@@ -171,14 +167,14 @@ var Form = function () {
             jsonp: 'jsonpcallback',
             success: function (data) {
                 console.log(data);
-                if(data.code===0||data.code===-300){
+                if (data.code === 0 || data.code === -300) {
                     hideError(ErrorNode);
                     authCode(time, function () {
                         TimeFlag = true;
                         console.log(234)
                     });
-                }else{
-                    showError(ErrorNode,Message.captcha.remote)
+                } else {
+                    showError(ErrorNode, Message.captcha.remote);
                     TimeFlag = true;
                 }
                 // Play with returned data in JSON format
@@ -206,7 +202,7 @@ var Form = function () {
             success: function (data) {
                 console.log(data);
                 if(data.code===0){
-                    hideError(ErrorNode)
+                    hideError(ErrorNode);
                     authCode(time, function () {
                         TimeFlag = true;
                         console.log(234)
@@ -241,7 +237,7 @@ var Form = function () {
             success: function (data) {
                 console.log(data);
                 if(data.code===0){
-                    hideError(ErrorNode)
+                    hideError(ErrorNode);
 
                     authCode(time, function () {
                         TimeFlag = true;
@@ -254,7 +250,7 @@ var Form = function () {
                 // Play with returned data in JSON format
             },
             error: function (msg) {
-                alert(JSON.stringify(msg) )
+                alert(JSON.stringify(msg) );
                 console.error(msg);
             }
         });
@@ -270,7 +266,7 @@ var Form = function () {
             // url: URL+"/userRegister/register",
             data: {
                 phone:phone,
-                mobileCode:sms,
+                mobileCode:sms
             },
             dataType: "jsonp",
             jsonp: 'jsonpcallback',
@@ -309,7 +305,7 @@ var Form = function () {
                     return false;
                 }
                 console.log('ageCheck(selectParameter[option])',ageCheck(selectParameter[option]));
-                console.log(selectParameter[option])
+                console.log(selectParameter[option]);
                 if(!ageCheck(selectParameter[option])){
                     showError(ErrorNode,Select.age.num);
                     flag = false;
@@ -330,7 +326,7 @@ var Form = function () {
             selectParameter.application_amount=0;
             selectParameter.providentFund==='是'?selectParameter.providentFund=1:selectParameter.providentFund=0;
             selectParameter.car==='是'?selectParameter.car=1:selectParameter.car=0;
-            console.log(selectParameter)
+            console.log(selectParameter);
             $.ajax({
                 type: "POST",
                 url: URL1+"/LendRequestPo/SubmitApplication",
@@ -452,7 +448,7 @@ var Form = function () {
                 // Play with returned data in JSON format
             },
             error: function (msg) {
-                alert(JSON.stringify(msg))
+                alert(JSON.stringify(msg));
                 console.error(msg);
             }
         });
@@ -500,8 +496,8 @@ var Form = function () {
             dataType: "jsonp",
             jsonp: 'jsonpcallback',
             success: function (data) {
-                console.log(data)
-                if(data.code==0){
+                console.log(data);
+                if(data.code===0){
                     sessionStorage.phone = phone;
                     fun()
                  /*   window.location.href = './findpass_sec.html'*/
@@ -521,20 +517,20 @@ var Form = function () {
         var nodeerror =  $('.error_bottom');//公共的错误
         if (val) {
             hideError(nodeerror);
-            if(name == 'tel'){
+            if(name === 'tel'){
                 if(val.length>=11){
                     TelFlag = true;
                 }
                 if(TelFlag){
                     if (!telRuleCheck(val)) {
-                        showError(nodeerror,Message[name].phone)
+                        showError(nodeerror,Message[name].phone);
                         return false;
                     }else{
                         hideError(nodeerror);
                     }
                 }
             }
-            if(name=='captcha'){
+            if(name==='captcha'){
                 console.log('aaaa'+val.length,":"+CaptchaFlag);
                 if(val.length>=4){
                     CaptchaFlag = true;
@@ -552,8 +548,9 @@ var Form = function () {
             }
 
         } else {
-            if(Message[name]){
-                showError(nodeerror,Message[name].required)
+            if (!Message[name]) {
+            } else {
+                showError(nodeerror, Message[name].required);
                 return false;
             }
 
@@ -562,17 +559,17 @@ var Form = function () {
         return true;
     };
     //密码必须包含数字和字母，可以包含特殊字符
+    /**
+     * @return {boolean}
+     */
     function CheckPassWordS(password) {
         var str = password;
-        if (str == null || str.length < 8) {
+        if (!(str === null || str.length < 8)) {
+        } else {
             return false;
         }
         var reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
-        if (reg.test(str)){
-            return true;
-        }else{
-            return false;
-        }
+        return reg.test(str);
 
     }
     //必须包含数字加字母 不能包含特殊符号等
@@ -641,12 +638,12 @@ var Form = function () {
             var name = $(v).attr('name');
             if (!verify(name, val,v)) {
                 flag = false;
-                console.log(name)
+                console.log(name);
                 return false;
             }
 
 
-        })
+        });
 
         return flag;
     };
@@ -668,7 +665,7 @@ var Form = function () {
                     node.css('color', '#ea592e');
                     node.text('重新获取');
                     if (callback) {
-                        console.log(12312)
+                        console.log(12312);
                         callback();
                     }
                 }
